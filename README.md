@@ -4,7 +4,22 @@ A free, open-source alternative to paywalled car diagnostic and coding tools.
 
 OpenDiag aims to read faults, show live sensor data, run service resets and (later, behind strict safety checks) change coding options on BMW, Mercedes-Benz and Toyota/Lexus vehicles, using affordable OBD-II, ENET and DoIP adapters.
 
-> **Status: Phase 0 (research and design).** No vehicle-writing code exists yet. See [docs/](docs/).
+> **Status: Phase 0.** Read-only diagnostics work against a built-in simulator and are unit-tested over ELM327, BMW ENET (HSFZ) and DoIP. Not yet verified on a real car. No vehicle-writing code exists. See [docs/](docs/).
+
+## Try it
+
+Needs Node 22.18+ and pnpm.
+
+```bash
+pnpm install
+pnpm cli dtc                              # simulated car
+pnpm cli live --count 3
+pnpm cli vin --adapter elm:192.168.0.10:35000      # WiFi ELM327
+pnpm cli dtc --adapter enet:169.254.1.1 --target 0x12   # BMW ENET cable
+pnpm cli scan --adapter enet:169.254.1.1 --range 0x10-0x7f
+```
+
+ENET and DoIP framing follow public sources and still need confirming against a real capture. Please report results (never post VINs).
 
 ## What this is, and is not
 
