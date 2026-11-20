@@ -32,6 +32,7 @@ The ELM327 is a text-command interpreter chip. The host sends `AT` configuration
 - Heavy bus load overflows the UART buffer and the chip prints `BUFFER FULL`, then stops monitoring.
 - No hardware filtering is used, so load cannot be cut at the chip.
 - The serial link defaults to 38400 baud, and CAN bitrate must be 500000/n.
+- Evidence update 2026-11-20: real ELM327 firmware stops at v2.3 and v1.5 was never released (one uncited Wikipedia section); EdiabasLib says ELM327 adapters reach BMW only over D-CAN on cars from about March 2007 (single source). Version strings stay untrusted. See `research/deep/adapter-hardware-and-protocol-teardown.md`.
 
 Source for all of the above: the kernel can327 documentation (see Sources).
 
@@ -49,6 +50,7 @@ OBDLink CX (BLE only) facts from the vendor's developer notes:
 - Supports HS-CAN (pins 6 and 14) and ISO/KWP (pins 7 and 15). That means no MS-CAN, no SW-CAN.
 - Bonding is only open for the first 5 minutes after power-on. Encryption is always on.
 - Overvoltage protection to 100 V.
+- Evidence update 2026-11-20: the CX is STN2310-based (vendor manual). OBDLink says its adapters flash only through supported third-party apps (BimmerCode named); bootmod3 lists its own WiFi adapter and wired ENET for flashing, and no tuner doc read lists the CX (one review, single source). Treat the CX as diagnostics and coding, not flashing. See `research/deep/bm3-adapters-and-flashing-transport.md`.
 
 ### vLinker (Vgate)
 
@@ -85,15 +87,15 @@ HSFZ facts (Quantex and an EDIABAS reimplementation analysis; both are third-par
 | Diagnostic port | TCP 6801 (0x1A91) |
 | Discovery | UDP broadcast, port 6811 (Quantex). The EDIABAS analysis calls 6811 a "control port", so the role is unclear |
 | Header | 4-byte length, 2-byte type, then payload |
-| Message types seen | 0x01 diagnostic request, 0x02 diagnostic response, 0x10 vehicle ID request, 0x11 vehicle ID response |
-| Addressing | 1 byte source, 1 byte target. Tester is 0xF4 in Quantex, 0xF1 in the EDIABAS analysis. ECUs 0x10 to 0xEF, 0xDF functional. |
+| Message types seen | 0x01 diagnostic request or response, 0x02 acknowledge (corrected 2026-11-20: two sources say acknowledge, not response), 0x10 terminal 15 per Scapy (one decompilation write-up says vehicle ID request; disputed), 0x11 vehicle ident |
+| Addressing | 1 byte source, 1 byte target. Tester is 0xF4 on ENET (Quantex, Scapy and EdiabasLib agree; corrected 2026-11-20). 0xF1 appears only in a low-reliability decompilation write-up and is the tester byte on the CAN route (ID 0x6F1). ECUs 0x10 to 0xEF, 0xDF functional. |
 | Routing activation | Not required, unlike DoIP |
 | Max UDS size | 4095 bytes (Quantex) |
 | Vehicle IP | Usually link-local 169.254.x.x |
 
-The tester-address discrepancy (0xF4 vs 0xF1) is real in the sources. OpenDiag should make it configurable and test on a car.
+The tester-address discrepancy (0xF4 vs 0xF1) is mostly a route difference: 0xF4 on ENET (three sources), 0xF1 on the CAN route. Keep it configurable and confirm on a car (Evidence update 2026-11-20, `research/deep/bmw-enet-hsfz-wire-protocol.md`).
 
-Standard DoIP differs: UDP and TCP port 13400 (unverified in fetched sources, from the ISO 13400 standard as widely documented), vehicle announcement and identification over UDP, then a Routing Activation request on TCP before diagnostic messages, with 2-byte addressing.
+Standard DoIP differs: UDP and TCP port 13400 (two sources now agree: the AUTOSAR DoIP spec and a DoIP client primer; Evidence update 2026-11-20), vehicle announcement and identification over UDP, then a Routing Activation request on TCP before diagnostic messages, with 2-byte addressing.
 
 ### J2534 PassThru and RP1210
 
@@ -182,7 +184,7 @@ Entries marked "(unverified)" or "pending" should not ship as supported until te
 
 ## Open questions
 
-- Which tester source address does a real F-series car accept (0xF4 or 0xF1)? Needs bench testing.
+- Which tester source address does a real F-series car accept (0xF4 or 0xF1)? Needs bench testing. (Evidence update 2026-11-20: 0xF4 has three sources for ENET; 0xF1 is the CAN-route tester. The capture confirms rather than chooses.)
 - What is the actual voltage on pin 8 of an ENET cable, and does a car need a 5 V or 12 V activation signal?
 - Which chip is inside each vLinker model, and does the "ST command" claim hold for the full STN command set?
 - Do OBDLink MX+ and EX behave identically for MS-CAN and SW-CAN? Not confirmed here.

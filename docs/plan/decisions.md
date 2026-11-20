@@ -10,6 +10,7 @@ These override anything in the other plan files that says otherwise.
 | 4 | **Goals are outcomes (KPIs), not features.** | See `kpis.md`. Milestones are passed by hitting KPI targets. |
 | 5 | **Milestone M2 moves from Dec 31 to Fri Jan 8.** | Holiday week no longer breaks the plan. |
 | 6 | **Safety reviewer.** | Because writes are bench-only, a reviewer is wanted but not blocking. Writes stay compiled out of public builds until one signs off. |
+| 7 | **First 3 days are research only (Nov 23 to 25).** | See `research-sprint.md`. Owner captures on own car are read-only. Coding starts Thu Nov 26. G-A moves to Tue Dec 1. P3 and P4 are decided inside the sprint. |
 
 ## What the owner already has
 

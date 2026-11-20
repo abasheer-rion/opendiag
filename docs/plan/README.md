@@ -5,6 +5,7 @@ Written 2026-11-19. Clean-room rule applies to all of these: public standards, p
 | Doc | What it answers | Read it when |
 |---|---|---|
 | [decisions.md](decisions.md) | Owner decisions of 2026-11-20 (override the other files). | Read first. |
+| [research-sprint.md](research-sprint.md) | Hour-by-hour plan for the first 3 days (research only): reading targets, read-only capture procedure, storage and anonymising, decision checklist, week-1 edits. | Before Mon Nov 23. |
 | [kpis.md](kpis.md) | Outcome goals, weekly scoreboard, milestone pass rules. | Review every Friday. |
 | [project-plan.md](project-plan.md) | Master schedule: vision, metrics, week-by-week tasks with hours, milestones M1 to M4 with acceptance tests and demos, decision dates, top 15 risks, budget, cut list, rituals, first 48 hours. Also lists where the other four docs conflict and how it resolves them (section 0). | Start here. Re-read every Monday. |
 | [architecture-12wk.md](architecture-12wk.md) | ADR-001 to ADR-012, package layout, interfaces, performance budget, threat model, gates G-A to G-F. | Before writing or reviewing code. |

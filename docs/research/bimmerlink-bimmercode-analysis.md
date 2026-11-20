@@ -81,6 +81,7 @@ From the [FAQ](https://bimmercode.app/faq/):
 - Purchases tie to the Apple ID or Google account. A full-version purchase works on multiple devices on the same platform but cannot move between iOS and Android. Desktop licences bind to one machine ([FAQ](https://bimmercode.app/faq/)).
 - No public statement of cloud sync or server-side coding data (unverified whether option data is fetched or bundled in the app).
 - Prices were not on the pages I fetched. Not stated here.
+- Evidence update 2026-11-20: a store snapshot shows about USD 50 one-time on the US store, 4.7 from about 22K iOS ratings and 4.8 from about 12K on Android (vendor-displayed, one dated snapshot). Restore can fail ("coding data invalid" reports needed a developer-grade remote fix), and a new software level can silently undo a coding. See `research/deep/bmw-coding-demand-and-practice.md` and `bmw-coding-failures-and-recovery.md`.
 
 ## Competitor comparison
 

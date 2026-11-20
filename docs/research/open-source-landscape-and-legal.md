@@ -31,7 +31,7 @@ Not legal advice. This is engineering research to inform design. Have a lawyer r
 - **Session control:** `10 03` is extended diagnostic session. `3E 00` is TesterPresent, sent every few seconds to hold the session.
 - **ISO-TP frame types** are the high nibble of byte 0: 0 single, 1 first, 2 consecutive, 3 flow control.
 
-BMW uses ENET/DoIP on newer cars and a proprietary addressing layer (HSFZ) on older ones. Mercedes uses DoIP and CAN with its own session handling. Toyota uses plain CAN-UDS and KWP2000 on older models, mostly through a J2534 pass-through. Exact per-brand behavior is the OEM-specific part and is documented mainly in forums and reverse-engineering write-ups (unverified).
+BMW uses ENET/DoIP on newer cars and a proprietary addressing layer (HSFZ) on older ones (Evidence update 2026-11-20: which chassis uses which is unconfirmed; tools support both). Mercedes uses DoIP and CAN with its own session handling. Toyota uses plain CAN-UDS and KWP2000 on older models, mostly through a J2534 pass-through. Exact per-brand behavior is the OEM-specific part and is documented mainly in forums and reverse-engineering write-ups (unverified).
 
 ## What is hard
 
@@ -105,6 +105,7 @@ Plan on three tiers: (1) unit tests with a pure-Python fake ECU on python-can's 
 
 - **Rule (40 CFR 1068.101, CAA 203):** No one may tamper with emission controls, and no one may knowingly make, sell, offer or install a part that bypasses, defeats or disables them. After sale, tampering liability applies when done knowingly. Repairs that restore function are excepted.
 - **Penalties:** The CFR text lists up to $44,539 per engine for manufacturers and dealers and $4,454 for others (tampering), and up to $4,454 per defeat component. EPA alert numbers differ by year because of inflation adjustments. Check 40 CFR Part 19.
+  - Evidence update 2026-11-20: EPA's own enforcement page quotes up to $4,527 per tampering event or defeat-device sale, the statute's base caps are $2,500 and $25,000; the CFR figures above are a different inflation year. Check 40 CFR Part 19 before quoting a number (`research/deep/legal-regulatory-landscape-deep.md`).
 - **EPA policy:** The November 2020 tampering enforcement policy (the first update in decades) covers aftermarket defeat devices. "Competition use only" labels are not a shield.
 - **Software tuners have been fined.** COBB Tuning settled in September 2024 for $2,914,000 and must sell only evaluated tunes. Punch It Performance paid $850,000. VMP Tuning paid $60,000 in 2019. Fleets that modified their own trucks have also paid penalties.
 - **Implication for OpenDiag:** A tool that turns off DPF, EGR, SCR/AdBlue, catalyst monitors, or readiness monitors, or that clears codes to hide a fault, is a defeat device risk. Reading codes and clearing them after a real repair is normal use. The line is purpose and design.

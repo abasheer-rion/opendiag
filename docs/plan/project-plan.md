@@ -1,6 +1,6 @@
 # OpenDiag: 12-week project plan
 
-Status: plan v0.1, written 2026-11-19 (before more code). **Owner decisions of 2026-11-20 in [decisions.md](decisions.md) override this file** (bench-only writes, share-alike data allowed, M2 on Jan 8, outcome KPIs in [kpis.md](kpis.md), cut as we go). Window: Mon 2026-11-23 to Fri 2027-02-12, 12 weeks. Clean-room rule unchanged: public standards, public docs, owner captures and open-source projects only; no leaked OEM software or data. Not legal advice. Prices marked (est) are estimates; the rest come from `resources.md` (which marks its own sources).
+Status: plan v0.1, written 2026-11-19 (before more code). **Owner decisions of 2026-11-20 in [decisions.md](decisions.md) override this file** (bench-only writes, share-alike data allowed, M2 on Jan 8, outcome KPIs in [kpis.md](kpis.md), cut as we go). Window: Mon 2026-11-23 to Fri 2027-02-12, 12 weeks. **The first 3 days (Nov 23 to 25) are a research sprint, see [research-sprint.md](research-sprint.md); coding starts Thu Nov 26.** Clean-room rule unchanged: public standards, public docs, owner captures and open-source projects only; no leaked OEM software or data. Not legal advice. Prices marked (est) are estimates; the rest come from `resources.md` (which marks its own sources).
 
 This is the master schedule. It sits on four inputs and does not repeat them:
 
@@ -146,32 +146,42 @@ Known hard dependencies on people or objects:
 
 Task id = week.number. `Who`: O owner, C Claude, R reviewer or advisor, V volunteer. `Hrs` is effort for that doer. `Deps` are task ids or named items. "Exit" is the check that closes the week. Gates G-A..G-F are defined in architecture-12wk.md 8.3.
 
-### Week 1: Mon Nov 23 to Fri Nov 27. Foundation and orders
+### Week 1: Mon Nov 23 to Fri Nov 27. Research sprint (Mon to Wed), then foundation (Thu to Fri)
 
-Goal: clean base, error model, package split step 1, orders placed, decisions answered. Gate G-A.
+Goal: close the open questions on the owner's own car and in targeted reading (research-sprint.md), then start the error model, package split and `.odtrace`. Gate G-A moves to Tue Dec 1 (week 2).
+
+Mon to Wed, research sprint (full hour-by-hour plan in [research-sprint.md](research-sprint.md)):
 
 | ID | Task | Who | Hrs | Deps |
 |---|---|---|---|---|
-| W1.1 | First-48-hours checklist (section 12): orders, decisions P1 to P3 | O | 3 | none |
-| W1.2 | Run `pnpm typecheck && pnpm test`; commit plan docs (`docs/plan/*`); remove `repos1.txt` or move to `_to_delete` after owner approval | C | 1 | none |
+| RS.1 | Monday brief, inventory (old W1.11), P1 and P2 decisions, laptop setup, simulator rehearsal of every capture command | O | 3.5 | none |
+| RS.2 | Trademark and name search, book counsel scoping call (old P4 touch), review capture procedure | O | 1.25 | none |
+| RS.3 | Capture A (Tue evening): WiFi ENET adapter, OpenDiag CLI, tcpdump, read-only, with battery maintainer | O | 2 | RS.1 |
+| RS.4 | Capture B (Wed evening): OBDLink CX over BLE, GATT inspection and vendor app reads, read-only | O | 2 | RS.3 |
+| RS.5 | Read capture A findings (Wed 10:00) and decision session Wed 21:00: P3 (two chassis), HSFZ and DoIP, standards purchase, voltage and charger rules, OBDb, Toyota and Mercedes deferral | O | 1.5 | RS.4 |
+| RS.6 | Reading RD-1 to RD-8 (HSFZ field evidence, BM3 adapters, G-series gateway, voltage failures, standards, legal primary sources, unverified plan claims, demand sampling); one note each in `docs/research/sprint/` | C | 24 | none |
+| RS.7 | Baseline test run, consent sheet and capture templates (old W1.10), capture analysis, findings notes, decisions written to `decisions.md` | C | 4.5 | RS.3, RS.4 |
+
+Thu to Fri, foundation:
+
+| ID | Task | Who | Hrs | Deps |
+|---|---|---|---|---|
+| W1.2 | Commit plan and sprint docs; remove `repos1.txt` or move to `_to_delete` after owner approval | C | 0.5 | RS.5 |
 | W1.3 | `OdError` with stable codes, severity, retryable flag; convert `NegativeResponse`, `TimeoutError`, `BackupError`, `PackError`, `WriteBlockedError` | C | 4 | W1.2 |
-| W1.4 | Package split step 1: core (pure) / adapters-node / sim; keep `core` re-exports so CLI and tests do not break (ADR-002) | C | 8 | W1.2 |
-| W1.5 | `scripts/check-boundaries.ts` (node: imports, upward deps, safety internals) in CI | C | 3 | W1.4 |
-| W1.6 | Licence scan script (fail on any GPL/AGPL/SSPL variant, NonCommercial or unknown licence in shipped deps; flag LGPL for review; dev-only tools are checked separately), coverage via `--experimental-test-coverage`, record baseline | C | 3 | W1.2 |
-| W1.7 | `.odtrace` JSONL format (request, response, timestamps, adapter, voltage, VIN hash) plus recorder and replay transport | C | 6 | W1.4 |
+| W1.4a | Package split step 1, first half: core (pure) / adapters-node / sim; keep `core` re-exports so CLI and tests do not break (ADR-002). Second half is W1.4b, Mon Nov 30 | C | 4 | W1.2 |
+| W1.7a | `.odtrace` JSONL format (request, response, timestamps, adapter, voltage, VIN hash) and a converter for the sprint captures. Recorder and replay transport move to W1.7b (week 2) | C | 4 | RS.7 |
 | W1.8 | `SOURCES.md` template, PR and issue templates, `opendiag-packs` repo (create after owner approval), CC-BY-4.0 data licence file | C | 3 | P3 |
 | W1.9 | Banner on `docs/design/architecture.md` section 4 pointing to ADR-001 and ADR-004; link this plan from `docs/README.md` | C | 0.5 | none |
-| W1.10 | Capture-night protocol and consent sheet (what we read, what we never write, what leaves the machine: nothing without consent) | C | 2 | none |
-| W1.11 | Answer owner questions: cars, chassis, adapters on hand, bench gear, real weekly hours (feeds P1, P2) | O | 1 | none |
-| W1.12 | Post 1 request for a safety reviewer and 2 bench or ENET volunteers (friends, forum); no private data in posts | O | 2 | W1.10 |
-| W1.13 | Review ADR-001 and the package split PR | O | 2 | W1.4 |
-| W1.14 | Run existing CLI against own car with any ELM adapter if one exists; save raw output (first real data point, optional) | O | 2 | W1.7 |
+| W1.12 | Post 1 request for a safety reviewer and 2 bench or ENET volunteers; one line asking for a cross-check of the sprint's anonymised frames; no private data in posts | O | 2 | RS.5 |
+| W1.15 | Owner reads the anonymised `.odtrace` from the sprint and approves committing it to `docs/captures/` | O | 0.5 | W1.7a |
 
-Exit: G-A (27 tests still pass after split; boundary and licence scripts run in CI; `OdError` covers all old classes; coverage baseline recorded). Hours: O 10, C 30.5.
+Moved out of week 1: W1.5 boundary script and W1.6 licence scan and coverage go to Mon Nov 30 and Tue Dec 1; W1.13 review of ADR-001 and the split PR goes to Mon Nov 30; W1.14 first run on own car is replaced by RS.3 and RS.4. W1.1, W1.10 and W1.11 are absorbed into RS.1 and RS.7.
+
+Exit for the sprint (Wed Nov 25): notes RD-1 to RD-8 and both capture analyses exist, the decision checklist is answered in `decisions.md`, P3 is decided. Exit for the week (Fri Nov 27): `OdError` merged, split half 1 merged with 27 tests still passing, `.odtrace` format and converter merged. G-A closes Tue Dec 1 (boundary and licence scripts running in CI, split complete, coverage baseline). Hours: O 12.75 (RS 10.25 plus foundation 2.5), C about 44.5 (RS 28.5, foundation 16; over capacity because reading runs in parallel agents, see 5.13).
 
 ### Week 2: Mon Nov 30 to Fri Dec 4. Transport v2, scheduler, session
 
-Goal: concurrency and keepalive on all four transports. No gate; exit is the passing parallel and keepalive tests.
+Goal: concurrency and keepalive on all four transports. No gate; exit is the passing parallel and keepalive tests. Carry-over from week 1 (Mon Nov 30 to Tue Dec 1): W1.4b split second half (C 4), W1.5 boundary script (C 3), W1.6 licence scan and coverage (C 3), W1.7b recorder and replay transport (C 2), W1.13 owner review of ADR-001 and the split PR (O 2). Closes G-A on Tue Dec 1.
 
 | ID | Task | Who | Hrs | Deps |
 |---|---|---|---|---|
@@ -179,15 +189,15 @@ Goal: concurrency and keepalive on all four transports. No gate; exit is the pas
 | W2.2 | Correlated multi-in-flight for HSFZ and DoIP (stop `inbox.clear()`); unsolicited frames to the event stream | C | 6 | W2.1 |
 | W2.3 | Scheduler: priorities, injectable clock, retry policy, NRC 0x78 handling, per-target timeouts | C | 8 | W2.1 |
 | W2.4 | Session: TesterPresent keepalive, loss detection, session state (10 01 / 10 03), reconnect hooks | C | 6 | W2.3 |
-| W2.5 | Capture recorder v1 (`opendiag capture`: passive and guided; VIN hashed) | C | 12 | W1.7 |
-| W2.6 | Pack linter skeleton (`opendiag pack lint`, rules 1 to 3: schema, provenance present, source in ledger) | C | 4 | W1.8 |
+| W2.5 | Capture recorder v1 (`opendiag capture`: passive and guided; VIN hashed), builds on the W1.7a format | C | 8 | W1.7a |
+| W2.6 | Pack linter skeleton (`opendiag pack lint`, rules 1 to 3: schema, provenance present, source in ledger). **Moved to week 3** | C | 4 | W1.8 |
 | W2.7 | Receive ENET cable, USB-C Ethernet, multimeter, breakout box; measure OBD pin 8 on the car before any wiring (sources conflict 5 V vs 12 V, resources H8) | O | 3 | W1.1 |
 | W2.8 | Capture night 1 (Wed Dec 2): own car, existing adapter if any, passive scan, saved as `.odtrace`; follow protocol W1.10 | O | 3 | W2.5 draft |
 | W2.9 | Bench PSU and wire list ready; ask electronics advisor for a 2 h session in wk 4 or 5 | O | 2 | none |
 | W2.10 | Review transport v2 and scheduler PRs; answer what the car did in capture night 1 | O | 3 | W2.1, W2.3 |
 | W2.11 | Forum post 1 and DM to 3 friends with cars (ask for capture night volunteers) | O | 1.5 | W1.10 |
 
-Exit: keepalive holds a 60 s virtual-time session with at most 1 missed cycle; parallel request tests pass on sim for HSFZ and DoIP. Hours: O 12.5, C 46 (heavy; see risk R12; slip the linter skeleton to wk 3 first).
+Exit: G-A (Tue Dec 1); keepalive holds a 60 s virtual-time session with at most 1 missed cycle; parallel request tests pass on sim for HSFZ and DoIP. Hours: O 14.5 (12.5 plus W1.13 2), C about 50 (46 plus 12 carry-over, minus 4 recorder trim, minus 4 linter moved; heavy, see risk R12).
 
 ### Week 3: Mon Dec 7 to Fri Dec 11. Discovery, parallel scan, ELM profiles. Gate G-B
 
@@ -201,15 +211,15 @@ Goal: fast scan on sim, first real captures, legal scoping call.
 | W3.4 | ELM probe and tuning profiles (`ATE0 ATL0 ATS0 ATAT ATST ATCRA ATSP`, clone detection incl. `BUFFER FULL`, version string untrusted) as data | C | 8 | W2.1 |
 | W3.5 | `packages/bench`: scenarios from the performance budget, sim with 20 ms injected latency, regress-fail threshold 20% (est); CI job | C | 6 | W3.2 |
 | W3.6 | Fuzz harness (`fast-check`, plus `jazzer.js` evaluation) over ISO-TP, UDS, OBD, DTC, HSFZ, DoIP decoders, 100k each | C | 6 | W1.4 |
-| W3.7 | Pack linter rules 1 to 6 (overlap, fit, provenance, deny classes, banned strings, `tested_on`) | C | 5 | W2.6 |
+| W3.7 | Pack linter rules 1 to 6 (overlap, fit, provenance, deny classes, banned strings, `tested_on`); includes the skeleton moved from W2.6 | C | 9 | W1.8 |
 | W3.8 | Draft 60 generic DTC entries from public regulation text in own wording, similarity check against cross-check source, one source tag per entry | C | 6 | W3.7 |
 | W3.9 | Review 60 DTCs (2 min each, second pass by a volunteer if available); tainted-reader rule: no OEM portal material seen by authors | O | 2 | W3.8 |
-| W3.10 | Capture night 2 (Wed Dec 9): ENET cable on a BMW. Read VIN over HSFZ, capture raw frames. Resolves HSFZ length semantics and tester address 0xF4 vs 0xF1 | O | 4 | W2.7, W2.5 |
+| W3.10 | Capture night 2 (Wed Dec 9): ENET cable on a BMW. Read VIN over HSFZ, capture raw frames. Repeats the sprint's WiFi ENET capture with the cable and confirms HSFZ length semantics, discovery bytes, acknowledge handling and tester address 0xF4 (0xF1 is the CAN-route tester; updated 2026-11-20) | O | 3 | W2.7, W2.5 |
 | W3.11 | Module scan on family A car (active scan, address map v0); store traces | O | 3 | W3.2 |
 | W3.12 | Counsel scoping call (1 h): owner-capture bitmaps, paraphrased DTC text, tainted-reader rule, name search for "OpenDiag" (P4) | O | 1.5 | booking by Dec 4 |
 | W3.13 | Decide ISO 14229-1 / 15765-2 purchase (default: no) | O | 0.5 | none |
 
-Exit: G-B (40-ECU sim car scanned over loopback ENET under 2 s p50 at 20 ms latency, ELM scan under 12 s in sim, keepalive and fake-clock tests, 100k fuzz clean, one real HSFZ capture stored if cable arrived). Hours: O 11, C 49 (reduce by dropping W3.8 to wk 4 if behind).
+Exit: G-B (40-ECU sim car scanned over loopback ENET under 2 s p50 at 20 ms latency, ELM scan under 12 s in sim, keepalive and fake-clock tests, 100k fuzz clean, one real HSFZ capture stored if cable arrived). Hours: O 10, C 53 (reduce by dropping W3.8 to wk 4 if behind).
 
 ### Week 4: Mon Dec 14 to Fri Dec 18. Daemon, web skeleton. Milestone M1
 
@@ -401,9 +411,9 @@ Exit: G-F (2+ adapters qualified, measured numbers in place, fuzz clean, licence
 
 | Wk | Dates | Owner (O) | Claude (C) | Reviewer / advisor (R) | Notes |
 |---|---|---|---|---|---|
-| 1 | Nov 23 | 10 | 30.5 | 0 | |
-| 2 | Nov 30 | 12.5 | 46 | 0 | Claude overload; see cut rule |
-| 3 | Dec 7 | 11 | 49 | 0 | Claude overload |
+| 1 | Nov 23 | 12.75 | 44.5 | 0 | Research sprint Mon to Wed (O 10.25, C 28.5) plus foundation; Claude over capacity |
+| 2 | Nov 30 | 14.5 | 50 | 0 | Carry-over from week 1; Claude overload; see cut rule |
+| 3 | Dec 7 | 10 | 53 | 0 | Claude overload |
 | 4 | Dec 14 | 13 | 35 | 0 | |
 | 5 | Dec 21 | 8 | 33 | 0 | Holiday |
 | 6 | Dec 28 | 11 | 40 | 0 | Holiday |
@@ -413,7 +423,7 @@ Exit: G-F (2+ adapters qualified, measured numbers in place, fuzz clean, licence
 | 10 | Jan 25 | 12 | 50 | 3 | |
 | 11 | Feb 1 | 22.5 | 47 | 3 | Peak owner week |
 | 12 | Feb 8 | 12.5 | 36 | 2 | |
-| Total | | about 147 | about 495 | 16 | Owner within 144 h plan (+2%); Claude averages 41 agent-hours/wk (about 40 to 50 in weeks 2, 3, 10, 11), above the 25 to 40 assumption: expect about 15% of Claude tasks to move one week later, which is why the cut list and float exist. |
+| Total | | about 151 | about 515 | 16 | Owner within 144 h plan (+5%, weeks 1 and 2 carry the research sprint); Claude averages 43 agent-hours/wk (about 40 to 50 in weeks 2, 3, 10, 11), above the 25 to 40 assumption: expect about 15% of Claude tasks to move one week later, which is why the cut list and float exist. |
 
 ## 6. Milestones, acceptance tests and demo scripts
 
@@ -518,8 +528,8 @@ All answers are owner decisions unless marked. Defaults apply if the owner does 
 |---|---|---|---|---|
 | P1 | Mon Nov 23 (in first 48 h) | Approve ADR-001 (TypeScript through wk 12); approve edit of `architecture.md`; approve budget scenario (Must $638 / recommended $2,203 / full $3,076) | TypeScript; recommended | Unblocks W1.4, W1.9, orders |
 | P2 | Tue Nov 24 | Approve the hardware order list (H1 to H11 plus S1 to S3); confirm real weekly hours | Order H1 to H9, H11 and S1, S2 only; 12 h/wk planned, 10 h/wk is the floor | ENET cable and ELM adapters en route by Dec 4 |
-| P3 | Fri Nov 27 | Which two chassis families (data-strategy D1); create `opendiag-packs` repo | F-series + G-series BMW; fallback BMW + Toyota hybrid | Fixes the bootstrap data targets |
-| P4 | Fri Dec 4 | Book legal scoping call for wk 3 and name search for "OpenDiag" | Book anyway | Data rules fixed before captures are published |
+| P3 | Wed Nov 25 (sprint decision session; latest Fri Nov 27 for the repo) | Which two chassis families (data-strategy D1), informed by the sprint captures; create `opendiag-packs` repo | F-series + G-series BMW; fallback BMW + Toyota hybrid | Fixes the bootstrap data targets |
+| P4 | Tue Nov 24 (sprint) | Book legal scoping call for wk 3 and name search for "OpenDiag" | Book anyway | Data rules fixed before captures are published |
 | P5 | Mon Dec 14 | Approve dev signing key creation (Keychain, registry row), and a public subdomain on `endyland.com` for docs/pack downloads (DNS note recorded first) | Create key; no subdomain until wk 10 | Unblocks W6.3 |
 | P6 | Mon Dec 21 | Buy the bench ECU: which module family, cap $100 (H10) | Buy a non-safety comfort or cluster module matching the captured family | Needed wired by wk 7 |
 | P7 | Mon Jan 4 | Name the safety reviewer | Recruit paid review at $50 to $100/h (est) for 6 h (about $300 to $600 for Jan, $800 to $1,600 for all 16 h; not in the $2,203 total, needs an owner yes); else writes stay off | Gate G-D sign-off |
@@ -598,6 +608,8 @@ Rule: only the owner chooses a level, never silently; the choice is recorded in 
 
 ## 12. First 48 hours checklist (Mon Nov 23 and Tue Nov 24)
 
+These two days are now the first two days of the research sprint ([research-sprint.md](research-sprint.md)). The owner items below are done in sprint tasks RS.1 and RS.2; the Claude items marked as code or doc edits (architecture banner, `OdError`, templates) start Thursday Nov 26 as W1.x, and the baseline test run and consent sheet are done Monday.
+
 Owner (about 5 h):
 - [ ] Answer W1.11: cars you can use (make, model, year), adapters you already own, bench gear, real weekly hours.
 - [ ] Approve P1: TypeScript through week 12; approve budget scenario.
@@ -624,8 +636,8 @@ Done when: orders are placed, P1 to P3 are answered or defaulted, baseline tests
 
 | Wk | Planned exit | Done? | Owner h | Claude h | Gate | Cut level | Cash to date |
 |---|---|---|---|---|---|---|---|
-| 1 | G-A | | | | | | |
-| 2 | Keepalive and parallel tests | | | | | | |
+| 1 | Sprint exit (Wed): notes and decisions; Fri: `OdError`, split half, `.odtrace` format | | | | | | |
+| 2 | G-A (Tue Dec 1); keepalive and parallel tests | | | | | | |
 | 3 | G-B | | | | | | |
 | 4 | M1 | | | | | | |
 | 5 | G-C part 1 | | | | | | |

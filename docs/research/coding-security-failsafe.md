@@ -104,6 +104,8 @@ Design rule: treat the checksum as part of the data model. The tool must know, p
 
 A testing ECU simulator with fault injection (drop power mid-write, return 0x37, return 0x72) is a must-build, because real bricking cannot be a test method.
 
+> Evidence update 2026-11-20: field evidence from `research/deep/bmw-coding-failures-and-recovery.md`. BMW's own dealer programming fails and has a recovery team; the head unit is the module BMW documents failing most. Restore from backup is not guaranteed (reports of "coding data invalid"), so keep two verified backups plus an exported bundle. Many "bricked" modules were corrupted coding fixed by rewriting. No source publishes a failure rate for any tool, so OpenDiag has to measure its own.
+
 ## Implications for OpenDiag: failsafe design patterns
 
 Principle: every write is a transaction the tool can explain, verify and undo. If it cannot undo, it must say so before starting and require a stronger confirmation.

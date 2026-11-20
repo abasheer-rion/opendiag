@@ -177,6 +177,8 @@ I found no public description of ISTA's content database. What is documented is 
 6. What fraction of useful coding can be learned from owner-contributed diffs, and how reliable those maps are across software versions [2].
 7. Which cars use plain DoIP instead of HSFZ, and whether routing activation is required (reports conflict) [9][11].
 
+> Evidence update 2026-11-20 (deep pass, see `research/deep/`): (1) HSFZ framing now has four agreeing sources and big-endian length one (Black Hat paper); the length-includes-addresses question and the example frame that contradicts its text still need a capture. (2) For independent shops BMW's official ISTA links are ICOM or an SAE J2534 pass-thru; ENET and K+DCAN are not in the official requirement lists (they work unofficially). (3) Open-source options are wider than listed above: two MIT TypeScript projects (svietlik, Boostline) already speak HSFZ and DoIP and enforce read-only in code; both are small and single-source. (4) Open question 7 stays open per model.
+
 ## Sources
 
 1. BMW technical training material on ISTA/P (third-party hosted; link removed in review because the upload is likely an unlicensed copy of BMW internal material). Every claim citing [1] is unverified until re-sourced from a public BMW or standards document.

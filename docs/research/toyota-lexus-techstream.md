@@ -26,6 +26,7 @@ The Toyota OBD connector is called DLC3 (the 16-pin SAE J1962 connector). Typica
 A hobbyist decode of a 2015 Highlander confirms the diagnostic connector exposes only the 500 kbps powertrain bus (pins 6 and 14). The body bus ran at 250 kbps and was not wired to the connector. Toyota's own manual says body CAN resistance cannot be measured at that connector. [HA forum project]
 
 Newer platforms (TNGA, 2020+) use a central gateway and, per vendor pages, DoIP (Ethernet diagnostics) on the newest models such as the 2024 Grand Highlander (vendor claim, unverified). Toyota's "ECU Security" arrived on TNGA-era cars; one open-source project states its tricks only work on TNGA cars from about 2015-2022 "without Toyota ECU Security". [toyota-can-bus-multitool] One 2026 dealer-equipment handout lists Toyota as one of three OEMs without a "Secure Gateway Module", which is a different mechanism from ECU Security and shows how terminology is muddled. [Hunter handout]
+> Evidence update 2026-11-20: no public source found for Toyota DoIP or a Toyota secure gateway on DLC3 (unknown, not "no"). opendbc marks Toyota and Lexus models from about 2021 to 2022 as not compatible because internal CAN messages are authenticated (SecOC). Open signal data shows Toyota using services 0x21 and 0x22 per ECU. See `research/deep/toyota-lexus-protocols-and-open-data.md`.
 
 ### Protocols
 
