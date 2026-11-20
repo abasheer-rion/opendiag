@@ -1,0 +1,16 @@
+{
+  "name": "opendiag",
+  "private": true,
+  "license": "Apache-2.0",
+  "type": "module",
+  "engines": { "node": ">=22.18" },
+  "scripts": {
+    "test": "node --test \"packages/*/test/*.test.ts\"",
+    "typecheck": "tsc -p tsconfig.json",
+    "cli": "node packages/cli/src/main.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "typescript": "^5.9.0"
+  }
+}
