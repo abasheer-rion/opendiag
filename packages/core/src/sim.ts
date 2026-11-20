@@ -2,6 +2,7 @@ import { at } from "./util.ts";
 import type { Bytes } from "./util.ts";
 import type { DiagTransport } from "./transport.ts";
 import { TimeoutError } from "./util.ts";
+import { demoCodingBlock } from "./demo.ts";
 
 export interface SimDtc {
   /** 3 bytes: SAE-style high/low then failure type. */
@@ -109,8 +110,15 @@ export class SimVehicle {
 }
 
 /** A demo car: engine ECU at 0x7E0 (OBD-II) and mirrored at 0x12 (BMW-style logical address). */
-export function demoVehicle(): SimVehicle {
+export function demoVehicle(opts: { ambient?: number; welcome?: number } = {}): SimVehicle {
+  const ascii = (s: string) => [...Buffer.from(s, "ascii")];
   const engine: SimEcuConfig = {
+    dids: {
+      0xf18c: ascii("SIM0000123"),
+      0xf191: ascii("HW-SIM-01"),
+      0xf195: ascii("SW-0.1.0"),
+      0x3000: demoCodingBlock(opts.ambient ?? 1, opts.welcome ?? 0),
+    },
     vin: "WBA00000000000001",
     dtcs: [
       { bytes: [0x03, 0x01, 0x00], status: 0x09 }, // P0301 confirmed + testFailed
