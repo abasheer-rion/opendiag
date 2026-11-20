@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OpenDiag — free open-source car diagnostics</title>
+<meta name="description" content="A free, open-source alternative to paywalled car diagnostic and coding tools for BMW, Mercedes-Benz and Toyota/Lexus.">
+<style>
+  :root { --bg:#0e1116; --fg:#e6e9ef; --mut:#9aa4b2; --acc:#4cc2ff; --card:#161b22; --line:#262d38; }
+  @media (prefers-color-scheme: light) { :root { --bg:#fafbfc; --fg:#14181f; --mut:#566070; --acc:#0969da; --card:#fff; --line:#d8dee6; } }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg); font:16px/1.55 system-ui,-apple-system,Segoe UI,sans-serif; }
+  main { max-width:880px; margin:0 auto; padding:56px 16px; }
+  h1 { font-size:clamp(2rem,6vw,3.2rem); margin:0 0 12px; letter-spacing:-.02em; }
+  p.lead { font-size:1.2rem; color:var(--mut); margin:0 0 28px; }
+  .tag { display:inline-block; border:1px solid var(--line); border-radius:999px; padding:2px 12px; font-size:.85rem; color:var(--acc); margin-bottom:16px; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:14px; margin:32px 0; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:18px; }
+  .card h3 { margin:0 0 6px; font-size:1.05rem; }
+  .card p { margin:0; color:var(--mut); font-size:.95rem; }
+  a.btn { display:inline-block; background:var(--acc); color:#04121c; padding:10px 18px; border-radius:8px; text-decoration:none; font-weight:600; margin-right:10px; }
+  a.btn.alt { background:transparent; color:var(--acc); border:1px solid var(--line); }
+  h2 { margin-top:40px; }
+  ol { color:var(--mut); }
+  footer { margin-top:48px; color:var(--mut); font-size:.85rem; border-top:1px solid var(--line); padding-top:16px; }
+</style>
+</head>
+<body>
+<main>
+  <span class="tag">Phase 0 · research and design</span>
+  <h1>OpenDiag</h1>
+  <p class="lead">Free, open-source car diagnostics and coding. An independent alternative to paywalled dealer tools, built from public standards and community data.</p>
+  <p>
+    <a class="btn" href="https://github.com/">GitHub</a>
+    <a class="btn alt" href="#roadmap">Roadmap</a>
+  </p>
+
+  <div class="grid">
+    <div class="card"><h3>Read faults</h3><p>Fault codes, freeze frame and plain-English explanations, from basic OBD-II up to every module.</p></div>
+    <div class="card"><h3>Live data</h3><p>Sensor readings, readiness checks and service resets through cheap adapters.</p></div>
+    <div class="card"><h3>Safe coding</h3><p>Backup first, preview the change, verify after, roll back on any mismatch.</p></div>
+    <div class="card"><h3>Open data</h3><p>Community data packs with sources and licenses. No leaked files, ever.</p></div>
+  </div>
+
+  <h2 id="roadmap">Roadmap</h2>
+  <ol>
+    <li>OBD-II reader and vehicle simulator</li>
+    <li>BMW module scan and fault codes</li>
+    <li>Live data and service resets</li>
+    <li>Read-only coding backup and inspect</li>
+    <li>Gated coding writes on a small set of cars</li>
+    <li>Toyota/Lexus, then Mercedes-Benz</li>
+  </ol>
+
+  <h2>Safety</h2>
+  <p>Some things are blocked by design: airbag changes, immobilizer bypass, odometer edits and hiding emissions faults in the ECU.</p>
+
+  <footer>
+    Apache-2.0. Not affiliated with BMW, Mercedes-Benz, Toyota or Lexus. Use at your own risk.
+  </footer>
+</main>
+</body>
+</html>
