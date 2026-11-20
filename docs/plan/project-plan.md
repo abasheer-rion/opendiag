@@ -1,6 +1,6 @@
 # OpenDiag: 12-week project plan
 
-Status: plan v0.1, written 2026-11-19 (before more code). Window: Mon 2026-11-23 to Fri 2027-02-12, 12 weeks. Clean-room rule unchanged: public standards, public docs, owner captures and open-source projects only; no leaked OEM software or data. Not legal advice. Prices marked (est) are estimates; the rest come from `resources.md` (which marks its own sources).
+Status: plan v0.1, written 2026-11-19 (before more code). **Owner decisions of 2026-11-20 in [decisions.md](decisions.md) override this file** (bench-only writes, share-alike data allowed, M2 on Jan 8, outcome KPIs in [kpis.md](kpis.md), cut as we go). Window: Mon 2026-11-23 to Fri 2027-02-12, 12 weeks. Clean-room rule unchanged: public standards, public docs, owner captures and open-source projects only; no leaked OEM software or data. Not legal advice. Prices marked (est) are estimates; the rest come from `resources.md` (which marks its own sources).
 
 This is the master schedule. It sits on four inputs and does not repeat them:
 
@@ -253,7 +253,7 @@ Exit: backup, export, import on a clean directory, hashes verify; audit tamper t
 
 ### Week 6: Mon Dec 28 to Fri Jan 1. Pack v1, signing, resolver. Milestone M2, gate G-C
 
-Goal: signed, linted, provenance-checked packs and a resolver that never guesses. Target close Thu Dec 31.
+Goal: signed, linted, provenance-checked packs and a resolver that never guesses. Target close Fri Jan 8.
 
 | ID | Task | Who | Hrs | Deps |
 |---|---|---|---|---|
@@ -422,7 +422,7 @@ Exit: G-F (2+ adapters qualified, measured numbers in place, fuzz clean, licence
 | Milestone | Date | Gates closed | Roadmap phases covered | What a stranger can see |
 |---|---|---|---|---|
 | M1 Fast read | Fri Dec 18 | G-B (wk 3) plus daemon and web skeleton | Phase 0 complete, Phase 1 generic UDS and scan | Plug in, scan, faults and live values in seconds |
-| M2 Inspect and back up (lands in holiday week 6; slip to Fri Jan 8 without penalty if wk 5 to 6 owner hours are under plan) | Thu Dec 31 | G-C | Phase 3 groundwork (backup, packs) | Vehicle tree with named data; backup, bundle, diff, signed packs |
+| M2 Inspect and back up (lands in holiday week 6; slip to Fri Jan 8 without penalty if wk 5 to 6 owner hours are under plan) | Fri Jan 8 | G-C | Phase 3 groundwork (backup, packs) | Vehicle tree with named data; backup, bundle, diff, signed packs |
 | M3 Write engine proven (simulator) | Fri Jan 15 | G-D | Phase 4 engine | Fault injection on screen, kill and recover |
 | M4 Real hardware beta | Fri Feb 12 | G-E, G-F | Phases 2 and 3 on hardware; Phase 4 bench only | Beta download, capability reports, measured numbers, bench write demo |
 
@@ -450,7 +450,7 @@ Demo script (3 minutes, screen-recorded, owner at the car, laptop on the ENET ca
 4. Switch to the WiFi ELM; show 10 live PIDs updating; show the adapter capability line (model, tier, voltage).
 5. Open the recorded `.odtrace` and replay it with the cable unplugged.
 
-### 6.2 M2: Inspect and back up (Thu Dec 31)
+### 6.2 M2: Inspect and back up (Fri Jan 8)
 
 | # | Test | Pass condition |
 |---|---|---|
