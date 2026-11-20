@@ -46,6 +46,15 @@ export class DiagClient {
     return parseVin(body.subarray(2));
   }
 
+  /** UDS ReadDataByIdentifier. Returns only the data bytes (the DID echo is checked and removed). */
+  async readDataByIdentifier(target: number, did: number, timeoutMs?: number): Promise<Bytes> {
+    const body = await this.call(target, readDid(did), timeoutMs);
+    if (body.length < 2 || ((at(body, 0) << 8) | at(body, 1)) !== did) {
+      throw new Error(`response echoed the wrong DID (wanted 0x${did.toString(16)})`);
+    }
+    return body.subarray(2);
+  }
+
   async readObdDtcs(target = 0x7e0): Promise<ObdDtcs> {
     const get = async (mode: number): Promise<string[]> => {
       try {
