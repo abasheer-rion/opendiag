@@ -203,7 +203,7 @@ All gates MUST pass at PREFLIGHT, and the voltage and link gates MUST be re-chec
 
 | Gate | Requirement | Source of value |
 |---|---|---|
-| Battery voltage, GREEN | At or above 12.5 V engine off, stable (variation under 0.2 V over 10 s), measured by adapter (`AT RV` on ELM/STN, pin 16 reading) or vehicle DID if the profile has one | Design choice. Anchors: tuning guides use about 12 V minimum (coding-security-failsafe.md, section "What is hard", 1); a vendor article notes modules abort writes when voltage is too low; hardware-adapters.md suggests blocking below roughly 12.5 V |
+| Battery voltage, GREEN | At or above 12.5 V engine off, stable (variation under 0.2 V over 10 s), measured by adapter (`AT RV` on ELM/STN, pin 16 reading) or vehicle DID if the profile has one | Design choice. Anchors: tuning guides use about 12 V minimum (coding-security-failsafe.md, section "What is hard", 1); a vendor article notes modules abort writes when voltage is too low; hardware-adapters.md suggests blocking below roughly 12.5 V Evidence update 2026-11-20: no source gives 12.5 V as a safe minimum. Reported figures run from 11.9 V (xHP failure onset, single source) through 13.2 to 13.5 V (another OEM bulletin) to a 13.8 V supply setpoint; keep configurable. |
 | Battery voltage, AMBER and RED | At or above 13.0 V with a charger or maintainer connected, ripple under 0.2 V | Design choice. a BMW training document reportedly cites above 13 V (bmw-ista-architecture.md; unverified, source link removed) |
 | Voltage unreadable | Refuse, unless the profile allows manual attestation (GREEN only, typed confirmation of "battery maintainer connected") | Design choice; hardware-adapters.md says refuse when unreadable |
 | Charger | Recommended for GREEN, required for AMBER and RED. The tool cannot see a charger, it infers it from stable voltage at or above 13.0 V and asks the user to attest | Design choice |
@@ -468,7 +468,7 @@ Every row runs in CI against the simulator (S) and the rows marked B also on a b
 | T35 | Profile signature invalid | tamper | Profile not loaded | S |
 | T36 | UDS parser fuzz | random 0x27/0x2E/0x7F frames | No crash, no OOB | S (fuzz) |
 | T37 | HSFZ and DoIP transports | same as T01 and T20 | Same outcomes as CAN | S |
-| T38 | Tester address variants (0xF1 and 0xF4 for HSFZ) | config | Works with configured value (hardware-adapters.md, open question) | S, B |
+| T38 | Tester address variants (0xF4 default on ENET; 0xF1 is the CAN-route tester, kept as a test variant) | config | Works with configured value (hardware-adapters.md, open question) | S, B |
 | T39 | Export bundle round trip | none | Restore from bundle alone restores simulator | S |
 | T40 | Consent text version bump | none | Old text rejected, audit logs new version | S |
 

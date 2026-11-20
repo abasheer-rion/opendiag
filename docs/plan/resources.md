@@ -55,7 +55,7 @@ Should total: 60 + 70 + 25 + 130 + 225 + 200 + 105 = **$815**.
 | N1 | Tactrix OpenPort 2.0 (J2534) | Windows J2534 backend test. Stock is unreliable: one retailer $199 backordered, others $26 to $76 and some are clones (src). Genuine availability unconfirmed | $150 budget | Tactrix direct; resellers |
 | N2 | PEAK PCAN-USB | Gold-standard CAN reference to compare against CANable | $235 to $239 (src) | Digi-Key, reach.dog, PEAK resellers |
 | N3 | Toyota hybrid battery ECU or used Prius/Lexus module | Phase 5 bench for Mode 21 vs 22 entries | $150 (est) | eBay, breakers |
-| N4 | OBDLink CX (BLE-only) | Documented GATT behavior (FFF0/FFF1/FFF2, MTU 247); needed to test BLE on iOS | $80 (est; not found on a page) | scantool.net |
+| N4 | OBDLink CX (BLE-only) | Documented GATT behavior (FFF0/FFF1/FFF2, MTU 247); needed to test BLE on iOS | $79.95 on OBDLink's page, listed out of stock at fetch; owner reportedly already owns a CX (confirm), so likely no purchase (updated 2026-11-20) | scantool.net |
 | N5 | 2-channel USB oscilloscope | Look at CAN levels and K-line on the bench | $120 (est) | Hantek, Amazon |
 
 Nice hardware total: 150 + 239 + 150 + 80 + 120 = **$739**.

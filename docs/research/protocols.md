@@ -160,7 +160,7 @@ Buses by generation (all unverified except where cited; widely documented in BMW
 | PT-CAN | 500 kbit/s | powertrain |
 | F-CAN | 500 kbit/s | chassis |
 | D-CAN | 500 kbit/s | diagnostic CAN on OBD pins 6/14, from about 2007 |
-| FlexRay | 10 Mbit/s | F-series chassis/dynamics |
+| FlexRay | 10 Mbit/s | chassis/dynamics (first fitted on the E70 at the end of 2006, wider from the 2008 F01; Evidence update 2026-11-20) |
 | MOST | 22.5 Mbit/s | infotainment |
 | Ethernet | 100 Mbit/s | ENET diagnostics and flashing (F-series on), backbone (G-series) |
 
@@ -174,8 +174,10 @@ DME -> tester:                 612: F1 10 14 62 F1 90 ..       (first byte F1 = 
 ```
 
 Addresses commonly cited: tester 0xF1; DME 0x12, EGS 0x18 (unverified; one search could not confirm). Control-unit names (DME engine, EGS transmission, DSC stability, KOMBI cluster, CAS access/immobilizer) are public in parts lists. [8] The address table itself is not public in a clean form.
+> Evidence update 2026-11-20: 0xF1 is the CAN-route tester (replies on 0x600 plus the ECU address, two sources agree); the ENET tester is 0xF4. DME 0x12 and a gateway-style 0x10 have three mentions (two are near-duplicate community lists). EGS 0x18 is still unconfirmed. No public G-series address table exists. See `research/deep/bmw-modules-dtcs-and-addressing.md`.
 
 Ethernet on older ENET cars uses BMW's HSFZ (not DoIP): TCP port 6801, UDP 6811 for discovery, and reportedly no DoIP-style routing activation (sources conflict, unverified; see bmw-ista-architecture.md open questions). Header: 4-byte length, 2-byte control word, then source, target, UDS payload. Control words: 0x0001 diagnostic request/response, 0x0002 acknowledge, 0x0010 terminal 15, 0x0011 vehicle ident, 0x0012 alive check, 0x0013 status inquiry, 0x0040-0x0045 errors. Default tester address in open tooling is 0xF4. [9][10]
+> Evidence update 2026-11-20: the four-field framing (4-byte length, 2-byte control word, 1-byte source, 1-byte target, then UDS) has four agreeing sources, 0x0002 as acknowledge has two. The 6811 request and reply bytes, whether the length counts the address bytes, and any keepalive rule are still unknown and need a capture. See `research/deep/bmw-enet-hsfz-wire-protocol.md`.
 
 ```
 HSFZ read VIN from DME (constructed):
@@ -184,6 +186,7 @@ HSFZ read VIN from DME (constructed):
 ```
 
 G-series and newer use DoIP (unverified).
+> Evidence update 2026-11-20: still unconfirmed per model. Tools support both and let you set the order; one MIT TypeScript project says F-series HSFZ and G-series DoIP (single source). Detect at run time, never key on chassis code.
 
 ## What is hard
 

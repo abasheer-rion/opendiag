@@ -50,7 +50,7 @@ Exit: any contributor can run the full test suite with no hardware.
 Goal: identify a BMW, list its modules, read and clear faults with readable text.
 
 - UDS client: sessions (0x10), TesterPresent (0x3E), ReadDataByIdentifier (0x22), ReadDTCInformation (0x19), Clear (0x14), correct handling of NRC 0x78 pending replies.
-- Transports: BMW extended-address CAN (ID 0x6F1 style, unverified), HSFZ over ENET (TCP 6801, UDP 6811) with configurable tester address, DoIP where the car speaks it (`protocols.md`, `hardware-adapters.md`).
+- Transports: BMW extended-address CAN (ID 0x6F1 style; two sources agree, no capture yet), HSFZ over ENET (TCP 6801, UDP 6811) with configurable tester address, DoIP where the car speaks it (`protocols.md`, `hardware-adapters.md`).
 - Module scan using the address range and 0xF1xx identification DIDs. No static address table.
 - DTC text pack v0: community-written, one source tag per entry.
 
@@ -65,12 +65,12 @@ Milestones:
 
 Acceptance tests:
 
-- Capture of a real HSFZ read-VIN resolves the length-semantics question (`bmw-ista-architecture.md` open question 1).
+- Capture of a real HSFZ read-VIN resolves the length-semantics question (`bmw-ista-architecture.md` open question 1) and the discovery, acknowledge and alive-check bytes (update 2026-11-20: framing itself has four agreeing sources).
 - Status mask `0x08` returns only confirmed codes on the simulator; `59 02 FF 03 01 00 09` decodes to one DTC with status 0x09.
 - Clearing codes on a real car is followed by a re-read that matches expectation.
 - Unknown DTC shows the raw code and "no description", never a guess.
 
-Risk gate: tester address (0xF4 vs 0xF1) decided from real captures before release.
+Risk gate: tester address confirmed from real captures before release (update 2026-11-20: 0xF4 on ENET has three sources, 0xF1 is the CAN-route tester).
 
 ## Phase 2: live data and service resets
 

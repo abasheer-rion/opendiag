@@ -50,7 +50,7 @@ Difficulty: 1 trivial, 2 routine, 3 needs hardware testing, 4 needs community da
 | Generic OBD-II modes 01 to 0A | Any ELM327 app; formulas are public (RPM = (256A+B)/4) | 1 | SAE J1979 PID tables, own text | Original implementation. No GPL code (python-OBD is GPL-2.0) | 0 |
 | Simulator and replay | None consumer-facing; tuners use bench ECUs | 2 | Scripted ECU answers | Fake ECU on virtual CAN with fault injection (power drop, 0x37, 0x72) | 0 |
 | ISO-TP, UDS client, NRC handling | ISTA and XENTRY hide it behind job runtimes | 2 | Standards, public summaries | Own client; use udsoncan (MIT) and python-can-isotp (MIT) as dependencies | 1 |
-| BMW ENET/HSFZ transport | EDIABAS interface driver; BimmerCode via ENET cable | 3 | Header layout (0x01 request, 0x02 ack), tester address 0xF4 or 0xF1 | Configurable tester address; confirm against a real capture before release | 1 |
+| BMW ENET/HSFZ transport | EDIABAS interface driver; BimmerCode via ENET cable | 3 | Header layout (0x01 request, 0x02 ack), tester address 0xF4 on ENET (0xF1 is the CAN-route tester; corrected 2026-11-20) | Configurable tester address; confirm against a real capture before release | 1 |
 | Standard DoIP transport | XENTRY and Techstream on newer cars | 3 | ISO 13400 header (`02 FD`, type, length), routing activation 0x0005 | python-doipclient (MIT) or own; needed for Mercedes and newest Toyota | 1 (BMW if needed), 6 |
 | ECU discovery by address scan | ISTA identifies the vehicle then picks per-ECU data | 3 | Candidate address ranges, no static tables | Scan, read 0xF1xx identification DIDs, build per-VIN map | 1 |
 | VIN, ECU identification | Standard DID 0xF190 and friends | 1 | Public DID list | Generic UDS identification | 1 |
@@ -91,7 +91,7 @@ Difficulty: 1 trivial, 2 routine, 3 needs hardware testing, 4 needs community da
 ## Open questions
 
 1. Which BMW modules accept coding without an unlock key on F/G series? Needs bench testing (`coding-security-failsafe.md`).
-2. Does a real F-series car accept tester address 0xF4 or 0xF1 (`hardware-adapters.md`)?
+2. Does a real F-series car accept tester address 0xF4 or 0xF1 (`hardware-adapters.md`)? Update 2026-11-20: 0xF4 has three sources for ENET; capture to confirm.
 3. Which legal route covers publishing owner-derived option maps? Needs counsel.
 4. Phone coding on iOS: BLE and Wi-Fi only, Ethernet needs a dongle (unverified).
 

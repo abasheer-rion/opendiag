@@ -149,7 +149,7 @@ Consequences. More package boundaries to maintain for one person; mitigated by o
 
 ### ADR-003: How a browser or PWA reaches TCP and serial adapters
 
-Context. Web pages cannot open TCP sockets. WiFi ELM (commonly 192.168.0.10:35000), HSFZ (6801), DoIP (13400) are TCP/UDP. Web Serial is Chromium desktop only and needs a secure context and a user gesture (MDN, fetched). Web Bluetooth is absent in Safari on iOS (W3C list note cited in architecture.md). Chrome's restrictions on public pages calling `127.0.0.1` (Private/Local Network Access prompts) are version-dependent (unverified).
+Context. Web pages cannot open TCP sockets. WiFi ELM (port 35000 is common; the default IP is unconfirmed, evidence shows 192.168.4.1 port 23 on an ESP8266-style dongle and 192.168.100.1 on a BMW ENET router adapter; 2026-11-20), HSFZ (6801), DoIP (13400) are TCP/UDP. Web Serial is Chromium desktop only and needs a secure context and a user gesture (MDN, fetched). Web Bluetooth is absent in Safari on iOS (W3C list note cited in architecture.md). Chrome's restrictions on public pages calling `127.0.0.1` (Private/Local Network Access prompts) are version-dependent (unverified).
 
 Decision. Three tiers, in order of preference:
 1. **Local daemon (`opendiagd`) is the primary path.** It binds `127.0.0.1` only, serves the web UI itself (same origin, so no CORS, no Local Network Access prompts), and exposes JSON over WebSocket plus a small HTTP API. All adapter types work: TCP, serial, BLE. `npx opendiag serve` from week 4; bundled in the desktop app from week 10.
@@ -673,6 +673,7 @@ Estimates, not measurements. Every row becomes a benchmark in `packages/bench` (
 ### 6.2 How we hit them
 
 - **Parallel discovery**: scheduler fans out up to `caps.maxInflight` targets; HSFZ and DoIP correlate by source address, so parallel is safe. ELM stays serial but avoids per-address waits with functional broadcast and listens for all replies in one window.
+  - Evidence update 2026-11-20: no public source shows how a BMW gateway treats concurrent requests or a second tester, and sources conflict on polite polling (300 to 500 ms vs immediate next request). Treat 16-way parallel as a hypothesis to measure on the owner's car.
 - **Candidate pruning**: addresses come from pack ranges, the gateway's own routing table where readable (unverified for BMW), and the last scan. No hard-coded car tables (existing rule).
 - **Silence timeout**: 150 ms default on Ethernet, 300 ms on ELM, adapt up if the first N probes show high latency (measure RTT with a known-present target).
 - **Caching**: per VIN-hash: module list with identity strings, ELM capability profile per adapter model and firmware, supported-PID bitmaps (they do not change per drive). Cache entries are hints; they are re-verified in the same scan and never used for write decisions.
@@ -720,7 +721,7 @@ Phase mapping to `roadmap.md`: weeks 1 to 4 deliver Phase 0 completion and Phase
 |---|---|---|---|
 | 1 | Nov 23 | Commit or fix the in-flight tree. Error model (`OdError`, codes). Package split steps 1 (core pure / adapters-node / sim), boundary script, licence scan, coverage in CI. `.odtrace` format and recorder. Banner on `architecture.md` section 4. Ask owner: cars, adapters, bench. | G-A |
 | 2 | Nov 30 | Transport v2 caps and options on all four transports. Correlated multi-in-flight for HSFZ and DoIP. Scheduler with priorities, injectable clock, retry policy. Session with keepalive and loss detection. | Keepalive and parallel tests green on sim |
-| 3 | Dec 7 | Discovery (HSFZ UDP, DoIP identification), parallel scan, scan cache, ELM probe and tuning profiles, `packages/bench`. First real captures if ENET cable arrives (resolves HSFZ length question and tester address). | G-B |
+| 3 | Dec 7 | Discovery (HSFZ UDP, DoIP identification), parallel scan, scan cache, ELM probe and tuning profiles, `packages/bench`. First real captures if ENET cable arrives (resolves HSFZ length question and confirms tester address 0xF4). | G-B |
 | 4 | Dec 14 | `opendiagd` v0: JSON-RPC over WS, token and Origin/Host checks, rate limit. CLI uses it. Web app skeleton: connect, scan, DTCs, VIN, 10 live PIDs. Phone-width layout. | Daemon security tests green; demo on sim |
 | 5 | Dec 21 | `@opendiag/store`: file store, audit log with hash chain, SQLite index, export and import bundle. Backup and restore-read flow moved to `safety`. Diff view in web. (Holiday week: scope kept small.) | G-C part 1 |
 | 6 | Dec 28 | Pack v1 schema (zod + JSON Schema), loader, verifier, Ed25519 signing CLI, provenance and refusal linter, resolver (`exact/family/unknown`). Bootstrap `opendiag-packs` repo with generic OBD-II PIDs and UDS common DIDs in own wording. OBDb importer design note and counsel question. | G-C |

@@ -39,8 +39,8 @@ Two tier systems exist. T0 to T4 are capability tiers (architecture, coding-secu
 
 ## Known gaps
 
-- No re-sourcing yet for the BMW programming flow and the 13 V rule; needs a public BMW or standards document.
-- HSFZ header length semantics and routing-activation behaviour need a real-car capture.
+- No re-sourcing yet for the BMW programming flow and the 13 V rule; needs a public BMW or standards document. (Deep pass 2026-11-20: BMW bulletins say only "use an approved charger"; trade and tuner sources give 13.2 to 13.8 V setpoints. Still no BMW voltage figure.)
+- HSFZ header length semantics and routing-activation behaviour need a real-car capture. (Deep pass: framing confirmed by four sources; discovery bytes, ack handling and keepalive still unknown. Index of all deep evidence: `research/deep/EVIDENCE.md`.)
 - Not covered: VIN decoding, CAN FD, TPMS and DPF-regeneration service functions, actuator tests (UDS 0x2F) design, localisation, accessibility beyond one mention.
 - Odometer, speed-limiter and ADAS calibration law is not researched (marked unverified in the failsafe spec).
 - Mercedes SecOC/authentication on newer cars and BMW G-series coding authentication are open questions.

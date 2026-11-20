@@ -111,7 +111,7 @@ Pure functions plus small state machines, no I/O. They take frames in and emit f
 | ISO-TP normal | 11-bit IDs, e.g. functional 0x7DF, physical 0x7E0, reply 0x7E8 | `protocols.md` |
 | ISO-TP extended | First data byte is target address; BMW uses CAN ID 0x6F1 with reply 0x600+addr (unverified, to confirm on a car) | `protocols.md` |
 | ISO-TP mixed | Address extension byte | standard |
-| HSFZ | TCP 6801, 4-byte length, 2-byte control word, 1-byte source and target. Tester address configurable (0xF4 and 0xF1 both reported) | `protocols.md`, `hardware-adapters.md`, `bmw-ista-architecture.md` |
+| HSFZ | TCP 6801, 4-byte length, 2-byte control word, 1-byte source and target. Tester address configurable (0xF4 on ENET, three sources; 0xF1 is the CAN-route tester on ID 0x6F1; corrected 2026-11-20) | `protocols.md`, `hardware-adapters.md`, `bmw-ista-architecture.md` |
 | DoIP | 8-byte header (0x02, 0xFD, type, length), routing activation 0x0005, diagnostic message 0x8001 | `protocols.md`, `mercedes-xentry-das.md` |
 | K-line | Format byte, optional addresses, checksum, 5-baud or fast init | `protocols.md` (unverified detail) |
 
@@ -532,7 +532,7 @@ Flash (T3) is not scheduled. It needs OEM-signed images and a separate risk revi
 ## 12. Open questions
 
 1. Is Tauri 2 mobile good enough for BLE-heavy apps, or do we ship Swift/Kotlin shells over UniFFI? (M1 spike.)
-2. Tester source address for HSFZ on real F-series cars (0xF4 vs 0xF1) and the exact length semantics (`bmw-ista-architecture.md`, `hardware-adapters.md`).
+2. Tester source address for HSFZ on real F-series cars (0xF4 vs 0xF1; update 2026-11-20: 0xF4 has three sources, capture still needed) and the exact length semantics (`bmw-ista-architecture.md`, `hardware-adapters.md`).
 3. Which BMW series speak DoIP instead of HSFZ, and whether any speak both.
 4. Can adapters read battery voltage fast and accurately enough to be a safe gate? What default minimum per brand? (A BMW training document, now unverified, reportedly cites above 13 V, see `bmw-ista-architecture.md`; tuner sources cite about 12 V. Pick per profile, default conservative.)
 5. Where checksums live per target module and whether the ECU or the tool computes them. Needs bench ECUs.
