@@ -49,3 +49,18 @@ Two tier systems exist. T0 to T4 are capability tiers (architecture, coding-secu
 - Legal review (DMCA 1201, EPA, trademark and name search) is still a launch blocker; the legal doc is research, not legal advice.
 - Free-tier limits (Workers, Supabase, Actions) were fetched in Nov 2026 and must be rechecked.
 - Remaining forum and enthusiast sources (bimmerpost, priuschat, bmw-syndikat) are secondhand and should be corroborated by captures.
+
+## Research pass 2 (2026-11-20/21)
+
+| Doc | What it is |
+|---|---|
+| [plan/platform-decision.md](plan/platform-decision.md) | One-page plain-words platform decision (Mac app first). |
+| [plan/architecture-v2.md](plan/architecture-v2.md) | Final architecture, chosen from three competing proposals in [plan/proposals/](plan/proposals/). |
+| [plan/features.md](plan/features.md) | Ranked feature plan by release, with effort and cut order. |
+| [plan/dtc-coverage-strategy.md](plan/dtc-coverage-strategy.md) | How much fault-code coverage is reachable, from which sources, under which licence. |
+| [plan/dtc-source-catalogue.md](plan/dtc-source-catalogue.md) | Ranked list of legitimate public fault-code sources and an ingestion order. |
+| [plan/next-steps.md](plan/next-steps.md) | What we know, what we do not, decisions needed. |
+| [design/ui/ui-library-decision.md](design/ui/ui-library-decision.md) | UI stack decision with scoring. |
+| [design/ui/ui-spec.md](design/ui/ui-spec.md) | Screens, flows, wording, tokens. |
+| [design/ui/mock/index.html](design/ui/mock/index.html) | Clickable look-and-feel mock (sample data only). |
+| [research/deep2/](research/deep2/) | 15 new research notes (BMW G-series, competitors, demand, adapters, legal, UI, fault-code sources). |
