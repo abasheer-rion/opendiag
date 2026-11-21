@@ -1154,3 +1154,14 @@ External (fetched this run):
 | E3 | Local script, run 2026-11-20 (WCAG relative luminance formula) | All ratios in 10.3 | high for arithmetic |
 
 Cited through the UX teardown (not re-fetched here): NN/g confirmation dialogs https://www.nngroup.com/articles/confirmation-dialog/, NN/g error guidelines https://www.nngroup.com/articles/errors-forms-design-guidelines/, Raskin https://alistapart.com/article/neveruseawarning, GitHub repository deletion https://docs.github.com/en/repositories/creating-and-managing-repositories/deleting-a-repository, Terraform plan https://developer.hashicorp.com/terraform/cli/commands/plan, git push https://git-scm.com/docs/git-push, MCUboot https://docs.mcuboot.com/design.html, Google SRE canarying https://sre.google/workbook/canarying-releases/ (all high per the teardown).
+
+## Style direction (owner, 2026-11-21): plain, raw, no bloat
+
+Overrides any softer look elsewhere in this spec and in `ui-library-decision.md`.
+
+- Look and feel follows the plain, list-driven style of BimmerCode: a header with a back link, grouped rows with a value on the right and a ">" for drill-down, thin separator lines. We copy the interaction style only. No logos, icons, names, text or assets from any other product.
+- No dashboard, no cards, no shadows, no gradients, no hero numbers, no decorative icons, no animations except focus.
+- Live data is plain rows of numbers. Gauges only if a user asks.
+- System font, one accent colour, red only for faults and danger. Light and dark follow the system.
+- Every screen is a list or a block of monospace text. If a thing is not needed to read, back up, compare or change a setting safely, it is not on screen.
+- Component libraries (shadcn and others) are used only for accessible behaviour (dialogs, focus, inputs). Their default styling is stripped. The reference is `mock/index.html`.
