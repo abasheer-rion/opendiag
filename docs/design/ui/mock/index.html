@@ -1,594 +1,100 @@
 <!doctype html>
-<html lang="en" data-theme="auto">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>OpenDiag look-and-feel mock</title>
-<link rel="icon" href="data:,">
-<script>
-/* apply saved theme before paint, no flash */
-try{var t=localStorage.getItem('od-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t;}catch(e){}
-</script>
+<title>OpenDiag mock (plain)</title>
 <style>
-:root{
-  --bg:#f6f7f9;--surface:#fff;--surface-2:#eef0f4;--border:#d3d8e0;--text:#14181f;--muted:#505a6a;
-  --accent:#1d5fd1;--accent-ink:#fff;--focus:#1d5fd1;
-  --ok:#17692f;--ok-bg:#e1f4e6;--info:#17508f;--info-bg:#e1edfb;
-  --warn:#7a4b00;--warn-bg:#fdf0d0;--danger:#a3121e;--danger-bg:#fde3e4;--neutral:#4b5565;--neutral-bg:#e8ebf0;
-  --add:#e1f4e6;--del:#fde3e4;
-  --radius:8px;--row-h:44px;
-  --font:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
-  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
-}
-@media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]){
-    --bg:#0e1116;--surface:#171b22;--surface-2:#1f2530;--border:#323a48;--text:#e8ecf2;--muted:#a3adbc;
-    --accent:#6ea3ff;--accent-ink:#0a1530;--focus:#8db6ff;
-    --ok:#6ddc8b;--ok-bg:#12301c;--info:#8dbaf5;--info-bg:#122740;
-    --warn:#f2c066;--warn-bg:#3a2a08;--danger:#ff8a92;--danger-bg:#411219;--neutral:#b4bdcb;--neutral-bg:#252c38;
-    --add:#12301c;--del:#411219;
-  }
-}
-:root[data-theme="dark"]{
-  --bg:#0e1116;--surface:#171b22;--surface-2:#1f2530;--border:#323a48;--text:#e8ecf2;--muted:#a3adbc;
-  --accent:#6ea3ff;--accent-ink:#0a1530;--focus:#8db6ff;
-  --ok:#6ddc8b;--ok-bg:#12301c;--info:#8dbaf5;--info-bg:#122740;
-  --warn:#f2c066;--warn-bg:#3a2a08;--danger:#ff8a92;--danger-bg:#411219;--neutral:#b4bdcb;--neutral-bg:#252c38;
-  --add:#12301c;--del:#411219;
-}
-*{box-sizing:border-box}
-[hidden]{display:none!important}
-html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--text);font:15px/1.45 var(--font);min-height:100vh;display:flex;flex-direction:column}
-h1,h2,h3{margin:0;line-height:1.2}
-h1{font-size:1.4rem}h2{font-size:1.15rem}h3{font-size:1rem}
-p{margin:.4em 0}
-button,input,select{font:inherit;color:inherit}
-:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
-.mono{font-family:var(--mono)}
-.num{font-variant-numeric:tabular-nums}
-.muted{color:var(--muted)}
-.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-
-/* banners */
-.mockbar{background:var(--warn-bg);color:var(--warn);border-bottom:1px solid var(--border);padding:6px 16px;font-size:.82rem;text-align:center}
-.mode{display:flex;align-items:center;gap:8px;padding:8px 16px;font-weight:600;font-size:.88rem;border-bottom:1px solid var(--border);background:var(--info-bg);color:var(--info)}
-.mode.write{background:repeating-linear-gradient(135deg,var(--warn-bg) 0 12px,var(--surface) 12px 24px);color:var(--warn);border-bottom:2px solid var(--warn)}
-.mode .sp{flex:1}
-
-/* shell */
-.shell{flex:1;display:flex;min-height:0}
-nav.side{width:210px;flex:none;background:var(--surface);border-right:1px solid var(--border);padding:12px 8px;display:flex;flex-direction:column;gap:2px}
-.brand{font-weight:700;padding:6px 10px 12px;font-size:1.05rem}
-.navbtn{display:flex;align-items:center;gap:10px;min-height:44px;padding:0 10px;border:0;border-radius:var(--radius);background:none;cursor:pointer;text-align:left;width:100%}
-.navbtn:hover{background:var(--surface-2)}
-.navbtn[aria-current="page"]{background:var(--surface-2);font-weight:700;box-shadow:inset 3px 0 0 var(--accent)}
-.navbtn svg{width:20px;height:20px;flex:none;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.sidefoot{margin-top:auto;display:flex;flex-direction:column;gap:6px;padding:8px 4px}
-main{flex:1;min-width:0;padding:20px;max-width:1100px;width:100%}
-.screen[hidden]{display:none}
-.head{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-bottom:14px}
-.head .sp{flex:1}
-
-/* components */
-.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px;margin-bottom:14px}
-.grid{display:grid;gap:14px}
-.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
-.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
-.btn{min-height:44px;padding:0 16px;border-radius:var(--radius);border:1px solid var(--border);background:var(--surface);cursor:pointer;font-weight:600}
-.btn:hover{background:var(--surface-2)}
-.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
-.btn.primary:hover{filter:brightness(1.08)}
-.btn.warn{background:var(--warn-bg);color:var(--warn);border-color:var(--warn)}
-.btn[disabled]{opacity:.5;cursor:not-allowed}
-.btn.sm{min-height:36px;padding:0 12px;font-size:.88rem}
-.chip{display:inline-flex;align-items:center;gap:5px;padding:2px 9px;border-radius:999px;font-size:.78rem;font-weight:700;border:1px solid currentColor;white-space:nowrap}
-.chip.ok{color:var(--ok);background:var(--ok-bg)}
-.chip.info{color:var(--info);background:var(--info-bg)}
-.chip.warn{color:var(--warn);background:var(--warn-bg)}
-.chip.danger{color:var(--danger);background:var(--danger-bg)}
-.chip.neutral{color:var(--neutral);background:var(--neutral-bg)}
-.list{list-style:none;margin:0;padding:0}
-.row{display:flex;align-items:center;gap:12px;min-height:var(--row-h);padding:8px 4px;border-top:1px solid var(--border)}
-.list>.row:first-child{border-top:0}
-.row .main{flex:1;min-width:0}
-.row .title{font-weight:600;overflow-wrap:anywhere}
-.row .sub{font-size:.86rem;color:var(--muted);overflow-wrap:anywhere}
-.kv{display:grid;grid-template-columns:auto 1fr;gap:4px 14px}
-.kv dt{color:var(--muted)}.kv dd{margin:0;overflow-wrap:anywhere}
-.checks .row .res{font-weight:700}
-label{display:block;font-weight:600;margin-bottom:4px}
-input[type=text],select{min-height:44px;width:100%;padding:0 10px;border:1px solid var(--border);border-radius:var(--radius);background:var(--surface);color:var(--text)}
-.seg{display:flex;gap:0;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;width:max-content;max-width:100%}
-.seg button{border:0;background:var(--surface);min-height:44px;padding:0 14px;cursor:pointer}
-.seg button+button{border-left:1px solid var(--border)}
-.seg button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);font-weight:700}
-.note{padding:10px 12px;border-radius:var(--radius);border:1px solid var(--border);background:var(--surface-2);font-size:.9rem}
-.note.warn{background:var(--warn-bg);color:var(--warn);border-color:var(--warn)}
-.note.danger{background:var(--danger-bg);color:var(--danger);border-color:var(--danger)}
-
-/* module row status (shape + text, not colour only) */
-.mod .addr{font-family:var(--mono);color:var(--muted);width:3.2em;flex:none}
-.mod .badges{display:flex;flex-wrap:wrap;gap:6px;justify-content:flex-end}
-
-/* faults */
-.fault{border:1px solid var(--border);border-radius:var(--radius);background:var(--surface);margin-bottom:10px}
-.fault summary{list-style:none;cursor:pointer;display:flex;gap:10px;align-items:flex-start;padding:12px;min-height:44px}
-.fault summary::-webkit-details-marker{display:none}
-.fault .code{font-family:var(--mono);font-weight:700;white-space:nowrap}
-.fault .body{padding:0 12px 12px 12px;border-top:1px solid var(--border)}
-.fault .body h4{margin:10px 0 2px;font-size:.82rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
-
-/* gauges */
-.gauge{text-align:center}
-.gauge svg{width:100%;max-width:190px;height:auto}
-.gauge .track{fill:none;stroke:var(--surface-2);stroke-width:12;stroke-linecap:butt}
-.gauge .zone-c{fill:none;stroke:var(--warn);stroke-width:12;stroke-dasharray:3 3}
-.gauge .zone-d{fill:none;stroke:var(--danger);stroke-width:12;stroke-dasharray:1 2}
-.gauge .val{fill:none;stroke:var(--accent);stroke-width:12;stroke-linecap:round}
-.gauge .needle{stroke:var(--text);stroke-width:3;stroke-linecap:round}
-.gauge .big{font:700 1.5rem var(--mono);fill:var(--text)}
-.gauge .unit{font-size:.8rem;fill:var(--muted)}
-.gauge .state{display:inline-block;margin-top:2px}
-.tile{display:flex;flex-direction:column;gap:2px}
-.tile .v{font:700 1.6rem var(--mono)}
-.spark{width:100%;height:36px}
-.spark polyline{fill:none;stroke:var(--accent);stroke-width:2}
-table{width:100%;border-collapse:collapse}
-th,td{text-align:left;padding:8px 6px;border-top:1px solid var(--border)}
-th{font-size:.8rem;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;border-top:0}
-.tablewrap{overflow-x:auto}
-
-/* diff */
-.diff{border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
-.drow{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) minmax(0,1fr);gap:0;border-top:1px solid var(--border)}
-.drow:first-child{border-top:0}
-.drow>div{padding:8px 10px;overflow-wrap:anywhere}
-.drow.h{background:var(--surface-2);font-size:.8rem;font-weight:700;color:var(--muted);text-transform:uppercase}
-.drow .old{background:var(--del)}.drow .new{background:var(--add)}
-.drow.same{color:var(--muted)}
-.mark{font-weight:700;margin-right:4px}
-.bytes{font-family:var(--mono);font-size:.85rem;background:var(--surface-2);padding:8px;border-radius:var(--radius);overflow-x:auto;white-space:pre}
-.bytes .c{background:var(--warn-bg);color:var(--warn);font-weight:700;padding:0 2px}
-
-/* stepper */
-.stepper{display:flex;flex-wrap:wrap;gap:6px;list-style:none;margin:0 0 14px;padding:0;counter-reset:s}
-.stepper li{counter-increment:s;display:flex;align-items:center;gap:6px;padding:6px 10px;border:1px solid var(--border);border-radius:999px;background:var(--surface);font-size:.84rem}
-.stepper li::before{content:counter(s);display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--surface-2);font-weight:700;font-size:.75rem}
-.stepper li[aria-current="step"]{border-color:var(--accent);font-weight:700}
-.stepper li[aria-current="step"]::before{background:var(--accent);color:var(--accent-ink)}
-.stepper li.done::before{content:"\2713";background:var(--ok-bg);color:var(--ok)}
-.bar{height:12px;border-radius:6px;background:var(--surface-2);overflow:hidden;border:1px solid var(--border)}
-.bar>i{display:block;height:100%;width:0;background:var(--accent);transition:width .25s}
-
-/* dialog */
-dialog{border:2px solid var(--warn);border-radius:12px;background:var(--surface);color:var(--text);padding:0;width:min(520px,calc(100vw - 24px));max-height:calc(100dvh - 24px);overflow:auto}
-dialog::backdrop{background:rgba(0,0,0,.6)}
-dialog .dh{padding:14px 16px;background:var(--warn-bg);color:var(--warn);font-weight:700}
-dialog .db{padding:16px}
-dialog .df{padding:12px 16px 16px;display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-end}
-.target{font-family:var(--mono);background:var(--surface-2);padding:2px 8px;border-radius:6px;border:1px solid var(--border);user-select:all}
-
-/* connect */
-.adapter{display:flex;align-items:center;gap:12px;padding:10px 4px;border-top:1px solid var(--border);min-height:56px}
-.adapter:first-child{border-top:0}
-.adapter input{width:22px;height:22px;flex:none}
-.adapter label{margin:0;font-weight:400;flex:1;cursor:pointer}
-.spinner{width:18px;height:18px;border:3px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:sp 1s linear infinite;display:inline-block;vertical-align:-3px}
-@keyframes sp{to{transform:rotate(360deg)}}
-@media (prefers-reduced-motion:reduce){.spinner{animation:none}.bar>i{transition:none}}
-
-/* phone tab bar */
-nav.tabs{display:none}
-@media (max-width:760px){
-  nav.side{display:none}
-  nav.tabs{display:flex;position:sticky;bottom:0;z-index:5;background:var(--surface);border-top:1px solid var(--border);padding-bottom:env(safe-area-inset-bottom)}
-  nav.tabs .navbtn{flex:1;flex-direction:column;justify-content:center;gap:2px;font-size:.68rem;min-height:56px;padding:4px 2px;text-align:center;border-radius:0}
-  nav.tabs .navbtn[aria-current="page"]{box-shadow:inset 0 3px 0 var(--accent)}
-  main{padding:14px 16px}
-  .g2,.g3{grid-template-columns:1fr}
-  .gridg{grid-template-columns:repeat(2,minmax(0,1fr))!important}
-  .drow{grid-template-columns:1fr}
-  .drow.h{display:none}
-  .drow>div::before{content:attr(data-l);display:block;font-size:.72rem;font-weight:700;color:var(--muted);text-transform:uppercase}
-  .mod .badges{justify-content:flex-start}
-  .row.mod{align-items:flex-start;flex-wrap:wrap}
-  .mockbar{padding:6px 16px}
-}
-@media (min-width:761px){.gridg{grid-template-columns:repeat(4,minmax(0,1fr))!important}}
+:root { --bg:#fff; --fg:#000; --dim:#6b6b6b; --line:#c8c8c8; --row:#f2f2f2; --accent:#0a60c8; --bad:#b00020; --ok:#1a7f37; }
+@media (prefers-color-scheme: dark) { :root { --bg:#000; --fg:#fff; --dim:#8e8e8e; --line:#2c2c2c; --row:#111; --accent:#4da3ff; --bad:#ff6b6b; --ok:#5ad17a; } }
+* { box-sizing: border-box; }
+html, body { margin:0; background:var(--bg); color:var(--fg); font:16px/1.3 -apple-system, "Helvetica Neue", Arial, sans-serif; }
+#app { max-width: 640px; margin: 0 auto; min-height: 100vh; border-left:1px solid var(--line); border-right:1px solid var(--line); }
+header { display:flex; align-items:center; height:48px; border-bottom:1px solid var(--line); padding:0 12px; position:sticky; top:0; background:var(--bg); }
+header .back { color:var(--accent); cursor:pointer; min-width:70px; background:none; border:0; font:inherit; padding:0; text-align:left; }
+header .title { flex:1; text-align:center; font-weight:600; }
+header .spacer { min-width:70px; }
+.banner { padding:6px 12px; font-size:13px; border-bottom:1px solid var(--line); color:var(--dim); }
+.banner b { color:var(--fg); }
+h2 { margin:0; padding:18px 12px 6px; font-size:13px; font-weight:400; color:var(--dim); text-transform:uppercase; letter-spacing:.04em; }
+.list { border-top:1px solid var(--line); }
+.row { display:flex; align-items:center; gap:8px; min-height:44px; padding:8px 12px; border-bottom:1px solid var(--line); cursor:pointer; }
+.row.static { cursor:default; }
+.row .l { flex:1; }
+.row .sub { color:var(--dim); font-size:13px; }
+.row .r { color:var(--dim); font-family: ui-monospace, Menlo, monospace; font-size:14px; }
+.row .chev::after { content:">"; color:var(--dim); margin-left:6px; }
+.row:active { background:var(--row); }
+.bad { color:var(--bad); }
+.note { padding:12px; color:var(--dim); font-size:14px; }
+pre { margin:0; padding:12px; font:13px/1.4 ui-monospace, Menlo, monospace; white-space:pre-wrap; border-bottom:1px solid var(--line); }
+button.act, input { font:inherit; color:var(--fg); }
+button.act { display:block; width:100%; min-height:48px; background:none; border:0; border-bottom:1px solid var(--line); color:var(--accent); text-align:center; cursor:pointer; }
+button.act.danger { color:var(--bad); }
+button.act:disabled { color:var(--dim); cursor:not-allowed; }
+input { width:calc(100% - 24px); margin:8px 12px; padding:8px; background:var(--bg); border:1px solid var(--line); font-family: ui-monospace, Menlo, monospace; }
+:focus-visible { outline:2px solid var(--accent); outline-offset:-2px; }
 </style>
 </head>
 <body>
-<div class="mockbar" role="note"><strong>MOCK.</strong> Look-and-feel prototype. Sample data only. No adapter, no real vehicle, nothing is written anywhere.</div>
-<div class="mode" id="mode" role="status" aria-live="polite">
-  <span id="modeicon" aria-hidden="true">&#9679;</span>
-  <span id="modetext">Read only. Nothing here can change the car.</span>
-  <span class="sp"></span>
-  <button class="btn sm" id="modebtn" type="button" hidden>Back to read only</button>
-</div>
-
-<div class="shell">
-<nav class="side" aria-label="Main">
-  <div class="brand">OpenDiag <span class="chip neutral">mock</span></div>
-  <div id="navside"></div>
-  <div class="sidefoot">
-    <div class="seg" role="group" aria-label="Theme">
-      <button type="button" data-th="auto" aria-pressed="true">Auto</button>
-      <button type="button" data-th="light" aria-pressed="false">Light</button>
-      <button type="button" data-th="dark" aria-pressed="false">Dark</button>
-    </div>
-  </div>
-</nav>
-
-<main id="main">
-
-<!-- CONNECT -->
-<section class="screen" id="s-connect" aria-labelledby="h-connect">
-  <div class="head"><h1 id="h-connect">Connect</h1><span class="sp"></span><span class="chip neutral" id="connchip">&#9675; Not connected</span></div>
-  <div class="grid g2">
-    <div class="card">
-      <h2>1. Pick your adapter</h2>
-      <p class="muted">Sample adapters only. The app checks what each one can do before it lets you continue.</p>
-      <div role="radiogroup" aria-label="Adapter">
-        <div class="adapter"><input type="radio" name="ad" id="a1" checked><label for="a1">OBDLink CX (Bluetooth LE)<br><span class="muted">Read, snapshot and bench write</span></label><span class="chip ok">&#10003; Supported</span></div>
-        <div class="adapter"><input type="radio" name="ad" id="a2"><label for="a2">Wi-Fi ENET cable<br><span class="muted">Needs the car awake and unlocked</span></label><span class="chip ok">&#10003; Supported</span></div>
-        <div class="adapter"><input type="radio" name="ad" id="a3"><label for="a3">Generic ELM327 clone<br><span class="muted">Read only. Too unreliable to write with</span></label><span class="chip warn">&#9888; Read only</span></div>
-      </div>
-      <p><button class="btn primary" id="connbtn" type="button">Connect to adapter</button></p>
-    </div>
-    <div class="card" aria-live="polite">
-      <h2>2. Checks</h2>
-      <ul class="list checks" id="checks">
-        <li class="row"><span class="main"><span class="title">Adapter link</span><br><span class="sub">Waiting</span></span><span class="chip neutral">&#9675; Waiting</span></li>
-        <li class="row"><span class="main"><span class="title">Car found</span><br><span class="sub">Waiting</span></span><span class="chip neutral">&#9675; Waiting</span></li>
-        <li class="row"><span class="main"><span class="title">Battery voltage</span><br><span class="sub">Waiting</span></span><span class="chip neutral">&#9675; Waiting</span></li>
-      </ul>
-      <p id="connmsg" class="note" hidden></p>
-      <p><button class="btn primary" id="gobtn" type="button" disabled>Open vehicle</button></p>
-    </div>
-  </div>
-</section>
-
-<!-- VEHICLE -->
-<section class="screen" id="s-vehicle" aria-labelledby="h-vehicle" hidden>
-  <div class="head"><h1 id="h-vehicle">Vehicle</h1><span class="sp"></span><button class="btn sm" type="button" data-go="faults">View all faults</button></div>
-  <div class="card">
-    <dl class="kv">
-      <dt>Car</dt><dd>Sample sedan (fictional)</dd>
-      <dt>VIN</dt><dd class="mono">MOCKVIN0000SAMPLE</dd>
-      <dt>Battery</dt><dd class="num">12.6 V <span class="chip ok">&#10003; OK to write</span></dd>
-      <dt>Adapter</dt><dd>OBDLink CX, link strong</dd>
-    </dl>
-  </div>
-  <h2 style="margin:6px 0 8px">Modules <span class="muted" style="font-weight:400">(5 found)</span></h2>
-  <div class="card" style="padding:4px 14px">
-    <ul class="list" id="mods"></ul>
-  </div>
-  <p class="muted" style="font-size:.86rem">Status is always a word plus a symbol. Colour is only a hint.</p>
-</section>
-
-<!-- FAULTS -->
-<section class="screen" id="s-faults" aria-labelledby="h-faults" hidden>
-  <div class="head"><h1 id="h-faults">Faults</h1><span class="sp"></span><span class="chip warn">3 stored</span></div>
-  <div class="note" style="margin-bottom:12px">Clearing faults hides the message, not the cause. A fault that comes back needs a repair.</div>
-  <div id="faultlist"></div>
-  <p><button class="btn" id="clearbtn" type="button">Clear 3 stored faults</button> <span class="muted" id="clearmsg" role="status"></span></p>
-</section>
-
-<!-- LIVE -->
-<section class="screen" id="s-live" aria-labelledby="h-live" hidden>
-  <div class="head"><h1 id="h-live">Live data</h1><span class="sp"></span>
-    <span class="chip info">Simulated</span>
-    <button class="btn sm" id="pausebtn" type="button">Pause</button>
-    <div class="seg" role="group" aria-label="View"><button type="button" id="vg" aria-pressed="true">Gauges</button><button type="button" id="vt" aria-pressed="false">Table</button></div>
-  </div>
-  <div id="live-gauges" class="grid gridg" style="grid-template-columns:repeat(2,minmax(0,1fr))">
-    <div class="card gauge" id="g-rpm"></div>
-    <div class="card gauge" id="g-cool"></div>
-    <div class="card gauge" id="g-volt"></div>
-    <div class="card gauge" id="g-load"></div>
-  </div>
-  <div id="live-table" hidden class="card tablewrap">
-    <table><caption class="sr">Live values</caption>
-      <thead><tr><th scope="col">Channel</th><th scope="col">Value</th><th scope="col">Normal range</th><th scope="col">State</th></tr></thead>
-      <tbody id="ltbody"></tbody></table>
-  </div>
-  <div class="card tile"><span class="muted">Engine speed, last 30 s</span>
-    <svg class="spark" viewBox="0 0 300 36" preserveAspectRatio="none" role="img" aria-label="Engine speed trend, simulated"><polyline id="spark" points=""/></svg>
-  </div>
-  <p class="muted" style="font-size:.86rem">Every value also appears in the table view. Zones use dashes and labels, not just colour.</p>
-</section>
-
-<!-- BACKUP -->
-<section class="screen" id="s-backup" aria-labelledby="h-backup" hidden>
-  <div class="head"><h1 id="h-backup">Backup and changes</h1><span class="sp"></span><button class="btn primary" id="startwrite" type="button">Plan a change to FRM</button></div>
-  <div class="grid g2">
-    <div class="card">
-      <h2>Snapshots</h2>
-      <ul class="list">
-        <li class="row"><span class="main"><span class="title">FRM, today 09:14</span><br><span class="sub">Read twice, both matched. Saved on this computer.</span></span><span class="chip ok">&#10003; Verified</span></li>
-        <li class="row"><span class="main"><span class="title">FRM, 12 Oct</span><br><span class="sub">Read once. Older.</span></span><span class="chip warn">&#9888; Single read</span></li>
-        <li class="row"><span class="main"><span class="title">KOMBI, today 09:15</span><br><span class="sub">Read twice, both matched.</span></span><span class="chip ok">&#10003; Verified</span></li>
-      </ul>
-      <p class="sub muted" style="font-size:.86rem">Location: <span class="mono">~/OpenDiag/backups</span> (sample path). Export any time. Deleting a snapshot asks first.</p>
-    </div>
-    <div class="card">
-      <h2>Compare: today vs 12 Oct (FRM)</h2>
-      <div class="diff" role="table" aria-label="Differences">
-        <div class="drow h" role="row"><div role="columnheader">Option</div><div role="columnheader">12 Oct</div><div role="columnheader">Today</div></div>
-        <div class="drow" role="row"><div role="cell" data-l="Option">Daytime running lights</div><div role="cell" class="old" data-l="12 Oct"><span class="mark">&minus;</span>On</div><div role="cell" class="new" data-l="Today"><span class="mark">+</span>Off</div></div>
-        <div class="drow same" role="row"><div role="cell" data-l="Option">Welcome light time</div><div role="cell" data-l="12 Oct">15 s</div><div role="cell" data-l="Today">15 s</div></div>
-      </div>
-      <p class="sub muted" style="font-size:.86rem">Raw bytes: <span class="mono">3000 &rarr; 3001</span></p>
-    </div>
-  </div>
-</section>
-
-<!-- WRITE -->
-<section class="screen" id="s-write" aria-labelledby="h-write" hidden>
-  <div class="head"><h1 id="h-write">Change FRM options</h1><span class="sp"></span><span class="chip warn">&#9888; Bench only</span></div>
-  <ol class="stepper" id="stepper" aria-label="Steps">
-    <li>Checks</li><li>Snapshot</li><li>Review</li><li>Confirm</li><li>Apply</li><li>Verify</li>
-  </ol>
-  <div id="wbody" aria-live="polite"></div>
-</section>
-
-</main>
-</div>
-
-<nav class="tabs" aria-label="Main (phone)" id="navtabs"></nav>
-
-<dialog id="dlg" aria-labelledby="dlgt" aria-describedby="dlgd">
-  <form method="dialog" id="dform" onsubmit="return false">
-    <div class="dh" id="dlgt">Write 2 options to the FRM module</div>
-    <div class="db">
-      <p id="dlgd">This changes the module on the bench. A verified snapshot from today 09:14 will be kept so you can undo it. Undo is a second write and has its own risk.</p>
-      <p>To continue, type <span class="target" id="tgt">FRM MPLE</span> (module name and last 4 of the VIN).</p>
-      <label for="tin">Type it here</label>
-      <input type="text" id="tin" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-describedby="terr">
-      <p id="terr" class="sub muted" role="status"></p>
-    </div>
-    <div class="df">
-      <button class="btn" type="button" id="dcancel">Cancel, change nothing</button>
-      <button class="btn warn" type="button" id="dok" disabled>Write 2 options to FRM</button>
-    </div>
-  </form>
-</dialog>
-
+<div id="app"></div>
 <script>
-(function(){
-"use strict";
-var $=function(s,r){return (r||document).querySelector(s)};
-var $$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
-var ICON={
- connect:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12a7 7 0 0 1 14 0M8 12a4 4 0 0 1 8 0"/><circle cx="12" cy="16" r="1.5"/></svg>',
- vehicle:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 16v-3l2-5h14l2 5v3zM6 16v2M18 16v2"/><circle cx="7.5" cy="13" r=".8"/><circle cx="16.5" cy="13" r=".8"/></svg>',
- faults:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18v.5"/></svg>',
- live:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 13a9 9 0 0 1 18 0"/><path d="M12 13l4-5"/></svg>',
- backup:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16v12H4zM4 7l3-3h10l3 3M9 13l3 3 3-3M12 10v6"/></svg>'
-};
-var NAV=[["connect","Connect"],["vehicle","Vehicle"],["faults","Faults"],["live","Live"],["backup","Backup"]];
-var current="connect",connected=false,unlocked=false;
-
-/* nav */
-function buildNav(host){
-  host.innerHTML=NAV.map(function(n){return '<button type="button" class="navbtn" data-go="'+n[0]+'">'+ICON[n[0]]+'<span>'+n[1]+'</span></button>'}).join("");
-}
-buildNav($("#navside"));buildNav($("#navtabs"));
-
-function go(id){
-  if(!connected && id!=="connect" && id!=="write"){id="connect";}
-  current=id;
-  $$(".screen").forEach(function(s){s.hidden=(s.id!=="s-"+id)});
-  $$(".navbtn").forEach(function(b){
-    var on=(b.dataset.go===id)||(id==="write"&&b.dataset.go==="backup");
-    if(on)b.setAttribute("aria-current","page");else b.removeAttribute("aria-current");
-  });
-  setMode(id==="write");
-  if(id==="live")startLive();else stopLive();
-  window.scrollTo(0,0);
-  var h=$("#s-"+id+" h1");if(h){h.setAttribute("tabindex","-1");h.focus({preventScroll:true});}
-}
-document.addEventListener("click",function(e){
-  var b=e.target.closest("[data-go]");if(b){go(b.dataset.go);}
-});
-
-/* mode banner */
-function setMode(write){
-  var m=$("#mode");
-  m.classList.toggle("write",write);
-  $("#modeicon").innerHTML=write?"&#9888;":"&#9679;";
-  $("#modetext").textContent=write?"Bench write mode. Changes can be made to the module. Sample only.":"Read only. Nothing here can change the car.";
-  $("#modebtn").hidden=!write;
-}
-$("#modebtn").addEventListener("click",function(){go("backup")});
-
-/* theme */
-function setTheme(t){
-  document.documentElement.dataset.theme=t;
-  try{if(t==="auto")localStorage.removeItem("od-theme");else localStorage.setItem("od-theme",t);}catch(e){}
-  $$("[data-th]").forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.th===t))});
-}
-$$("[data-th]").forEach(function(b){b.addEventListener("click",function(){setTheme(b.dataset.th)})});
-setTheme(document.documentElement.dataset.theme||"auto");
-/* phone has no sidebar, so add a theme toggle to the mock bar */
-var tt=document.createElement("button");tt.type="button";tt.className="btn sm";tt.textContent="Theme: auto/light/dark";tt.style.marginLeft="10px";tt.style.minHeight="32px";
-tt.addEventListener("click",function(){var c=document.documentElement.dataset.theme;setTheme(c==="auto"?"light":c==="light"?"dark":"auto");tt.textContent="Theme: "+document.documentElement.dataset.theme});
-$(".mockbar").appendChild(tt);
-
-/* connect */
-var checkRows=$$("#checks .row");
-function setCheck(i,state,text,sub){
-  var r=checkRows[i],c=$(".chip",r);
-  c.className="chip "+({ok:"ok",bad:"danger",wait:"neutral",run:"info"}[state]);
-  c.innerHTML={ok:"&#10003; ",bad:"&#10005; ",wait:"&#9675; ",run:'<span class="spinner" style="width:12px;height:12px;border-width:2px;vertical-align:-2px"></span> '}[state]+text;
-  $(".sub",r).textContent=sub;
-}
-var ct=[];
-$("#connbtn").addEventListener("click",function(){
-  ct.forEach(clearTimeout);ct=[];
-  $("#connbtn").disabled=true;$("#gobtn").disabled=true;$("#connmsg").hidden=true;
-  $("#connchip").innerHTML="&#8230; Connecting";
-  setCheck(0,"run","Checking","Opening the adapter");
-  ct.push(setTimeout(function(){setCheck(0,"ok","Strong","OBDLink CX, sample link");setCheck(1,"run","Looking","Asking the car who is there")},700));
-  ct.push(setTimeout(function(){setCheck(1,"ok","Found","Sample sedan, 5 modules");setCheck(2,"run","Reading","Measuring the battery")},1500));
-  ct.push(setTimeout(function(){
-    setCheck(2,"ok","12.6 V","Fine for reading and writing");
-    connected=true;
-    $("#connchip").innerHTML="&#10003; Connected (mock)";$("#connchip").className="chip ok";
-    $("#gobtn").disabled=false;$("#connbtn").disabled=false;$("#connbtn").textContent="Reconnect";
-    var m=$("#connmsg");m.hidden=false;m.className="note";m.textContent="Connected to a pretend car. Nothing real was contacted.";
-  },2300));
-});
-$("#gobtn").addEventListener("click",function(){go("vehicle")});
-
-/* modules */
-var MODS=[
- {a:"12",n:"Engine (DME)",f:0,c:"ok",ct:"Coding verified",snap:"Snapshot 09:12"},
- {a:"60",n:"Instrument cluster (KOMBI)",f:1,c:"ok",ct:"Coding verified",snap:"Snapshot 09:15"},
- {a:"72",n:"Light module (FRM)",f:1,c:"warn",ct:"Coding unverified",snap:"Snapshot 09:14"},
- {a:"29",n:"Brakes and stability (DSC)",f:1,c:"ok",ct:"Coding verified",snap:"No snapshot yet"},
- {a:"78",n:"Head unit (CIC)",f:0,c:"danger",ct:"Needs restore",snap:"Snapshot 12 Oct"}
+// MOCK ONLY. Constant sample data. No vehicle code. The only user text (typed confirmation) is escaped.
+const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[c]));
+const car = { vin:"WBA00000000000001", adapter:"Simulator" };
+const modules = [
+  ["DME","Engine control","0x12", 2], ["EGS","Transmission","0x18", 0], ["DSC","Stability control","0x29", 1],
+  ["KOMBI","Instrument cluster","0x60", 0], ["FRM","Footwell module","0x72", 0], ["CAS","Car access","0x00", 0],
+  ["IHKA","Climate","0x78", 0], ["HU","Head unit","0x63", 3]
 ];
-$("#mods").innerHTML=MODS.map(function(m){
-  var fc=m.f?'<span class="chip warn">&#9888; '+m.f+' fault'+(m.f>1?"s":"")+'</span>':'<span class="chip ok">&#10003; No faults</span>';
-  var cc='<span class="chip '+m.c+'">'+({ok:"&#10003; ",warn:"&#9888; ",danger:"&#10005; "}[m.c])+m.ct+'</span>';
-  return '<li class="row mod"><span class="addr">'+m.a+'</span><span class="main"><span class="title">'+m.n+'</span><br><span class="sub">'+m.snap+'</span></span><span class="badges">'+fc+cc+'</span></li>';
-}).join("");
-
-/* faults */
-var FAULTS=[
- {c:"2A87",m:"Light module (FRM)",s:"warn",t:"Left low-beam bulb is not drawing current",w:"The car sees no current going to the left dipped headlight. The bulb has likely burned out or its plug is loose.",d:"Safe to drive in daylight. Fix before driving at night.",n:"Check the bulb and its connector first."},
- {c:"A1B4",m:"Instrument cluster (KOMBI)",s:"info",t:"Fuel level sender reading jumps around",w:"The fuel gauge signal is noisy, so the display may jump.",d:"Safe to drive. The fuel gauge may be unreliable.",n:"Check the sender connector. Compare readings after a refill."},
- {c:"5E20",m:"Brakes and stability (DSC)",s:"danger",t:"Rear left wheel speed signal missing",w:"The stability system has lost the speed signal from one wheel. Stability and anti-lock help may be switched off.",d:"Drive gently and get it checked soon. Braking works, but safety aids may not.",n:"Inspect the wheel speed sensor and its wiring."}
-];
-var SL={warn:["&#9888;","Check soon"],info:["&#9432;","For your info"],danger:["&#10005;","Needs attention"]};
-$("#faultlist").innerHTML=FAULTS.map(function(f,i){
-  return '<details class="fault"'+(i===0?" open":"")+'><summary><span class="chip '+f.s+'">'+SL[f.s][0]+" "+SL[f.s][1]+'</span><span style="flex:1;min-width:0"><strong>'+f.t+'</strong><br><span class="sub muted">'+f.m+' &middot; code <span class="code">'+f.c+'</span> (sample)</span></span></summary>'+
-  '<div class="body"><h4>What it means</h4><p>'+f.w+'</p><h4>Can I drive?</h4><p>'+f.d+'</p><h4>Next step</h4><p>'+f.n+'</p><p class="muted" style="font-size:.82rem">Plain text is sample wording for the mock.</p></div></details>';
-}).join("");
-$("#clearbtn").addEventListener("click",function(){
-  $("#clearmsg").textContent="Mock only. In the real app this asks you to save the fault list first, then clears.";
-});
-
-/* gauges */
-var CH={
- rpm:{n:"Engine speed",u:"rpm",min:0,max:7000,cl:5500,dl:6500,v:850,fmt:0,base:900,amp:350},
- cool:{n:"Coolant temperature",u:"°C",min:40,max:130,cl:105,dl:115,v:88,fmt:0,base:90,amp:6},
- volt:{n:"Battery voltage",u:"V",min:9,max:16,cl:15,dl:15.6,v:12.6,fmt:1,base:12.7,amp:.3,low:11.8},
- load:{n:"Engine load",u:"%",min:0,max:100,cl:85,dl:95,v:22,fmt:0,base:25,amp:12}
+const faults = {
+  DME: [["P0301","Cylinder 1 misfire detected","stored"],["P0171","Fuel trim too lean, bank 1","pending"]],
+  DSC: [["C1234","Wheel speed sensor signal implausible","stored"]],
+  HU:  [["U0100","Lost communication with engine module","stored"],["B1A2B","Microphone circuit open","stored"],["U0155","Lost communication with cluster","pending"]]
 };
-function polar(cx,cy,r,deg){var a=(deg-180)*Math.PI/180;return [cx+r*Math.cos(a),cy+r*Math.sin(a)]}
-function arc(cx,cy,r,d0,d1){var p0=polar(cx,cy,r,d0),p1=polar(cx,cy,r,d1);return "M"+p0[0].toFixed(1)+" "+p0[1].toFixed(1)+" A"+r+" "+r+" 0 "+(d1-d0>180?1:0)+" 1 "+p1[0].toFixed(1)+" "+p1[1].toFixed(1)}
-function stateOf(k,v){var c=CH[k];if(k==="volt"&&v<c.low)return["warn","&#9888; Low"];if(v>=c.dl)return["danger","&#10005; Limit"];if(v>=c.cl)return["warn","&#9888; Caution"];return["ok","&#10003; Normal"]}
-function frac(c,v){return Math.max(0,Math.min(1,(v-c.min)/(c.max-c.min)))}
-function drawGauge(k){
-  var c=CH[k],f=frac(c,c.v),st=stateOf(k,c.v),cx=100,cy=100,r=76;
-  var cf=frac(c,c.cl),df=frac(c,c.dl),ang=180*f,np=polar(cx,cy,r-6,ang),ns=polar(cx,cy,r-26,ang);
-  var el=$("#g-"+k);
-  el.innerHTML='<h3 style="font-size:.9rem;margin-bottom:4px">'+c.n+'</h3>'+
-   '<svg viewBox="0 0 200 118" role="meter" aria-label="'+c.n+'" aria-valuemin="'+c.min+'" aria-valuemax="'+c.max+'" aria-valuenow="'+c.v.toFixed(c.fmt)+'" aria-valuetext="'+c.v.toFixed(c.fmt)+" "+c.u+", "+st[1].replace(/&#\d+;\s*/,"")+'">'+
-   '<path class="track" d="'+arc(cx,cy,r,0,180)+'"/>'+
-   '<path class="zone-c" d="'+arc(cx,cy,r,180*cf,180*df)+'"/>'+
-   '<path class="zone-d" d="'+arc(cx,cy,r,180*df,180)+'"/>'+
-   '<path class="val" d="'+arc(cx,cy,r,0,Math.max(ang,.5))+'"/>'+
-   '<line class="needle" x1="'+ns[0].toFixed(1)+'" y1="'+ns[1].toFixed(1)+'" x2="'+np[0].toFixed(1)+'" y2="'+np[1].toFixed(1)+'"/>'+
-   '<text class="big" x="100" y="96" text-anchor="middle">'+c.v.toFixed(c.fmt)+'</text>'+
-   '<text class="unit" x="100" y="113" text-anchor="middle">'+c.u+'</text></svg>'+
-   '<span class="chip '+st[0]+' state">'+st[1]+'</span>';
+const live = [["Engine speed","812 rpm"],["Coolant temp","91 C"],["Intake air temp","24 C"],["Battery voltage","12.7 V"],["Throttle","14 %"],["Vehicle speed","0 km/h"]];
+const settings = [["Ambient light brightness","Extended"],["Welcome light","Off"],["Daytime running lights","On"],["Auto start-stop memory","Off"]];
+let state = { screen:"connect", mod:null, opt:0, typed:"" };
+const parent = { vehicle:"connect", modules:"vehicle", faults:"modules", live:"vehicle", settings:"faults", change:"settings", backups:"vehicle", diff:"backups" };
+function go(screen, extra){ state = Object.assign({}, state, { typed:"" }, extra || {}, { screen }); render(); window.scrollTo(0,0); }
+function back(){ go(parent[state.screen] || "connect"); }
+function hdr(title){
+  const b = state.screen === "connect" ? '<span class="spacer"></span>' : '<button class="back" data-back="1">&lt; Back</button>';
+  return '<header>' + b + '<div class="title">' + esc(title) + '</div><span class="spacer"></span></header><div class="banner"><b>MOCK</b> sample data. Read-only build. No car connected.</div>';
 }
-function drawTable(){
-  $("#ltbody").innerHTML=Object.keys(CH).map(function(k){var c=CH[k],st=stateOf(k,c.v);
-    return '<tr><th scope="row" style="text-transform:none;font-size:.95rem;color:inherit;letter-spacing:0">'+c.n+'</th><td class="mono num">'+c.v.toFixed(c.fmt)+" "+c.u+'</td><td class="muted">'+c.min+" to "+c.cl+" "+c.u+'</td><td><span class="chip '+st[0]+'">'+st[1]+'</span></td></tr>';}).join("");
+function row(l, r, sub, action, chev) {
+  const a = action ? ' tabindex="0" data-go="' + esc(JSON.stringify(action)) + '"' : "";
+  return '<div class="row' + (action ? "" : " static") + '"' + a + '><div class="l">' + l + (sub ? '<div class="sub">' + sub + "</div>" : "") + "</div>" + (r ? '<div class="r">' + r + "</div>" : "") + (chev ? '<span class="chev"></span>' : "") + "</div>";
 }
-var liveT=null,paused=false,tick=0,hist=[];
-function step(){
-  tick++;
-  Object.keys(CH).forEach(function(k){var c=CH[k];c.v=c.base+Math.sin(tick/7+k.length)*c.amp+(Math.random()-.5)*c.amp*.4;
-    if(k==="rpm"&&tick%60>50)c.v=5700+Math.random()*200; /* demo caution zone */
-    c.v=Math.max(c.min,Math.min(c.max,c.v));drawGauge(k)});
-  drawTable();
-  hist.push(CH.rpm.v);if(hist.length>60)hist.shift();
-  $("#spark").setAttribute("points",hist.map(function(v,i){return (i*300/59).toFixed(1)+","+(34-34*frac(CH.rpm,v)).toFixed(1)}).join(" "));
+const screens = {
+  connect(){ return hdr("OpenDiag") + '<h2>Adapter</h2><div class="list">' + row("Simulator","ready","Pretend car for trying things",["vehicle"],true) + row("OBDLink CX (Bluetooth)","not found","",null,false) + row("WiFi ENET","not found","192.168.0.10 : 6801",null,false) + '</div><p class="note">Pick an adapter. Nothing is sent to the car until you open a screen that reads.</p>'; },
+  vehicle(){ return hdr("Vehicle") + '<h2>Car</h2><div class="list">' + row("VIN", car.vin, "", null, false) + row("Adapter", car.adapter, "", null, false) + '</div><h2>Read</h2><div class="list">' + row("Modules and fault codes","8 modules","",["modules"],true) + row("Live data","","",["live"],true) + row("Backups","1 saved","",["backups"],true) + "</div>"; },
+  modules(){ return hdr("Modules") + '<div class="list">' + modules.map((m) => row(m[0], m[3] ? '<span class="bad">' + m[3] + " faults</span>" : "OK", m[1] + " · " + m[2], ["faults", { mod:m[0] }], true)).join("") + '</div><p class="note">Tap a module to see its fault codes and settings.</p>'; },
+  faults(){ const f = faults[state.mod] || []; return hdr(state.mod) + '<h2>Fault codes</h2><div class="list">' + (f.length ? f.map((x) => row(x[0] + " &nbsp; " + x[1], x[2], "Stored in " + state.mod + ". Meaning: our own wording, source tagged.", null, false)).join("") : row("No fault codes","","",null,false)) + '</div><h2>Settings</h2><div class="list">' + row("Read settings (coding)","","Read only. Backup first.",["settings"],true) + '</div><button class="act" disabled>Clear faults (needs bench module)</button>'; },
+  live(){ return hdr("Live data") + '<div class="list">' + live.map((x) => row(x[0], x[1], "", null, false)).join("") + '</div><p class="note">Plain numbers. Updates about 5 times a second. Every value also fits in a table for screen readers.</p>'; },
+  settings(){ return hdr("Settings") + "<h2>Current values (read only)</h2>" + '<div class="list">' + settings.map((s, i) => row(s[0], s[1], "", ["change", { opt:i }], true)).join("") + '</div><p class="note">Decoded from the backup. Changing is only offered in the Lab build on a bench module.</p>'; },
+  change(){
+    const s = settings[state.opt]; const ok = state.typed === "CHANGE";
+    return hdr("Change setting") + '<div class="list">' + row(s[0], s[1], "Now", null, false) + row("New value","Extended","",null,false) + "</div><h2>What will happen</h2><pre>1. Backup read twice, hashes match   ok\n2. Same module as backup (serial)     ok\n3. Battery 12.7 V (min 12.5 V)        ok\n4. Write byte 12: 01 -&gt; 02\n   Checksum bytes 62-63 recalculated\n5. Read back and compare\n6. If anything differs: restore backup</pre><h2>Type CHANGE to confirm</h2>" +
+      '<input id="t" value="' + esc(state.typed) + '" autocomplete="off" autocapitalize="off" spellcheck="false">' +
+      '<button class="act danger" id="w"' + (ok ? "" : " disabled") + '>Write to bench module</button><button class="act" data-back="1">Cancel</button>';
+  },
+  backups(){ return hdr("Backups") + '<div class="list">' + row("DME · 2026-11-20 14:02","","Verified: read twice, hash matches",["diff"],true) + '</div><button class="act" id="mk">Make new backup</button>'; },
+  diff(){ return hdr("Compare") + "<pre>DME block 0x3000 (64 bytes)\n\n  offset  was  now\n  12      01   02    Ambient light: Standard -&gt; Extended\n  62      A1   7C    checksum\n  63      3F   09    checksum\n\n3 bytes differ. 1 setting changed.</pre>"; },
+};
+function render(keepFocus){
+  const el = document.getElementById("app");
+  const doc = new DOMParser().parseFromString(screens[state.screen](), "text/html");
+  el.replaceChildren(...doc.body.childNodes);
+  el.querySelectorAll("[data-back]").forEach((n) => n.addEventListener("click", back));
+  el.querySelectorAll("[data-go]").forEach((n) => n.addEventListener("click", () => { const a = JSON.parse(n.dataset.go); go(a[0], a[1]); }));
+  const t = document.getElementById("t");
+  if (t) { t.addEventListener("input", () => { state.typed = t.value; render(true); }); if (keepFocus) { t.focus(); t.setSelectionRange(t.value.length, t.value.length); } }
+  const w = document.getElementById("w"); if (w) w.addEventListener("click", () => alert("Mock only. Nothing was written."));
+  const mk = document.getElementById("mk"); if (mk) mk.addEventListener("click", () => alert("Mock only."));
 }
-function startLive(){stopLive();step();if(!paused)liveT=setInterval(step,500)}
-function stopLive(){if(liveT){clearInterval(liveT);liveT=null}}
-$("#pausebtn").addEventListener("click",function(){paused=!paused;this.textContent=paused?"Resume":"Pause";if(paused)stopLive();else startLive()});
-function view(g){$("#live-gauges").hidden=!g;$("#live-table").hidden=g;$("#vg").setAttribute("aria-pressed",String(g));$("#vt").setAttribute("aria-pressed",String(!g))}
-$("#vg").addEventListener("click",function(){view(true)});$("#vt").addEventListener("click",function(){view(false)});
-Object.keys(CH).forEach(drawGauge);drawTable();
-
-/* write flow */
-var W=0,lastFocus=null,wt=null;
-var STEPS=["Checks","Snapshot","Review","Confirm","Apply","Verify"];
-function renderStepper(){
-  $$("#stepper li").forEach(function(li,i){li.classList.toggle("done",i<W);if(i===W)li.setAttribute("aria-current","step");else li.removeAttribute("aria-current")});
-}
-function wrender(){
-  renderStepper();
-  var b=$("#wbody"),h="";
-  if(W===0){h='<div class="card"><h2>Before anything changes</h2><ul class="list checks">'+
-    '<li class="row"><span class="main"><span class="title">Battery voltage</span><br><span class="sub">Needs 12.0 V or more</span></span><span class="chip ok">&#10003; 12.6 V</span></li>'+
-    '<li class="row"><span class="main"><span class="title">Adapter link</span><br><span class="sub">Needs a wired or strong link</span></span><span class="chip ok">&#10003; Strong</span></li>'+
-    '<li class="row"><span class="main"><span class="title">Ignition</span><br><span class="sub">Must be on, engine off</span></span><span class="chip ok">&#10003; On</span></li>'+
-    '<li class="row"><span class="main"><span class="title">Bench setup</span><br><span class="sub">Writes only on a bench module in this version</span></span><span class="chip warn">&#9888; You confirm</span></li></ul>'+
-    '<p><label style="font-weight:400"><input type="checkbox" id="benchchk"> This module is on a bench, not in a car I need to drive.</label></p>'+
-    '<p><button class="btn primary" id="wnext" type="button" disabled>Take a snapshot</button> <button class="btn" data-go="backup" type="button">Cancel</button></p></div>';}
-  else if(W===1){h='<div class="card"><h2>Snapshot</h2><p>Reading the module twice and comparing. If the two reads differ, we stop.</p><div class="bar" role="progressbar" aria-label="Snapshot progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="pb"><i></i></div><p id="snapmsg" class="muted">Read 1 of 2</p><p><button class="btn primary" id="wnext" type="button" disabled>Review changes</button></p></div>';}
-  else if(W===2){h='<div class="card"><h2>Review what will change</h2><div class="diff" role="table" aria-label="Planned changes">'+
-    '<div class="drow h" role="row"><div role="columnheader">Option</div><div role="columnheader">Now</div><div role="columnheader">After</div></div>'+
-    '<div class="drow" role="row"><div role="cell" data-l="Option">Daytime running lights</div><div role="cell" class="old" data-l="Now"><span class="mark">&minus;</span>Off</div><div role="cell" class="new" data-l="After"><span class="mark">+</span>On</div></div>'+
-    '<div class="drow" role="row"><div role="cell" data-l="Option">Welcome light time</div><div role="cell" class="old" data-l="Now"><span class="mark">&minus;</span>15 s</div><div role="cell" class="new" data-l="After"><span class="mark">+</span>30 s</div></div></div>'+
-    '<p class="sub muted">Names come from a sample option list. Real raw names get a plain gloss.</p>'+
-    '<div class="bytes" tabindex="0" aria-label="Raw bytes">offset 0x14  3000 0F\noffset 0x14  3<span class="c">1</span>00 <span class="c">1E</span>   (2 bytes change)</div>'+
-    '<p><button class="btn" id="dry" type="button">Dry run (changes nothing)</button> <span id="drymsg" role="status" class="muted"></span></p>'+
-    '<p><button class="btn primary" id="wnext" type="button">Continue to confirm</button> <button class="btn" data-go="backup" type="button">Cancel</button></p></div>';}
-  else if(W===3){h='<div class="card"><h2>Confirm</h2><p>You are about to write <strong>2 options</strong> to <strong>Light module (FRM)</strong>. The snapshot from today 09:14 is kept for undo.</p><p><button class="btn warn" id="wopen" type="button">Review and confirm&hellip;</button> <button class="btn" data-go="backup" type="button">Cancel, change nothing</button></p></div>';}
-  else if(W===4){h='<div class="card"><h2>Writing to FRM</h2><div class="note warn">Do not unplug anything or switch the ignition off.</div><p></p><div class="bar" role="progressbar" aria-label="Write progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="pb"><i></i></div><p id="snapmsg" class="muted">Starting</p></div>';}
-  else{h='<div class="card"><h2>Result</h2><ul class="list">'+
-    '<li class="row"><span class="main"><span class="title">Module answered</span></span><span class="chip ok">&#10003; Yes</span></li>'+
-    '<li class="row"><span class="main"><span class="title">Read back matches what we wrote</span></span><span class="chip ok">&#10003; Verified</span></li>'+
-    '<li class="row"><span class="main"><span class="title">New faults</span></span><span class="chip ok">&#10003; None</span></li></ul>'+
-    '<p class="note">Mock result. The real app shows three possible outcomes: verified, written but not verified, or failed with a one-tap restore.</p>'+
-    '<p><button class="btn" type="button" data-go="backup">Undo from snapshot</button> <button class="btn primary" type="button" data-go="vehicle">Done</button></p></div>';}
-  b.innerHTML=h;
-  var nx=$("#wnext");
-  if(W===0){var chk=$("#benchchk");chk.addEventListener("change",function(){nx.disabled=!chk.checked})}
-  if(nx)nx.addEventListener("click",function(){W++;wrender()});
-  if(W===1)progress(function(){$("#wnext").disabled=false;$("#snapmsg").textContent="Both reads matched. Snapshot saved."},["Read 1 of 2","Read 2 of 2","Comparing"]);
-  if(W===2)$("#dry").addEventListener("click",function(){$("#drymsg").textContent="Dry run passed. Nothing was sent to the module."});
-  if(W===3)$("#wopen").addEventListener("click",openDlg);
-  if(W===4)progress(function(){W=5;wrender()},["Re-reading module (stale check)","Writing option 1 of 2","Writing option 2 of 2","Reading back"]);
-}
-function progress(done,msgs){
-  clearInterval(wt);var p=0,pb=$("#pb");if(!pb)return;
-  wt=setInterval(function(){
-    p+=10;pb.setAttribute("aria-valuenow",p);$("i",pb).style.width=p+"%";
-    var m=$("#snapmsg");if(m)m.textContent=msgs[Math.min(msgs.length-1,Math.floor(p/100*msgs.length))];
-    if(p>=100){clearInterval(wt);setTimeout(done,250)}
-  },200);
-}
-$("#startwrite").addEventListener("click",function(){W=0;go("write");wrender()});
-
-/* dialog */
-var dlg=$("#dlg"),tin=$("#tin"),dok=$("#dok");
-function openDlg(){
-  lastFocus=document.activeElement;tin.value="";dok.disabled=true;$("#terr").textContent="";
-  if(dlg.showModal)dlg.showModal();else dlg.setAttribute("open","");
-  tin.focus();
-}
-function closeDlg(){if(dlg.close)dlg.close();else dlg.removeAttribute("open");if(lastFocus)lastFocus.focus()}
-tin.addEventListener("input",function(){
-  var ok=tin.value.trim().toUpperCase()===$("#tgt").textContent;
-  dok.disabled=!ok;
-  $("#terr").textContent=ok?"Matches. The button is now available.":(tin.value?"Does not match yet.":"");
-});
-tin.addEventListener("keydown",function(e){if(e.key==="Enter")e.preventDefault()});
-$("#dcancel").addEventListener("click",closeDlg);
-dok.addEventListener("click",function(){if(dok.disabled)return;closeDlg();W=4;wrender()});
-
-go("connect");
-})();
+document.addEventListener("keydown", (e) => { if ((e.key === "Enter" || e.key === " ") && e.target.classList && e.target.classList.contains("row") && !e.target.classList.contains("static")) { e.preventDefault(); e.target.click(); } });
+render();
 </script>
 </body>
 </html>
