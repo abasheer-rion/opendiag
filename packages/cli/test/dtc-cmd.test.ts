@@ -68,3 +68,15 @@ test("the command line: dtc --explain needs no car, and --json is valid JSON", (
   assert.equal(live.faults.length, 6); // the simulator repeats its list for stored, pending and permanent
   assert.ok(live.readiness);
 });
+
+test("a short readiness answer is reported as unavailable, not a crash", async () => {
+  const t = {
+    name: "fake", open: async () => {}, close: async () => {},
+    async request(_t: number, d: Uint8Array) {
+      if (d[0] === 0x01) return Uint8Array.of(0x41, 0x01, 0x81); // should be 4 data bytes
+      return Uint8Array.of(d[0] === 0x03 ? 0x43 : d[0] === 0x07 ? 0x47 : 0x4a, 0x00);
+    },
+  };
+  const r = await collectDtcReport(t, "obd", 0x7e0, { freeze: false, readiness: true });
+  assert.match(formatDtcReport(r), /readiness: this module did not answer the readiness request/);
+});

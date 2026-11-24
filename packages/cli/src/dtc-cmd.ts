@@ -60,7 +60,7 @@ export async function collectDtcReport(t: DiagTransport, kind: "obd" | "uds", ta
     try {
       report.readiness = await readReadiness(t, target);
     } catch (e) {
-      if (!(e instanceof NegativeResponse || e instanceof TimeoutError)) throw e;
+      if (!(e instanceof NegativeResponse || e instanceof TimeoutError || e instanceof RangeError)) throw e;
       report.readiness = { unavailable: "this module did not answer the readiness request" };
     }
   }

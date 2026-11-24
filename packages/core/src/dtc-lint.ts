@@ -11,7 +11,7 @@ export const SIMILARITY_LIMIT = 0.8;
  * Policy: this project does not help hide or switch off faults, lamps or emissions checks.
  * No data entry may talk about doing that.
  */
-const SUPPRESSION = /\b(suppress\w*|disabl\w*|switch\w* off|turn\w* off|deactivat\w*|defeat\w*|bypass\w*|delet\w*|hid(?:e|es|ing|den)|mask\w*|silenc\w*|remov\w* (?:the )?(?:code|fault|lamp|light)|ignor\w* (?:the )?(?:code|fault)|emulat\w*)\b/i;
+const SUPPRESSION = /\b(?:suppress\w*|disabl\w*|deactivat\w*|defeat\w*|bypass\w*|delet\w*|hid(?:e|es|ing|den)|mask\w*|silenc\w*|emulat\w*|eliminat\w*|cheat\w*|tamper\w*|erase\w*|clear(?:s|ed|ing)?|kill\w*|(?:switch|turn|shut)\w*\s+(?!itself\b)(?:\w+\s+){0,4}off|(?:remov\w*|ignor\w*|get rid of)\s+(?:\w+\s+){0,3}(?:codes?|faults?|lamps?|lights?|warnings?|monitors?|indicators?))\b/i;
 
 export const isAboutHidingFaults = (text: string): boolean => SUPPRESSION.test(text);
 

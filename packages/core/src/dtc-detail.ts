@@ -98,7 +98,8 @@ export async function readObdDtcDetails(t: DiagTransport, target = 0x7e0): Promi
       const body = expectPositive(mode, await ro.request(target, obdRequest(mode)));
       for (const [hi, lo] of obdPairs(body)) out.push(detailFromObd(hi, lo, kind, module));
     } catch (e) {
-      if (!(e instanceof NegativeResponse)) throw e;
+      // Older cars have no pending or permanent list. A refused stored list must not read as "no faults".
+      if (!(e instanceof NegativeResponse) || mode === 0x03) throw e;
     }
   }
   return out;

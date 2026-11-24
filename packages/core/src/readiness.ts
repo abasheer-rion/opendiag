@@ -29,13 +29,14 @@ const COMPRESSION = ["NMHC catalyst", "NOx or SCR after-treatment", "Reserved", 
 /**
  * Decode the four data bytes of mode 01 PID 01 (or PID 41, same layout; byte A is then unused).
  * A set "not complete" bit in the car's data means the test has not finished.
+ * For PID 41 pass the ignition type learned from PID 01: byte A and bit 3 of byte B are unused there.
  */
-export function decodeMonitors(d: Bytes): Readiness {
+export function decodeMonitors(d: Bytes, ignitionKnown?: "spark" | "compression"): Readiness {
   const a = at(d, 0);
   const b = at(d, 1);
   const c = at(d, 2);
   const e = at(d, 3);
-  const ignition = (b & 0x08) !== 0 ? "compression" : "spark";
+  const ignition = ignitionKnown ?? ((b & 0x08) !== 0 ? "compression" : "spark");
   const monitors: MonitorState[] = CONTINUOUS.map((name, i) => ({
     name,
     available: (b & (1 << i)) !== 0,
@@ -58,7 +59,9 @@ export async function readReadiness(
   const get = async (pid: number) => expectPositive(0x01, await ro.request(target, obdRequest(0x01, pid))).subarray(1);
   const sinceClear = decodeMonitors((await get(0x01)).subarray(0, 4));
   try {
-    return { sinceClear, thisDrive: decodeMonitors((await get(0x41)).subarray(0, 4)) };
+    const drive = decodeMonitors((await get(0x41)).subarray(0, 4), sinceClear.ignition);
+    // lamp and fault count only exist in PID 01; do not show PID 41's unused byte as if it were them
+    return { sinceClear, thisDrive: { ...drive, lampOn: sinceClear.lampOn, storedFaultCount: sinceClear.storedFaultCount } };
   } catch (e) {
     if (e instanceof NegativeResponse || e instanceof TimeoutError || e instanceof RangeError) return { sinceClear };
     throw e;
