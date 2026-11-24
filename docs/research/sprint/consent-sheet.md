@@ -2,7 +2,7 @@
 
 **ANSWER FIRST**
 - This sheet is for the owner of the car. Read it before each of the two sessions (Tue Nov 24 WiFi ENET, Wed Nov 25 OBDLink CX) and tick yes or no at the end.
-- The sessions only read. Nothing is written to the car, nothing is cleared, nothing is flashed.
+- The session reads. Two owner-approved exceptions on 2026-11-24 only: a read-only backup attempt (identification data), and ONE standard clear of the stored fault codes of ONE module at the very end, after the fault list is saved. Nothing is coded or flashed.
 - Raw files stay on your laptop in a private folder. Only an anonymised version can leave it, and only after you say yes in chat.
 - You can stop at any time. A stop is never a failure.
 - Source: sections 4.1 to 4.6 of `docs/plan/research-sprint.md`. Claims table and disagreements: not applicable (a consent form). Source ledger: that file only, read fully. Open question: the voltage limits are our own cautious rule; public advice disagrees (12.6, 12.8 or 13 V) and is unproven.
@@ -10,9 +10,9 @@
 ## 1. The promise: reading only
 
 - We only ask the car questions. We never tell it to change anything.
-- No coding, no flashing, no clearing fault codes, no resetting, no security unlock.
+- No coding, no flashing, no resetting, no security unlock. No clearing except the one approved clear described above.
 - The only requests allowed are: read the VIN, read stored faults, list and read a few live values, find which modules answer, read one identification item from a module, list identification items on at most 5 modules, and (WiFi adapter only) ask the dongle for its own identity.
-- The command that clears faults is banned for the sprint. So is backup.
+- The clear is allowed once, last, only with battery at 12.4 V or more and your typed CLEAR. Backup is read-only. No other writes.
 - Anything not on that list is not done. If a tool asks to write, apply or code, you stop and do nothing.
 - One request at a time, no loops.
 - The bootmod3 app stays closed. The BM3 adapter stays out. No other car app runs during a session.
