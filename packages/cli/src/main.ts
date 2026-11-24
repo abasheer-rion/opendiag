@@ -1,6 +1,4 @@
-import { mkdir, readFile, readdir, writeFile } from "node:fs/promises";
-import { homedir } from "node:os";
-import { join } from "node:path";
+import { readFile } from "node:fs/promises";
 import { createInterface } from "node:readline";
 import {
   DEMO_PACK,
@@ -18,12 +16,14 @@ import {
   diffBackups,
   parsePack,
   readOnly,
+  saveBackup,
   suggestField,
   verifyBackupHash,
 } from "../../core/src/index.ts";
 import type { BlockSpec, DiagTransport, Pack } from "../../core/src/index.ts";
 import { SessionRefused, runSession } from "./session.ts";
 import { collectDtcReport, explainReport, formatDtcReport } from "./dtc-cmd.ts";
+import { backupsCommand, defaultStore, packCommand } from "./store-cmds.ts";
 
 const HELP = `opendiag - open-source vehicle diagnostics
 
@@ -54,8 +54,18 @@ capture session (one command for the research sprint, see docs/research/sprint/s
 read-only coding tools (never write to the car)
   did --target A --did 0xF190        read one data identifier
   probe --target A [--range 0xF180-0xF19F]   list readable data identifiers
-  backup --target A (--did 0x3000[:LEN] ... | --pack FILE|demo) [--out DIR]
+  backup --target A (--did 0x3000[:LEN] ... | --pack FILE|demo) [--store DIR]
                                      save a verified, hashed copy of coding data
+                                     (default store: ~/.opendiag/backups, private to you)
+  backups list | verify [ID] | show ID    look after saved backups; verify checks every file
+  backups export ID --out FILE [--include-serials]
+                                     a copy that is safe to share: VIN replaced by a hash,
+                                     serial numbers removed
+  backups restore-plan ID [--current ID2] [--pack FILE|demo]
+                                     DRY RUN: shows what a restore would write. Writes nothing.
+  pack lint FILE [--share-alike]     check a coding pack: sources, licence, blocked topics
+  pack init --from-diff DIFF.json [--did 0x3000] [--ignore 62,63] [--out FILE]
+                                     start a pack entry from \`diff --json\` output
   inspect BACKUP.json --pack FILE|demo    show option values and checksum status
   diff A.json B.json [--suggest] [--ignore 62,63]
                                      show what changed between two backups
@@ -93,13 +103,18 @@ interface Args {
   freeze: boolean;
   readiness: boolean;
   explain?: string;
+  store?: string;
+  current?: string;
+  includeSerials: boolean;
+  shareAlike: boolean;
+  fromDiff?: string;
 }
 
 function parseArgs(argv: string[]): Args {
   const a: Args = {
     cmd: "", adapter: "sim", json: false, yes: false, count: 5, range: [0x10, 0x7f],
     rangeSet: false, files: [], dids: [], suggest: false, ignore: [],
-    idle: 0, backup: false, clearTargets: [], yesClear: false, freeze: false, readiness: false,
+    idle: 0, backup: false, clearTargets: [], yesClear: false, freeze: false, readiness: false, includeSerials: false, shareAlike: false,
   };
   for (let i = 0; i < argv.length; i++) {
     const t = argv[i] as string;
@@ -127,6 +142,11 @@ function parseArgs(argv: string[]): Args {
     else if (t === "--freeze") a.freeze = true;
     else if (t === "--readiness") a.readiness = true;
     else if (t === "--explain") a.explain = val();
+    else if (t === "--store") a.store = val();
+    else if (t === "--current") a.current = val();
+    else if (t === "--include-serials") a.includeSerials = true;
+    else if (t === "--share-alike") a.shareAlike = true;
+    else if (t === "--from-diff") a.fromDiff = val();
     else if (t === "--suggest") a.suggest = true;
     else if (t === "--ignore") a.ignore = val().split(",").map(Number);
     else if (!a.cmd) a.cmd = t;
@@ -257,6 +277,17 @@ async function main(): Promise<void> {
     if (!r.ok) process.exitCode = 1;
     return;
   }
+  if (args.cmd === "backups" || args.cmd === "pack") {
+    const s = {
+      sub: args.files[0] ?? "", rest: args.files.slice(1), json: args.json, includeSerials: args.includeSerials,
+      shareAlike: args.shareAlike, ignore: args.ignore,
+      ...(args.store ? { store: args.store } : {}),
+      ...(args.out ? { out: args.out } : {}), ...(args.pack ? { pack: args.pack } : {}),
+      ...(args.current ? { current: args.current } : {}), ...(args.fromDiff ? { fromDiff: args.fromDiff } : {}),
+      ...(args.did !== undefined ? { did: args.did } : {}),
+    };
+    return void (await (args.cmd === "backups" ? backupsCommand(s) : packCommand(s)));
+  }
 
   const { t: rawT, kind, target: defaultTarget } = await makeTransport(args.adapter);
   const READ_ONLY_CMDS = ["did", "probe", "backup"];
@@ -299,12 +330,9 @@ async function main(): Promise<void> {
         }
         if (!blocks.size) throw new Error("nothing to back up: give --did 0x3000[:LEN] or --pack FILE");
         const b = await createBackup(c, { target, blocks: [...blocks.values()], ...(pack ? { pack: pack.pack_id } : {}) });
-        const dir = join(args.out ?? join(homedir(), ".opendiag", "shadow"), b.vin ?? "unknown-vin", "0x" + target.toString(16));
-        await mkdir(dir, { recursive: true });
-        const first = (await readdir(dir)).length === 0;
-        const file = join(dir, `${b.created_utc.replace(/[:.]/g, "-")}-${b.txn_id.slice(0, 8)}.json`);
-        await writeFile(file, JSON.stringify({ ...b, first_seen: first }, null, 2), { flag: "wx", mode: 0o444 });
-        out(args, { file, ...b }, `saved ${file}\nVIN ${b.vin ?? "unknown"}  blocks ${b.dids.length}  check ${b.sha256.slice(0, 12)}  verified by second read${first ? "  (first backup of this module)" : ""}`);
+        const root = args.store ?? args.out ?? defaultStore();
+        const e = await saveBackup(root, b);
+        out(args, { ...e, root }, `saved backup ${e.id.slice(0, 8)} in ${root}\nVIN ${b.vin ?? "unknown"}  blocks ${b.dids.length}  check ${b.sha256.slice(0, 12)}  verified by second read${e.first_seen ? "  (first backup of this module)" : ""}\nlist them with: opendiag backups list`);
         break;
       }
       case "vin": {

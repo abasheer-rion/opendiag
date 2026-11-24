@@ -49,6 +49,30 @@ pnpm cli session --adapter enet:HOST --out ~/private/capA-clear --clear-target 0
 
 `--pack demo` and `--adapter sim:ambient=2` let you try the whole flow on the simulator.
 
+### Backups you can trust
+
+Every `backup` is saved in a private folder (`~/.opendiag/backups`, or `--store DIR`). Folders are mode 700, files 600, nothing is ever overwritten, and every read checks the file against an index. The car's VIN is never used in a file name.
+
+```bash
+pnpm cli backups list
+pnpm cli backups verify [ID]                       # checks every file; exit code 1 if anything was changed or damaged
+pnpm cli backups show ID
+pnpm cli backups export ID --out share.json        # safe to share: VIN replaced by a hash, serial numbers removed
+pnpm cli backups restore-plan ID [--current ID2]   # DRY RUN: shows what a restore would write. Writes nothing.
+```
+
+The check codes catch damage and accidental edits. They are not a signature: someone who can write to your folder could rewrite both. Keep the folder private.
+
+### Writing coding packs
+
+```bash
+pnpm cli diff a.json b.json --json > diff.json                  # change ONE setting between two backups
+pnpm cli pack init --from-diff diff.json --ignore 62,63 --out my-pack.json
+pnpm cli pack lint my-pack.json
+```
+
+`pack lint` requires a source, a confidence level, test results and a licence (CC0-1.0 or CC-BY-4.0; CC-BY-SA-4.0 only in `packs/share-alike/`). It also rejects any option about emissions or the check-engine lamp, airbags, brakes, steering, keys or immobilisers, mileage, or speed limiters, and such packs cannot be loaded anywhere. See [docs/design/pack-authoring.md](docs/design/pack-authoring.md).
+
 ENET and DoIP framing follow public sources and still need confirming against a real capture. Please report results (never post VINs).
 
 ## What this is, and is not

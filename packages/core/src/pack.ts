@@ -1,5 +1,6 @@
 import { at } from "./util.ts";
 import type { Bytes } from "./util.ts";
+import { policyHits, policyMessage } from "./pack-policy.ts";
 
 /**
  * Data packs describe coding options as plain data (no code). See docs/design/data-schema.md.
@@ -31,6 +32,7 @@ export interface CodingOption {
   integrity?: { checksum: Checksum };
   risk_tier?: string;
   warnings?: string[];
+  tags?: string[];
   provenance?: Record<string, unknown>;
   license?: string;
 }
@@ -41,13 +43,17 @@ export interface Pack {
   version: string;
   /** True for the built-in simulator pack: offsets are illustrative, never apply to a real car. */
   simulator_only?: boolean;
+  /** Pack-wide data licence (SPDX). An option may override it with its own `license`. */
+  license?: string;
   coding: CodingOption[];
 }
 
 export class PackError extends Error {
-  constructor(message: string) {
+  readonly problems: string[];
+  constructor(message: string, problems: string[] = [message]) {
     super(message);
     this.name = "PackError";
+    this.problems = problems;
   }
 }
 
@@ -141,6 +147,10 @@ export function parsePack(json: unknown): Pack {
     }
     if (o?.risk_tier && o.risk_tier !== "T0" && !c) errs.push(`${where}: tier ${o.risk_tier} entries need a checksum definition`);
   }
+  // policy block list: such packs never load, in the app or the CLI
+  for (const o of Array.isArray(p.coding) ? p.coding : []) {
+    if (o && typeof o === "object") for (const h of policyHits(o)) errs.push(policyMessage(o, h));
+  }
   // overlapping fields in the same block are errors
   const list = (Array.isArray(p.coding) ? p.coding : []).filter((o) => isInt(o?.field?.byte_offset) && isInt(o?.block?.did));
   for (let i = 0; i < list.length; i++) {
@@ -153,7 +163,7 @@ export function parsePack(json: unknown): Pack {
       if (a0 <= b1 && b0 <= a1) errs.push(`fields "${a.id}" and "${b.id}" overlap`);
     }
   }
-  if (errs.length) throw new PackError(errs.join("; "));
+  if (errs.length) throw new PackError(errs.join("; "), errs);
   return p as Pack;
 }
 
