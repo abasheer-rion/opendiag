@@ -6,8 +6,10 @@
   "engines": { "node": ">=22.18" },
   "scripts": {
     "test": "node --test \"packages/*/test/*.test.ts\"",
-    "typecheck": "tsc -p tsconfig.json",
-    "cli": "node packages/cli/src/main.ts"
+    "typecheck": "tsc -p tsconfig.json && tsc -p packages/app/tsconfig.json",
+    "cli": "node packages/cli/src/main.ts",
+    "app:dev": "pnpm --filter @opendiag/app dev",
+    "app:build": "pnpm --filter @opendiag/app build"
   },
   "devDependencies": {
     "@types/node": "^24.0.0",
