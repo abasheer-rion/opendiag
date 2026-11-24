@@ -7,7 +7,8 @@
   "scripts": {
     "test": "node --test \"packages/*/test/*.test.ts\"",
     "typecheck": "tsc -p tsconfig.json && tsc -p packages/app/tsconfig.json",
-    "cli": "node packages/cli/src/main.ts",
+    "lint:dtc": "node scripts/lint-dtc.ts",
+    "cli":"node packages/cli/src/main.ts",
     "app:dev": "pnpm --filter @opendiag/app dev",
     "app:build": "pnpm --filter @opendiag/app build"
   },

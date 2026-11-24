@@ -17,3 +17,8 @@ export * from "./demo.ts";
 export * from "./sim.ts";
 export * from "./sim-net.ts";
 export * from "./trace.ts";
+export * from "./dtc-detail.ts";
+export * from "./freeze.ts";
+export * from "./readiness.ts";
+export * from "./dtc-text.ts";
+export * from "./dtc-lint.ts";

@@ -1,0 +1,47 @@
+[
+ {
+  "code": "B0001",
+  "text": "Driver front airbag circuit problem",
+  "system": "body",
+  "source": "own-words",
+  "confidence": "low",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "B0010",
+  "text": "Passenger front airbag circuit problem",
+  "system": "body",
+  "source": "own-words",
+  "confidence": "low",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "B0020",
+  "text": "Left side airbag circuit problem",
+  "system": "body",
+  "source": "own-words",
+  "confidence": "low",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "B0030",
+  "text": "Right side airbag circuit problem",
+  "system": "body",
+  "source": "own-words",
+  "confidence": "low",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "B0100",
+  "text": "Front impact sensor circuit problem",
+  "system": "body",
+  "source": "own-words",
+  "confidence": "low",
+  "reviewed": false,
+  "added": "2026-11-24"
+ }
+]

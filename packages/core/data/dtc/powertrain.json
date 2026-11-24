@@ -1,0 +1,3566 @@
+[
+ {
+  "code": "P0010",
+  "text": "Intake camshaft adjuster circuit problem, bank 1",
+  "system": "engine",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0011",
+  "text": "Intake camshaft timing is more advanced than the engine asked for, bank 1",
+  "system": "engine",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0012",
+  "text": "Intake camshaft timing is more delayed than the engine asked for, bank 1",
+  "system": "engine",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0013",
+  "text": "Exhaust camshaft adjuster circuit problem, bank 1",
+  "system": "engine",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0014",
+  "text": "Exhaust camshaft timing is more advanced than the engine asked for, bank 1",
+  "system": "engine",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0015",
+  "text": "Exhaust camshaft timing is more delayed than the engine asked for, bank 1",
+  "system": "engine",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0016",
+  "text": "Crankshaft and camshaft positions do not line up, bank 1 sensor A",
+  "system": "engine",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0017",
+  "text": "Crankshaft and camshaft positions do not line up, bank 1 sensor B",
+  "system": "engine",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0020",
+  "text": "Intake camshaft adjuster circuit problem, bank 2",
+  "system": "engine",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0021",
+  "text": "Intake camshaft timing is more advanced than the engine asked for, bank 2",
+  "system": "engine",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0022",
+  "text": "Intake camshaft timing is more delayed than the engine asked for, bank 2",
+  "system": "engine",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0023",
+  "text": "Exhaust camshaft adjuster circuit problem, bank 2",
+  "system": "engine",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0024",
+  "text": "Exhaust camshaft timing is more advanced than the engine asked for, bank 2",
+  "system": "engine",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0025",
+  "text": "Exhaust camshaft timing is more delayed than the engine asked for, bank 2",
+  "system": "engine",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0030",
+  "text": "Oxygen sensor heater control circuit problem, bank 1 sensor 1",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0031",
+  "text": "Oxygen sensor heater circuit reads low, bank 1 sensor 1",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0032",
+  "text": "Oxygen sensor heater circuit reads high, bank 1 sensor 1",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0036",
+  "text": "Oxygen sensor heater control circuit problem, bank 1 sensor 2",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0037",
+  "text": "Oxygen sensor heater circuit reads low, bank 1 sensor 2",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0038",
+  "text": "Oxygen sensor heater circuit reads high, bank 1 sensor 2",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0050",
+  "text": "Oxygen sensor heater control circuit problem, bank 2 sensor 1",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0051",
+  "text": "Oxygen sensor heater circuit reads low, bank 2 sensor 1",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0052",
+  "text": "Oxygen sensor heater circuit reads high, bank 2 sensor 1",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0068",
+  "text": "Intake pressure and throttle position readings do not agree",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0069",
+  "text": "Intake pressure and outside air pressure readings do not agree",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0070",
+  "text": "Outside air temperature sensor circuit problem",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0071",
+  "text": "Outside air temperature sensor reading outside the expected range",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0072",
+  "text": "Outside air temperature sensor reads too low",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0073",
+  "text": "Outside air temperature sensor reads too high",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0074",
+  "text": "Outside air temperature sensor signal drops in and out",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0087",
+  "text": "Fuel rail pressure is too low",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0088",
+  "text": "Fuel rail pressure is too high",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0089",
+  "text": "Fuel pressure regulator is not working as expected",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0090",
+  "text": "Fuel pressure regulator circuit problem",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0100",
+  "text": "Air flow sensor circuit problem",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0101",
+  "text": "Air flow sensor reading outside the expected range",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0102",
+  "text": "Air flow sensor signal is too low",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0103",
+  "text": "Air flow sensor signal is too high",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0104",
+  "text": "Air flow sensor signal drops in and out",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0105",
+  "text": "Intake pressure sensor circuit problem",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0106",
+  "text": "Intake pressure sensor reading outside the expected range",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0107",
+  "text": "Intake pressure sensor signal is too low",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0108",
+  "text": "Intake pressure sensor signal is too high",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0109",
+  "text": "Intake pressure sensor signal drops in and out",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0110",
+  "text": "Intake air temperature sensor circuit problem",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0111",
+  "text": "Intake air temperature reading outside the expected range",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0112",
+  "text": "Intake air temperature sensor reads too low",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0113",
+  "text": "Intake air temperature sensor reads too high",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0114",
+  "text": "Intake air temperature signal drops in and out",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0115",
+  "text": "Coolant temperature sensor circuit problem",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0116",
+  "text": "Coolant temperature reading outside the expected range",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0117",
+  "text": "Coolant temperature sensor reads too low",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0118",
+  "text": "Coolant temperature sensor reads too high",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0119",
+  "text": "Coolant temperature signal drops in and out",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0120",
+  "text": "Throttle or pedal position sensor A circuit problem",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0121",
+  "text": "Throttle or pedal position sensor A reading outside the expected range",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0122",
+  "text": "Throttle or pedal position sensor A signal is too low",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0123",
+  "text": "Throttle or pedal position sensor A signal is too high",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0124",
+  "text": "Throttle or pedal position sensor A signal drops in and out",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0125",
+  "text": "Engine is not warm enough to start closed-loop fuel control in time",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0128",
+  "text": "Engine is slow to reach normal operating temperature",
+  "system": "engine",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0130",
+  "text": "Oxygen sensor circuit problem, bank 1 sensor 1",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0131",
+  "text": "Oxygen sensor voltage too low, bank 1 sensor 1",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0132",
+  "text": "Oxygen sensor voltage too high, bank 1 sensor 1",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0133",
+  "text": "Oxygen sensor responds too slowly, bank 1 sensor 1",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0134",
+  "text": "Oxygen sensor gives no signal, bank 1 sensor 1",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0135",
+  "text": "Oxygen sensor heater circuit problem, bank 1 sensor 1",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0136",
+  "text": "Oxygen sensor circuit problem, bank 1 sensor 2",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0137",
+  "text": "Oxygen sensor voltage too low, bank 1 sensor 2",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0138",
+  "text": "Oxygen sensor voltage too high, bank 1 sensor 2",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0139",
+  "text": "Oxygen sensor responds too slowly, bank 1 sensor 2",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0140",
+  "text": "Oxygen sensor gives no signal, bank 1 sensor 2",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0141",
+  "text": "Oxygen sensor heater circuit problem, bank 1 sensor 2",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0150",
+  "text": "Oxygen sensor circuit problem, bank 2 sensor 1",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0151",
+  "text": "Oxygen sensor voltage too low, bank 2 sensor 1",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0152",
+  "text": "Oxygen sensor voltage too high, bank 2 sensor 1",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0153",
+  "text": "Oxygen sensor responds too slowly, bank 2 sensor 1",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0154",
+  "text": "Oxygen sensor gives no signal, bank 2 sensor 1",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0155",
+  "text": "Oxygen sensor heater circuit problem, bank 2 sensor 1",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0156",
+  "text": "Oxygen sensor circuit problem, bank 2 sensor 2",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0157",
+  "text": "Oxygen sensor voltage too low, bank 2 sensor 2",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0158",
+  "text": "Oxygen sensor voltage too high, bank 2 sensor 2",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0159",
+  "text": "Oxygen sensor responds too slowly, bank 2 sensor 2",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0160",
+  "text": "Oxygen sensor gives no signal, bank 2 sensor 2",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0161",
+  "text": "Oxygen sensor heater circuit problem, bank 2 sensor 2",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0171",
+  "text": "Engine is getting too much air or too little fuel, bank 1",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0172",
+  "text": "Engine is getting too much fuel or too little air, bank 1",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0174",
+  "text": "Engine is getting too much air or too little fuel, bank 2",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0175",
+  "text": "Engine is getting too much fuel or too little air, bank 2",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0180",
+  "text": "Fuel temperature sensor A circuit problem",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0181",
+  "text": "Fuel temperature sensor A reading outside the expected range",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0182",
+  "text": "Fuel temperature sensor A reads too low",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0183",
+  "text": "Fuel temperature sensor A reads too high",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0190",
+  "text": "Fuel rail pressure sensor circuit problem",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0191",
+  "text": "Fuel rail pressure sensor reading outside the expected range",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0192",
+  "text": "Fuel rail pressure sensor signal is too low",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0193",
+  "text": "Fuel rail pressure sensor signal is too high",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0196",
+  "text": "Engine oil temperature sensor reading outside the expected range",
+  "system": "engine",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0197",
+  "text": "Engine oil temperature sensor reads too low",
+  "system": "engine",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0198",
+  "text": "Engine oil temperature sensor reads too high",
+  "system": "engine",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0200",
+  "text": "Fuel injector circuit problem",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0201",
+  "text": "Fuel injector circuit problem, cylinder 1",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0202",
+  "text": "Fuel injector circuit problem, cylinder 2",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0203",
+  "text": "Fuel injector circuit problem, cylinder 3",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0204",
+  "text": "Fuel injector circuit problem, cylinder 4",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0205",
+  "text": "Fuel injector circuit problem, cylinder 5",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0206",
+  "text": "Fuel injector circuit problem, cylinder 6",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0207",
+  "text": "Fuel injector circuit problem, cylinder 7",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0208",
+  "text": "Fuel injector circuit problem, cylinder 8",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0216",
+  "text": "Injection timing control circuit problem",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0217",
+  "text": "Engine is overheating",
+  "system": "engine",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0218",
+  "text": "Transmission fluid is overheating",
+  "system": "transmission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0219",
+  "text": "Engine ran faster than its safe speed limit",
+  "system": "engine",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0221",
+  "text": "Throttle or pedal position sensor B reading outside the expected range",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0222",
+  "text": "Throttle or pedal position sensor B signal is too low",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0223",
+  "text": "Throttle or pedal position sensor B signal is too high",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0230",
+  "text": "Fuel pump relay or control circuit problem",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0231",
+  "text": "Fuel pump circuit reads low",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0232",
+  "text": "Fuel pump circuit reads high",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0234",
+  "text": "Turbo or supercharger is making more boost than expected",
+  "system": "engine",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0235",
+  "text": "Boost pressure sensor A circuit problem",
+  "system": "engine",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0236",
+  "text": "Boost pressure sensor A reading outside the expected range",
+  "system": "engine",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0237",
+  "text": "Boost pressure sensor A signal is too low",
+  "system": "engine",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0238",
+  "text": "Boost pressure sensor A signal is too high",
+  "system": "engine",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0243",
+  "text": "Wastegate control solenoid A circuit problem",
+  "system": "engine",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0245",
+  "text": "Wastegate control solenoid A circuit reads low",
+  "system": "engine",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0246",
+  "text": "Wastegate control solenoid A circuit reads high",
+  "system": "engine",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0299",
+  "text": "Turbo or supercharger is making less boost than expected",
+  "system": "engine",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0300",
+  "text": "Random or several cylinders are misfiring",
+  "system": "ignition",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0301",
+  "text": "Cylinder 1 is misfiring",
+  "system": "ignition",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0302",
+  "text": "Cylinder 2 is misfiring",
+  "system": "ignition",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0303",
+  "text": "Cylinder 3 is misfiring",
+  "system": "ignition",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0304",
+  "text": "Cylinder 4 is misfiring",
+  "system": "ignition",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0305",
+  "text": "Cylinder 5 is misfiring",
+  "system": "ignition",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0306",
+  "text": "Cylinder 6 is misfiring",
+  "system": "ignition",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0307",
+  "text": "Cylinder 7 is misfiring",
+  "system": "ignition",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0308",
+  "text": "Cylinder 8 is misfiring",
+  "system": "ignition",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0313",
+  "text": "Misfire detected while the fuel level was very low",
+  "system": "ignition",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0315",
+  "text": "Crankshaft position has not been learned yet",
+  "system": "ignition",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0316",
+  "text": "Misfire detected in the first moments after starting",
+  "system": "ignition",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0320",
+  "text": "Engine speed sensor circuit problem",
+  "system": "ignition",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0321",
+  "text": "Engine speed sensor reading outside the expected range",
+  "system": "ignition",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0322",
+  "text": "Engine speed sensor gives no signal",
+  "system": "ignition",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0323",
+  "text": "Engine speed sensor signal drops in and out",
+  "system": "ignition",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0325",
+  "text": "Knock sensor 1 circuit problem, bank 1",
+  "system": "ignition",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0326",
+  "text": "Knock sensor 1 reading outside the expected range, bank 1",
+  "system": "ignition",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0327",
+  "text": "Knock sensor 1 signal is too low, bank 1",
+  "system": "ignition",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0328",
+  "text": "Knock sensor 1 signal is too high, bank 1",
+  "system": "ignition",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0330",
+  "text": "Knock sensor 2 circuit problem, bank 2",
+  "system": "ignition",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0331",
+  "text": "Knock sensor 2 reading outside the expected range, bank 2",
+  "system": "ignition",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0332",
+  "text": "Knock sensor 2 signal is too low, bank 2",
+  "system": "ignition",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0333",
+  "text": "Knock sensor 2 signal is too high, bank 2",
+  "system": "ignition",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0335",
+  "text": "Crankshaft position sensor A circuit problem",
+  "system": "ignition",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0336",
+  "text": "Crankshaft position sensor A reading outside the expected range",
+  "system": "ignition",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0337",
+  "text": "Crankshaft position sensor A signal is too low",
+  "system": "ignition",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0338",
+  "text": "Crankshaft position sensor A signal is too high",
+  "system": "ignition",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0339",
+  "text": "Crankshaft position sensor A signal drops in and out",
+  "system": "ignition",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0340",
+  "text": "Camshaft position sensor A circuit problem, bank 1",
+  "system": "ignition",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0341",
+  "text": "Camshaft position sensor A reading outside the expected range, bank 1",
+  "system": "ignition",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0342",
+  "text": "Camshaft position sensor A signal is too low, bank 1",
+  "system": "ignition",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0343",
+  "text": "Camshaft position sensor A signal is too high, bank 1",
+  "system": "ignition",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0344",
+  "text": "Camshaft position sensor A signal drops in and out, bank 1",
+  "system": "ignition",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0345",
+  "text": "Camshaft position sensor A circuit problem, bank 2",
+  "system": "ignition",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0346",
+  "text": "Camshaft position sensor A reading outside the expected range, bank 2",
+  "system": "ignition",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0347",
+  "text": "Camshaft position sensor A signal is too low, bank 2",
+  "system": "ignition",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0348",
+  "text": "Camshaft position sensor A signal is too high, bank 2",
+  "system": "ignition",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0349",
+  "text": "Camshaft position sensor A signal drops in and out, bank 2",
+  "system": "ignition",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0350",
+  "text": "Ignition coil primary or secondary circuit problem",
+  "system": "ignition",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0351",
+  "text": "Ignition coil A circuit problem",
+  "system": "ignition",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0352",
+  "text": "Ignition coil B circuit problem",
+  "system": "ignition",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0353",
+  "text": "Ignition coil C circuit problem",
+  "system": "ignition",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0354",
+  "text": "Ignition coil D circuit problem",
+  "system": "ignition",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0355",
+  "text": "Ignition coil E circuit problem",
+  "system": "ignition",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0356",
+  "text": "Ignition coil F circuit problem",
+  "system": "ignition",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0357",
+  "text": "Ignition coil G circuit problem",
+  "system": "ignition",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0358",
+  "text": "Ignition coil H circuit problem",
+  "system": "ignition",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0365",
+  "text": "Camshaft position sensor B circuit problem, bank 1",
+  "system": "ignition",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0366",
+  "text": "Camshaft position sensor B reading outside the expected range, bank 1",
+  "system": "ignition",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0380",
+  "text": "Glow plug or heater circuit A problem",
+  "system": "engine",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0381",
+  "text": "Glow plug indicator lamp circuit problem",
+  "system": "engine",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0400",
+  "text": "Exhaust gas recirculation flow problem",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0401",
+  "text": "Exhaust gas recirculation flow is too low",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0402",
+  "text": "Exhaust gas recirculation flow is too high",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0403",
+  "text": "Exhaust gas recirculation control circuit problem",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0404",
+  "text": "Exhaust gas recirculation control is not working as expected",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0405",
+  "text": "Exhaust gas recirculation sensor A signal is too low",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0406",
+  "text": "Exhaust gas recirculation sensor A signal is too high",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0410",
+  "text": "Secondary air system problem",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0411",
+  "text": "Secondary air system is not moving the expected amount of air",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0412",
+  "text": "Secondary air switching valve A circuit problem",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0420",
+  "text": "Catalytic converter is working below the expected level, bank 1",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0421",
+  "text": "Catalytic converter is slow to warm up, bank 1",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0430",
+  "text": "Catalytic converter is working below the expected level, bank 2",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0431",
+  "text": "Catalytic converter is slow to warm up, bank 2",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0440",
+  "text": "Fuel vapour system problem",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0441",
+  "text": "Fuel vapour purge flow is not as expected",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0442",
+  "text": "Small leak in the fuel vapour system",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0443",
+  "text": "Fuel vapour purge valve circuit problem",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0444",
+  "text": "Fuel vapour purge valve circuit is open",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0445",
+  "text": "Fuel vapour purge valve circuit is shorted",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0446",
+  "text": "Fuel vapour vent valve circuit problem",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0447",
+  "text": "Fuel vapour vent valve circuit is open",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0448",
+  "text": "Fuel vapour vent valve circuit is shorted",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0449",
+  "text": "Fuel vapour vent valve or solenoid circuit problem",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0450",
+  "text": "Fuel vapour pressure sensor circuit problem",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0451",
+  "text": "Fuel vapour pressure sensor reading outside the expected range",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0452",
+  "text": "Fuel vapour pressure sensor signal is too low",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0453",
+  "text": "Fuel vapour pressure sensor signal is too high",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0455",
+  "text": "Large leak in the fuel vapour system, often a loose or missing fuel cap",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0456",
+  "text": "Very small leak in the fuel vapour system",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0457",
+  "text": "Fuel vapour leak, fuel cap may be loose or missing",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0460",
+  "text": "Fuel level sensor circuit problem",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0461",
+  "text": "Fuel level sensor reading outside the expected range",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0462",
+  "text": "Fuel level sensor signal is too low",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0463",
+  "text": "Fuel level sensor signal is too high",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0480",
+  "text": "Cooling fan 1 control circuit problem",
+  "system": "engine",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0481",
+  "text": "Cooling fan 2 control circuit problem",
+  "system": "engine",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0485",
+  "text": "Cooling fan power or ground circuit problem",
+  "system": "engine",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0500",
+  "text": "Vehicle speed sensor problem",
+  "system": "speed-idle",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0501",
+  "text": "Vehicle speed sensor reading outside the expected range",
+  "system": "speed-idle",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0502",
+  "text": "Vehicle speed sensor signal is too low",
+  "system": "speed-idle",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0503",
+  "text": "Vehicle speed sensor signal drops in and out",
+  "system": "speed-idle",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0505",
+  "text": "Idle speed control problem",
+  "system": "speed-idle",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0506",
+  "text": "Idle speed is lower than expected",
+  "system": "speed-idle",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0507",
+  "text": "Idle speed is higher than expected",
+  "system": "speed-idle",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0510",
+  "text": "Closed throttle switch problem",
+  "system": "speed-idle",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0513",
+  "text": "Engine immobiliser key is not recognised",
+  "system": "speed-idle",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0520",
+  "text": "Engine oil pressure sensor circuit problem",
+  "system": "engine",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0521",
+  "text": "Engine oil pressure sensor reading outside the expected range",
+  "system": "engine",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0522",
+  "text": "Engine oil pressure sensor signal is too low",
+  "system": "engine",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0523",
+  "text": "Engine oil pressure sensor signal is too high",
+  "system": "engine",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0524",
+  "text": "Engine oil pressure is too low",
+  "system": "engine",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0530",
+  "text": "Air conditioning pressure sensor circuit problem",
+  "system": "speed-idle",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0531",
+  "text": "Air conditioning pressure sensor reading outside the expected range",
+  "system": "speed-idle",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0532",
+  "text": "Air conditioning pressure sensor signal is too low",
+  "system": "speed-idle",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0533",
+  "text": "Air conditioning pressure sensor signal is too high",
+  "system": "speed-idle",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0551",
+  "text": "Power steering pressure sensor reading outside the expected range",
+  "system": "speed-idle",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0552",
+  "text": "Power steering pressure sensor signal is too low",
+  "system": "speed-idle",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0553",
+  "text": "Power steering pressure sensor signal is too high",
+  "system": "speed-idle",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0560",
+  "text": "Electrical system voltage problem",
+  "system": "computer",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0561",
+  "text": "Electrical system voltage is unstable",
+  "system": "computer",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0562",
+  "text": "Electrical system voltage is low",
+  "system": "computer",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0563",
+  "text": "Electrical system voltage is high",
+  "system": "computer",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0571",
+  "text": "Cruise control brake switch A circuit problem",
+  "system": "speed-idle",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0572",
+  "text": "Cruise control brake switch A signal is too low",
+  "system": "speed-idle",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0573",
+  "text": "Cruise control brake switch A signal is too high",
+  "system": "speed-idle",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0600",
+  "text": "Communication problem between the engine computer and another module",
+  "system": "computer",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0601",
+  "text": "Engine computer memory check failed",
+  "system": "computer",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0602",
+  "text": "Engine computer is not programmed correctly",
+  "system": "computer",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0603",
+  "text": "Engine computer long-term memory problem",
+  "system": "computer",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0604",
+  "text": "Engine computer working memory problem",
+  "system": "computer",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0605",
+  "text": "Engine computer program memory problem",
+  "system": "computer",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0606",
+  "text": "Engine computer processor problem",
+  "system": "computer",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0607",
+  "text": "Engine computer performance problem",
+  "system": "computer",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0615",
+  "text": "Starter relay circuit problem",
+  "system": "computer",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0616",
+  "text": "Starter relay circuit reads low",
+  "system": "computer",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0617",
+  "text": "Starter relay circuit reads high",
+  "system": "computer",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0620",
+  "text": "Alternator control circuit problem",
+  "system": "computer",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0621",
+  "text": "Alternator warning lamp circuit problem",
+  "system": "computer",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0622",
+  "text": "Alternator field control circuit problem",
+  "system": "computer",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0627",
+  "text": "Fuel pump control circuit is open",
+  "system": "computer",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0628",
+  "text": "Fuel pump control circuit reads low",
+  "system": "computer",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0629",
+  "text": "Fuel pump control circuit reads high",
+  "system": "computer",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0630",
+  "text": "Vehicle identification number is missing or does not match",
+  "system": "computer",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0634",
+  "text": "Engine computer is running too hot",
+  "system": "computer",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0640",
+  "text": "Intake air heater circuit problem",
+  "system": "computer",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0641",
+  "text": "Sensor supply voltage A circuit is open",
+  "system": "computer",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0645",
+  "text": "Air conditioning clutch relay circuit problem",
+  "system": "computer",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0650",
+  "text": "Warning lamp control circuit problem",
+  "system": "computer",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0651",
+  "text": "Sensor supply voltage B circuit is open",
+  "system": "computer",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0657",
+  "text": "Actuator supply voltage circuit is open",
+  "system": "computer",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0685",
+  "text": "Engine computer power relay control circuit problem",
+  "system": "computer",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0700",
+  "text": "Transmission control system has stored a fault, read the transmission module",
+  "system": "transmission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0701",
+  "text": "Transmission control system performance problem",
+  "system": "transmission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0702",
+  "text": "Transmission control system electrical problem",
+  "system": "transmission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0703",
+  "text": "Brake switch B circuit problem",
+  "system": "transmission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0705",
+  "text": "Gear selector position sensor circuit problem",
+  "system": "transmission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0706",
+  "text": "Gear selector position sensor reading outside the expected range",
+  "system": "transmission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0707",
+  "text": "Gear selector position sensor signal is too low",
+  "system": "transmission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0708",
+  "text": "Gear selector position sensor signal is too high",
+  "system": "transmission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0710",
+  "text": "Transmission fluid temperature sensor circuit problem",
+  "system": "transmission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0711",
+  "text": "Transmission fluid temperature reading outside the expected range",
+  "system": "transmission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0712",
+  "text": "Transmission fluid temperature sensor reads too low",
+  "system": "transmission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0713",
+  "text": "Transmission fluid temperature sensor reads too high",
+  "system": "transmission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0715",
+  "text": "Transmission input speed sensor circuit problem",
+  "system": "transmission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0716",
+  "text": "Transmission input speed reading outside the expected range",
+  "system": "transmission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0717",
+  "text": "Transmission input speed sensor gives no signal",
+  "system": "transmission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0720",
+  "text": "Transmission output speed sensor circuit problem",
+  "system": "transmission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0721",
+  "text": "Transmission output speed reading outside the expected range",
+  "system": "transmission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0722",
+  "text": "Transmission output speed sensor gives no signal",
+  "system": "transmission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0725",
+  "text": "Engine speed signal to the transmission is missing",
+  "system": "transmission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0730",
+  "text": "Transmission is not holding the expected gear ratio",
+  "system": "transmission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0731",
+  "text": "First gear ratio is wrong",
+  "system": "transmission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0732",
+  "text": "Second gear ratio is wrong",
+  "system": "transmission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0733",
+  "text": "Third gear ratio is wrong",
+  "system": "transmission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0734",
+  "text": "Fourth gear ratio is wrong",
+  "system": "transmission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0735",
+  "text": "Fifth gear ratio is wrong",
+  "system": "transmission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0736",
+  "text": "Reverse gear ratio is wrong",
+  "system": "transmission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0740",
+  "text": "Torque converter clutch circuit problem",
+  "system": "transmission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0741",
+  "text": "Torque converter clutch is not locking as expected",
+  "system": "transmission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0742",
+  "text": "Torque converter clutch is stuck locked",
+  "system": "transmission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0743",
+  "text": "Torque converter clutch electrical problem",
+  "system": "transmission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0744",
+  "text": "Torque converter clutch drops in and out",
+  "system": "transmission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0745",
+  "text": "Pressure control solenoid A problem",
+  "system": "transmission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0746",
+  "text": "Pressure control solenoid A is not working as expected",
+  "system": "transmission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0747",
+  "text": "Pressure control solenoid A is stuck on",
+  "system": "transmission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0748",
+  "text": "Pressure control solenoid A electrical problem",
+  "system": "transmission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0750",
+  "text": "Shift solenoid A problem",
+  "system": "transmission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0751",
+  "text": "Shift solenoid A is not working as expected",
+  "system": "transmission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0752",
+  "text": "Shift solenoid A is stuck on",
+  "system": "transmission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0753",
+  "text": "Shift solenoid A electrical problem",
+  "system": "transmission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0755",
+  "text": "Shift solenoid B problem",
+  "system": "transmission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0756",
+  "text": "Shift solenoid B is not working as expected",
+  "system": "transmission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0757",
+  "text": "Shift solenoid B is stuck on",
+  "system": "transmission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0758",
+  "text": "Shift solenoid B electrical problem",
+  "system": "transmission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0760",
+  "text": "Shift solenoid C problem",
+  "system": "transmission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0765",
+  "text": "Shift solenoid D problem",
+  "system": "transmission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0770",
+  "text": "Shift solenoid E problem",
+  "system": "transmission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0776",
+  "text": "Pressure control solenoid B is not working as expected",
+  "system": "transmission",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0780",
+  "text": "Gear shift problem",
+  "system": "transmission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0781",
+  "text": "First to second gear shift problem",
+  "system": "transmission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0782",
+  "text": "Second to third gear shift problem",
+  "system": "transmission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0783",
+  "text": "Third to fourth gear shift problem",
+  "system": "transmission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0784",
+  "text": "Fourth to fifth gear shift problem",
+  "system": "transmission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0785",
+  "text": "Shift timing solenoid problem",
+  "system": "transmission",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0790",
+  "text": "Normal or performance mode switch circuit problem",
+  "system": "transmission",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0801",
+  "text": "Reverse lockout circuit problem",
+  "system": "transmission",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0830",
+  "text": "Clutch pedal switch A circuit problem",
+  "system": "transmission",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0850",
+  "text": "Park or neutral switch input circuit problem",
+  "system": "transmission",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0868",
+  "text": "Transmission fluid pressure is low",
+  "system": "transmission",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0869",
+  "text": "Transmission fluid pressure is high",
+  "system": "transmission",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0881",
+  "text": "Transmission control module power input reading outside the expected range",
+  "system": "transmission",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0882",
+  "text": "Transmission control module power input is low",
+  "system": "transmission",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0883",
+  "text": "Transmission control module power input is high",
+  "system": "transmission",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0897",
+  "text": "Transmission fluid has broken down",
+  "system": "transmission",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0900",
+  "text": "Clutch actuator circuit problem",
+  "system": "transmission",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0A0D",
+  "text": "High voltage safety loop circuit reads high",
+  "system": "hybrid",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0A0E",
+  "text": "High voltage safety loop circuit reads low",
+  "system": "hybrid",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0A0F",
+  "text": "Engine failed to start in a hybrid vehicle",
+  "system": "hybrid",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0A7F",
+  "text": "Hybrid battery pack is wearing out",
+  "system": "hybrid",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0A80",
+  "text": "Hybrid battery pack is weak, replacement may be needed",
+  "system": "hybrid",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0A94",
+  "text": "Hybrid DC to DC converter is not working as expected",
+  "system": "hybrid",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P0AA6",
+  "text": "High voltage system insulation fault",
+  "system": "hybrid",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P2002",
+  "text": "Diesel particulate filter is working below the expected level, bank 1",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P2004",
+  "text": "Intake manifold flap is stuck open, bank 1",
+  "system": "engine",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P2006",
+  "text": "Intake manifold flap is stuck closed, bank 1",
+  "system": "engine",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P2015",
+  "text": "Intake manifold flap position sensor reading outside the expected range, bank 1",
+  "system": "engine",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P2096",
+  "text": "Fuel trim after the catalytic converter is too lean, bank 1",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P2097",
+  "text": "Fuel trim after the catalytic converter is too rich, bank 1",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P2101",
+  "text": "Throttle motor circuit problem",
+  "system": "engine",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P2106",
+  "text": "Throttle control has limited engine power",
+  "system": "engine",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P2107",
+  "text": "Throttle control module processor problem",
+  "system": "engine",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P2110",
+  "text": "Throttle control has limited engine speed",
+  "system": "engine",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P2119",
+  "text": "Throttle closed position problem",
+  "system": "engine",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P2122",
+  "text": "Pedal position sensor D signal is too low",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P2123",
+  "text": "Pedal position sensor D signal is too high",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P2127",
+  "text": "Pedal position sensor E signal is too low",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P2128",
+  "text": "Pedal position sensor E signal is too high",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P2135",
+  "text": "Throttle or pedal position sensors A and B do not agree",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P2138",
+  "text": "Pedal position sensors D and E do not agree",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P2146",
+  "text": "Fuel injector group A supply voltage circuit problem",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P2177",
+  "text": "Engine is getting too much air or too little fuel away from idle, bank 1",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P2178",
+  "text": "Engine is getting too much fuel or too little air away from idle, bank 1",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P2187",
+  "text": "Engine is getting too much air or too little fuel at idle, bank 1",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P2188",
+  "text": "Engine is getting too much fuel or too little air at idle, bank 1",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P2195",
+  "text": "Oxygen sensor signal stuck lean, bank 1 sensor 1",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P2196",
+  "text": "Oxygen sensor signal stuck rich, bank 1 sensor 1",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P2200",
+  "text": "Nitrogen oxide sensor circuit problem, bank 1",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P2201",
+  "text": "Nitrogen oxide sensor reading outside the expected range, bank 1",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P2202",
+  "text": "Nitrogen oxide sensor signal is too low, bank 1",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P2203",
+  "text": "Nitrogen oxide sensor signal is too high, bank 1",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P2227",
+  "text": "Outside air pressure sensor reading outside the expected range",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P2228",
+  "text": "Outside air pressure sensor signal is too low",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P2229",
+  "text": "Outside air pressure sensor signal is too high",
+  "system": "fuel-air",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P2270",
+  "text": "Oxygen sensor signal stuck lean, bank 1 sensor 2",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P2271",
+  "text": "Oxygen sensor signal stuck rich, bank 1 sensor 2",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P2300",
+  "text": "Ignition coil A control circuit reads low",
+  "system": "ignition",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P2301",
+  "text": "Ignition coil A control circuit reads high",
+  "system": "ignition",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P2418",
+  "text": "Fuel vapour switching valve control circuit problem",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P2440",
+  "text": "Secondary air switching valve is stuck open, bank 1",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P2441",
+  "text": "Secondary air switching valve is stuck closed, bank 1",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P2452",
+  "text": "Diesel particulate filter pressure sensor A circuit problem",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P2453",
+  "text": "Diesel particulate filter pressure sensor A reading outside the expected range",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P2454",
+  "text": "Diesel particulate filter pressure sensor A signal is too low",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P2455",
+  "text": "Diesel particulate filter pressure sensor A signal is too high",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P2457",
+  "text": "Exhaust gas recirculation cooler is not working as expected",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P2458",
+  "text": "Diesel particulate filter cleaning cycle ran for the wrong length of time",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P2459",
+  "text": "Diesel particulate filter cleaning cycles are happening too often",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P2463",
+  "text": "Diesel particulate filter is clogged with soot",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P2503",
+  "text": "Charging system output is low",
+  "system": "computer",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P2504",
+  "text": "Charging system output is high",
+  "system": "computer",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P2509",
+  "text": "Engine computer power input drops in and out",
+  "system": "computer",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P2610",
+  "text": "Engine computer internal timer problem",
+  "system": "computer",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P20EE",
+  "text": "Diesel exhaust fluid catalyst is working below the expected level, bank 1",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P204F",
+  "text": "Diesel exhaust fluid system is not working as expected",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "P2A00",
+  "text": "Air-fuel sensor reading outside the expected range, bank 1 sensor 1",
+  "system": "emission",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ }
+]
