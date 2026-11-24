@@ -1,6 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import {
+  ClearingClient,
   DiagClient,
   DoipTransport,
   Elm327Transport,
@@ -17,7 +18,7 @@ import {
 const VIN = "WBA00000000000001";
 
 test("simulator: VIN, DTCs, PIDs, clear", async () => {
-  const c = new DiagClient(new SimTransport());
+  const c = new ClearingClient(new SimTransport());
   assert.equal(await c.readVinObd(), VIN);
   assert.deepEqual(await c.readObdDtcs(), { stored: ["P0301", "P0171"], pending: ["P0301", "P0171"], permanent: ["P0301", "P0171"] });
   assert.equal((await c.readPid(0x0c))?.value, 1726);
@@ -70,7 +71,7 @@ test("DoIP transport: routing activation then diagnostics", async () => {
   const t = new DoipTransport({ host: "127.0.0.1", port: srv.port });
   await t.open();
   try {
-    const c = new DiagClient(t);
+    const c = new ClearingClient(t);
     assert.equal(await c.readVinUds(0x12), VIN);
     await c.clearUdsDtcs(0x12);
     assert.deepEqual(await c.readUdsDtcs(0x12), []);
@@ -78,4 +79,10 @@ test("DoIP transport: routing activation then diagnostics", async () => {
     await t.close();
     await srv.close();
   }
+});
+
+test("the plain client has no clear methods", () => {
+  const c = new DiagClient(new SimTransport()) as unknown as Record<string, unknown>;
+  assert.equal(c["clearObdDtcs"], undefined);
+  assert.equal(c["clearUdsDtcs"], undefined);
 });

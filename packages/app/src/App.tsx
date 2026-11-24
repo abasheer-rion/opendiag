@@ -230,6 +230,7 @@ function Backups({ s, go, back }: { s: SimSession } & Nav) {
       <button className="act" disabled={!(a && b)} onClick={() => a && b && go({ name: "compare", a, b })}>
         Compare the two ticked backups
       </button>
+      {!(a && b) && <Note>Tick two backups to compare them.</Note>}
       {err && <p className="note bad" role="alert">{err}</p>}
       <Section title="Simulator only" />
       <List>

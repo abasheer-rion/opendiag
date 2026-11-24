@@ -6,7 +6,6 @@ import { decodePid, obdRequest, parseDtcList, parseSupported, parseVin } from ".
 import type { PidValue } from "./obd.ts";
 import {
   NegativeResponse,
-  clearDtc,
   expectPositive,
   parseDtcByStatusMask,
   readDid,
@@ -29,7 +28,7 @@ export class DiagClient {
     this.transport = transport;
   }
 
-  private async call(target: number, req: Bytes, timeoutMs?: number): Promise<Bytes> {
+  protected async call(target: number, req: Bytes, timeoutMs?: number): Promise<Bytes> {
     const resp = await this.transport.request(target, req, timeoutMs);
     return expectPositive(at(req, 0), resp);
   }
@@ -70,14 +69,6 @@ export class DiagClient {
   async readUdsDtcs(target: number, mask = 0xff): Promise<UdsDtc[]> {
     const body = await this.call(target, readDtcByStatusMask(mask));
     return parseDtcByStatusMask(body).dtcs;
-  }
-
-  async clearObdDtcs(target = 0x7e0): Promise<void> {
-    await this.call(target, obdRequest(0x04));
-  }
-
-  async clearUdsDtcs(target: number, group = 0xffffff): Promise<void> {
-    await this.call(target, clearDtc(group));
   }
 
   async readPid(pid: number, target = 0x7e0): Promise<PidValue | undefined> {

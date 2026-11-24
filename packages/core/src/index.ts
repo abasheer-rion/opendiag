@@ -5,6 +5,7 @@ export * from "./uds.ts";
 export * from "./isotp.ts";
 export * from "./transport.ts";
 export * from "./client.ts";
+export * from "./client-clear.ts";
 export * from "./hsfz.ts";
 export * from "./doip.ts";
 export * from "./elm327.ts";

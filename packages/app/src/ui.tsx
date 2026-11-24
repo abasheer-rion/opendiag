@@ -1,7 +1,12 @@
 import type { ReactNode } from "react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export function Header({ title, onBack }: { title: string; onBack?: (() => void) | undefined }) {
+  const h = useRef<HTMLHeadingElement>(null);
+  // Move focus to the new screen's title so keyboard and screen reader users are not left on a removed button.
+  useEffect(() => {
+    if (onBack) h.current?.focus();
+  }, []);
   return (
     <>
       <header>
@@ -10,7 +15,7 @@ export function Header({ title, onBack }: { title: string; onBack?: (() => void)
         ) : (
           <span className="spacer" />
         )}
-        <h1>{title}</h1>
+        <h1 ref={h} tabIndex={-1}>{title}</h1>
         <span className="spacer" />
       </header>
       <div className="banner"><b>SIMULATOR</b> Pretend car. Read-only build. No car connected.</div>
