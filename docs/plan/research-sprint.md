@@ -104,6 +104,7 @@ If a car session cannot happen on its night, it moves to the next evening and th
 | List readable identification items on a few modules | `pnpm cli probe --target A --range 0xF180-0xF19F ...` for at most 5 modules | Standard reads, 32 identifiers each |
 | Adapter identity (WiFi ELM only) | Open a plain TCP terminal to the dongle and send identity commands only (`ATZ`, `ATI`, `AT@1`, `ATRV`) | Adapter-only commands, nothing goes to the car |
 | Reading app screens (CX session) | Vendor app: connect, read faults, read supported live values; no clear, no coding | Standard reads |
+| Discovery probes (owner approved 2026-11-24) | Run `python3 probe.py <dongle-ip> <out-file>` once, after the CLI commands (script is in the session scratch folder, not the repo) | One UDP packet to port 6811 (6-byte HSFZ discovery) and one to port 13400 (DoIP vehicle identification, no routing activation, no TCP), each sent to the dongle address and to broadcast |
 
 Anything not in this table is not allowed in the sprint.
 

@@ -29,3 +29,9 @@ To confirm: model names of the three adapters (it decides which adapter reports 
 ## What a bench module is
 
 A spare car control unit (for example a seat, mirror, light or comfort module bought used for roughly $30 to $100) sitting on your desk, powered by your power supply and connected to your laptop. It is a safe place to practise writing settings and restoring them, because breaking it costs a used part, not your car. It must be a non-safety module (never airbag, brakes or steering). Until it arrives, the simulator stands in.
+
+## Sprint additions (2026-11-24)
+
+| # | Decision | Effect |
+|---|---|---|
+| 8 | **Owner approved the UDP 6811 discovery probe and the DoIP vehicle-identification probe for CAP-A.** | Added to the allowed list in `research-sprint.md` 4.2. Single UDP packets only; no TCP, no routing activation. |
