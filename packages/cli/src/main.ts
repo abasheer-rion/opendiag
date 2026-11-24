@@ -1,6 +1,7 @@
 import { mkdir, readFile, readdir, writeFile } from "node:fs/promises";
 import { homedir } from "node:os";
 import { join } from "node:path";
+import { createInterface } from "node:readline";
 import {
   DEMO_PACK,
   ClearingClient,
@@ -21,6 +22,7 @@ import {
   verifyBackupHash,
 } from "../../core/src/index.ts";
 import type { BlockSpec, DiagTransport, Pack } from "../../core/src/index.ts";
+import { SessionRefused, runSession } from "./session.ts";
 
 const HELP = `opendiag - open-source vehicle diagnostics
 
@@ -33,6 +35,17 @@ commands
   live [--count N] live engine data (OBD-II PIDs)
   pids            list supported OBD-II PIDs
   scan [--range 0x10-0x7f]  find modules that answer (UDS, ENET/DoIP)
+
+capture session (one command for the research sprint, see docs/research/sprint/session-runbook.md)
+  session --adapter enet:HOST --out DIR [--idle SECONDS] [--backup]
+          [--clear-target 0xNN --battery-volts N --yes-clear]
+                                     reads only: vin, faults, pids, module scan with timing,
+                                     identifiers, a second timing sample, an idle gap, and a
+                                     trace. DIR must be new and outside the git repo (mode 700).
+                                     --backup saves identification data for up to 5 modules.
+                                     The optional clear runs once, last, on ONE module, only if
+                                     the battery is 12.4 V or more, its faults are saved first,
+                                     and you type CLEAR when asked.
 
 read-only coding tools (never write to the car)
   did --target A --did 0xF190        read one data identifier
@@ -68,12 +81,18 @@ interface Args {
   out?: string;
   suggest: boolean;
   ignore: number[];
+  idle: number;
+  backup: boolean;
+  clearTargets: string[];
+  batteryVolts?: string;
+  yesClear: boolean;
 }
 
 function parseArgs(argv: string[]): Args {
   const a: Args = {
     cmd: "", adapter: "sim", json: false, yes: false, count: 5, range: [0x10, 0x7f],
     rangeSet: false, files: [], dids: [], suggest: false, ignore: [],
+    idle: 0, backup: false, clearTargets: [], yesClear: false,
   };
   for (let i = 0; i < argv.length; i++) {
     const t = argv[i] as string;
@@ -93,6 +112,11 @@ function parseArgs(argv: string[]): Args {
       a.did = Number(v.split(":")[0]);
     } else if (t === "--pack") a.pack = val();
     else if (t === "--out") a.out = val();
+    else if (t === "--idle") a.idle = Number(val());
+    else if (t === "--backup") a.backup = true;
+    else if (t === "--clear-target") a.clearTargets.push(val());
+    else if (t === "--battery-volts") a.batteryVolts = val();
+    else if (t === "--yes-clear") a.yesClear = true;
     else if (t === "--suggest") a.suggest = true;
     else if (t === "--ignore") a.ignore = val().split(",").map(Number);
     else if (!a.cmd) a.cmd = t;
@@ -169,11 +193,54 @@ async function diff(args: Args): Promise<void> {
   out(args, res, lines.join("\n"));
 }
 
+function typedLine(): Promise<string> {
+  const rl = createInterface({ input: process.stdin, output: process.stdout });
+  return new Promise<string>((resolve) => {
+    rl.once("close", () => resolve(""));
+    rl.question("> ", (a) => {
+      resolve(a);
+      rl.close();
+    });
+  });
+}
+
+async function sessionCmd(args: Args): Promise<void> {
+  const kind = args.adapter.split(":")[0] ?? "";
+  if (kind !== "enet" && kind !== "sim") throw new Error("session needs --adapter enet:HOST (sim works for practice)");
+  const host = args.adapter.split(":")[1] ?? "";
+  if (kind === "enet" && !host) throw new Error("session needs --adapter enet:HOST");
+  const { t, target } = await makeTransport(args.adapter);
+  const wantsClear = args.clearTargets.length > 0 || args.batteryVolts !== undefined || args.yesClear;
+  try {
+    const r = await runSession({
+      transport: t,
+      adapter: kind,
+      redact: [host],
+      outDir: args.out ?? "",
+      target: args.target ?? target,
+      idleSeconds: args.idle,
+      backup: args.backup,
+      ...(wantsClear ? { clear: { targets: args.clearTargets, batteryVolts: args.batteryVolts, yes: args.yesClear } } : {}),
+      confirm: typedLine,
+      log: (l) => console.log(l),
+    });
+    console.log(`done: ${r.counts.requests} requests, ${r.counts.modules} modules, ${r.counts.errors} errors. Files are in ${args.out}`);
+    if (r.stopped) process.exitCode = 1;
+    else if (r.clear && !r.clear.done) process.exitCode = 2;
+  } catch (e) {
+    if (!(e instanceof SessionRefused)) throw e;
+    console.error("refused, nothing was sent to the car:");
+    for (const why of e.reasons) console.error(`  - ${why}`);
+    process.exitCode = 2;
+  }
+}
+
 async function main(): Promise<void> {
   const args = parseArgs(process.argv.slice(2));
   if (!args.cmd || args.cmd === "help") return void console.log(HELP);
   if (args.cmd === "inspect") return void (await inspect(args));
   if (args.cmd === "diff") return void (await diff(args));
+  if (args.cmd === "session") return void (await sessionCmd(args));
 
   const { t: rawT, kind, target: defaultTarget } = await makeTransport(args.adapter);
   const READ_ONLY_CMDS = ["did", "probe", "backup"];
