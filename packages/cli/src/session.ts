@@ -3,6 +3,7 @@ import { appendFileSync, chmodSync, existsSync, mkdirSync, readFileSync, readdir
 import { basename, dirname, join, resolve, sep } from "node:path";
 import {
   BackupError,
+  ClearingClient,
   DiagClient,
   NegativeResponse,
   TOOL_VERSION,
@@ -454,7 +455,7 @@ export async function runSession(opts: SessionOptions): Promise<SessionResult> {
     }
     const entry: NonNullable<SessionResult["clear"]> = { target: tgt, done: false, before: before.length };
     r.clear = entry;
-    const clearer = new DiagClient(readOnlyExcept(traced, [0x14]));
+    const clearer = new ClearingClient(readOnlyExcept(traced, [0x14]));
     let after: UdsDtc[] | undefined;
     try {
       await step("clear", () => clearer.clearUdsDtcs(tgt));
