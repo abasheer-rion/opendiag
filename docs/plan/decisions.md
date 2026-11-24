@@ -35,3 +35,4 @@ A spare car control unit (for example a seat, mirror, light or comfort module bo
 | # | Decision | Effect |
 |---|---|---|
 | 8 | **Owner approved the UDP 6811 discovery probe and the DoIP vehicle-identification probe for CAP-A.** | Added to the allowed list in `research-sprint.md` 4.2. Single UDP packets only; no TCP, no routing activation. |
+| 9 | **Owner approved, for the 2026-11-24 CAP-A session only: a read-only backup attempt, and one standard fault-code clear at the very end after the fault list is saved.** | Amends decision 2 for this one session; real-car writes beyond this single clear remain out. Rules in `research-sprint.md` 4.1 and 4.2. Backup may only capture identification data because real coding block identifiers are unknown. |
