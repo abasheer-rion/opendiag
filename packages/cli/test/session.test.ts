@@ -4,7 +4,7 @@ import { existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, 
 import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { HsfzTransport, SimTransport, demoVehicle, startSimHsfzServer, toHex } from "../../core/src/index.ts";
+import { HsfzTransport, SimTransport, TimeoutError, demoVehicle, startSimHsfzServer, toHex } from "../../core/src/index.ts";
 import type { Bytes, DiagTransport } from "../../core/src/index.ts";
 import { SessionRefused, checkClearFlags, runSession } from "../src/session.ts";
 import type { SessionOptions, SessionResult } from "../src/session.ts";
@@ -335,6 +335,109 @@ test("session over the HSFZ fake gateway: no address in the output, adapter is a
     assert.ok(!backup.includes("127.0.0.1"));
   } finally {
     await srv.close();
+    d.done();
+  }
+});
+
+function tspy(inner: DiagTransport, hook: (target: number, data: Bytes, seenProbeEnd: boolean) => Bytes | undefined): Spy {
+  let seen = false;
+  const s: Spy = {
+    name: inner.name,
+    sent: [],
+    opens: 0,
+    async open() {
+      await inner.open();
+    },
+    close: () => inner.close(),
+    async request(target, data, timeoutMs) {
+      s.sent.push(data);
+      const forced = hook(target, data, seen);
+      if (data[1] === 0xf1 && data[2] === 0x9f) seen = true;
+      if (forced) return forced;
+      return inner.request(target, data, timeoutMs);
+    },
+  };
+  return s;
+}
+
+test("clear: refused when the VIN changes during the session (maybe a different car)", async () => {
+  const d = scratch();
+  try {
+    const other = Buffer.from("WBA00000000000002");
+    const t = tspy(new SimTransport(), (target, data, afterProbe) =>
+      afterProbe && target === 0x12 && data[0] === 0x22 && data[1] === 0xf1 && data[2] === 0x90 ? Uint8Array.of(0x62, 0xf1, 0x90, ...other) : undefined);
+    const r = await run({ out: d.out, clear: goodClear, confirm: async () => "CLEAR" }, t);
+    assert.equal(r.vin_stable, false);
+    assert.equal(r.clear?.done, false);
+    assert.equal(t.sent.filter((s) => s[0] === 0x14).length, 0);
+  } finally {
+    d.done();
+  }
+});
+
+test("clear: refused when the module stops answering the second scan", async () => {
+  const d = scratch();
+  try {
+    const t = tspy(new SimTransport(), (target, data, afterProbe) => (afterProbe && target === 0x12 && data[0] === 0x3e ? (() => { throw new TimeoutError("no response"); })() : undefined));
+    const r = await run({ out: d.out, clear: goodClear, confirm: async () => "CLEAR" }, t);
+    assert.equal(r.clear?.done, false);
+    assert.equal(t.sent.filter((s) => s[0] === 0x14).length, 0);
+  } finally {
+    d.done();
+  }
+});
+
+test("clear: a refusal from the car still leaves clear.json and stops", async () => {
+  const d = scratch();
+  try {
+    const t = spy(new SimTransport(), (_n, data) => (data[0] === 0x14 ? Uint8Array.of(0x7f, 0x14, 0x22) : undefined));
+    const r = await run({ out: d.out, clear: goodClear, confirm: async () => "CLEAR" }, t);
+    assert.match(r.stopped?.reason ?? "", /0x22/);
+    assert.equal(t.sent.filter((s) => s[0] === 0x14).length, 1);
+    assert.equal(r.clear?.done, false);
+    const rec = json<{ done: boolean; error: string | null }>(join(d.out, "clear.json"));
+    assert.equal(rec.done, false);
+    assert.ok(rec.error);
+  } finally {
+    d.done();
+  }
+});
+
+test("clear: the re-read stopping the session still leaves clear.json", async () => {
+  const d = scratch();
+  try {
+    let reads = 0;
+    const t = spy(new SimTransport(), (_n, data) => (data[0] === 0x19 && ++reads === 2 ? (() => { throw new Error("ENET connection closed"); })() : undefined));
+    const r = await run({ out: d.out, clear: goodClear, confirm: async () => "CLEAR" }, t);
+    assert.equal(r.clear?.done, true);
+    assert.ok(r.stopped);
+    assert.equal(json<{ done: boolean }>(join(d.out, "clear.json")).done, true);
+  } finally {
+    d.done();
+  }
+});
+
+test("host names and IPv6 addresses are scrubbed from errors and the shareable trace", async () => {
+  const d = scratch();
+  try {
+    const t: DiagTransport = { name: "x", open: async () => { throw new Error("getaddrinfo ENOTFOUND My-Enet.local fe80::1ff:fe23:4567:890a ::1"); }, close: async () => {}, request: async () => new Uint8Array() };
+    await run({ out: d.out, redact: ["my-enet.local"] }, t);
+    const text = readFileSync(join(d.out, "session.json"), "utf8");
+    assert.ok(!/enet\.local/i.test(text));
+    assert.ok(!text.includes("fe80"));
+    assert.ok(!text.includes("::1"));
+  } finally {
+    d.done();
+  }
+});
+
+test("a bad --target is refused before anything is sent", async () => {
+  const d = scratch();
+  try {
+    const t = spy(new SimTransport());
+    await assert.rejects(() => run({ out: d.out, target: Number("abc") }, t), SessionRefused);
+    assert.equal(t.opens, 0);
+  } finally {
     d.done();
   }
 });

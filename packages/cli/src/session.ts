@@ -56,6 +56,8 @@ export interface SessionOptions {
   clear?: ClearFlags | undefined;
   /** Returns the line the owner typed for the clear confirmation. */
   confirm?: () => Promise<string>;
+  /** Words (host names, addresses) that must never appear in the output files or the shareable trace. */
+  redact?: string[];
   /** Timeout for scan pings and probe reads. */
   quickTimeoutMs?: number;
   log?: (line: string) => void;
@@ -178,10 +180,12 @@ export async function runSession(opts: SessionOptions): Promise<SessionResult> {
     if (chk.reasons.length > 0) throw new SessionRefused(chk.reasons);
     clearTarget = chk.target;
   }
+  if (!Number.isInteger(target) || target < 0 || target > 0xffff) throw new SessionRefused([`--target ${target} is not a module address`]);
   if (!Number.isFinite(idleSeconds) || idleSeconds < 0 || idleSeconds > 3600) throw new SessionRefused(["--idle must be 0 to 3600 seconds"]);
 
   // 2. Private output folder.
   const out = prepareOutDir(opts.outDir);
+  const redact = opts.redact ?? [];
   const salt = randomBytes(16).toString("hex");
   const file = (name: string) => join(out, name);
   writeFileSync(file("salt.private"), salt + "\n", { mode: 0o600 });
@@ -212,7 +216,7 @@ export async function runSession(opts: SessionOptions): Promise<SessionResult> {
     notes: [],
   };
 
-  const clean = (e: unknown): string => scrubText(e instanceof Error ? e.message : String(e), salt);
+  const clean = (e: unknown): string => scrubText(e instanceof Error ? e.message : String(e), salt, redact);
   const noteError = (step: string, e: unknown) => r.errors.push({ step, text: clean(e) });
 
   /** Decide what an error means: return to carry on, or throw Stop. */
@@ -283,6 +287,7 @@ export async function runSession(opts: SessionOptions): Promise<SessionResult> {
     return res;
   };
 
+  let lastScan: number[] | undefined;
   const probeable = (): number[] => [...r.modules].sort((a, b) => Number(b === target) - Number(a === target) || a - b).slice(0, MAX_PROBED_MODULES);
   const readable = new Map<number, { did: number; length: number }[]>();
 
@@ -311,6 +316,7 @@ export async function runSession(opts: SessionOptions): Promise<SessionResult> {
 
     const first = await scanPass("scan");
     if (first) {
+      lastScan = first;
       r.modules = first;
       log(`modules answered: ${first.map(hex2).join(" ") || "none"}`);
     }
@@ -353,6 +359,7 @@ export async function runSession(opts: SessionOptions): Promise<SessionResult> {
 
     await readVin("vin_2");
     const second = await scanPass("scan_2");
+    if (second) lastScan = second;
     if (second) r.modules_stable = second.length === r.modules.length && second.every((a, i) => a === r.modules[i]);
 
     if (idleSeconds > 0) {
@@ -376,7 +383,7 @@ export async function runSession(opts: SessionOptions): Promise<SessionResult> {
     r.counts = { requests: traced.count, modules: r.modules.length, errors: r.errors.length };
     writeFileSync(file("session.json"), JSON.stringify(r, null, 2), { mode: 0o600 });
     try {
-      const anon = anonymiseTrace(readFileSync(tracePath, "utf8"), salt);
+      const anon = anonymiseTrace(readFileSync(tracePath, "utf8"), salt, redact);
       writeFileSync(file("session.shareable.odtrace"), anon, { mode: 0o600 });
     } catch (e) {
       log(`could not write shareable trace: ${clean(e)}`);
@@ -423,7 +430,8 @@ export async function runSession(opts: SessionOptions): Promise<SessionResult> {
 
   async function runClear(tgt: number): Promise<void> {
     const reasons: string[] = [];
-    if (!r.modules.includes(tgt)) reasons.push(`module ${hex2(tgt)} did not answer the scan`);
+    if (!r.modules.includes(tgt) || !lastScan?.includes(tgt)) reasons.push(`module ${hex2(tgt)} did not answer every scan`);
+    if (r.vin_stable === false) reasons.push("the VIN changed during the session, so this may not be the car whose faults were saved");
     let before: unknown[] = [];
     try {
       const saved = JSON.parse(readFileSync(dtcPath, "utf8")) as Record<string, unknown>;
@@ -447,20 +455,21 @@ export async function runSession(opts: SessionOptions): Promise<SessionResult> {
     const entry: NonNullable<SessionResult["clear"]> = { target: tgt, done: false, before: before.length };
     r.clear = entry;
     const clearer = new DiagClient(readOnlyExcept(traced, [0x14]));
+    let after: UdsDtc[] | undefined;
     try {
       await step("clear", () => clearer.clearUdsDtcs(tgt));
       const last = r.steps[r.steps.length - 1];
       entry.done = last?.name === "clear" && last.ok;
       if (!entry.done) entry.error = last?.error ?? "failed";
+      await step("dtc_after_clear", async () => {
+        after = await client.readUdsDtcs(tgt);
+      });
     } catch (e) {
-      entry.error = clean(e);
+      entry.error ??= clean(e);
       throw e;
+    } finally {
+      if (after) entry.after = (after as UdsDtc[]).length;
+      writeFileSync(file("clear.json"), JSON.stringify({ target: hex2(tgt), done: entry.done, before, after: after ?? null, error: entry.error ?? null }, null, 2), { mode: 0o600 });
     }
-    let after: UdsDtc[] | undefined;
-    await step("dtc_after_clear", async () => {
-      after = await client.readUdsDtcs(tgt);
-    });
-    if (after) entry.after = (after as UdsDtc[]).length;
-    writeFileSync(file("clear.json"), JSON.stringify({ target: hex2(tgt), done: entry.done, before, after: after ?? null }, null, 2), { mode: 0o600 });
   }
 }

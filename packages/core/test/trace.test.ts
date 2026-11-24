@@ -115,3 +115,10 @@ test("readOnlyExcept: base readOnly still refuses clear, and bad ids are rejecte
   assert.equal(sent.length, 0);
   assert.match(readOnlyExcept(t, [0x14]).name, /0x14/);
 });
+
+test("scrubText: VIN next to an underscore or in lower case, and IPv6, are removed", () => {
+  const out = scrubText(`vin_${VIN} ${VIN.toLowerCase()} fe80::1 [::1]`, "salt");
+  assert.ok(!out.toUpperCase().includes(VIN));
+  assert.ok(!out.includes("fe80"));
+  assert.ok(!out.includes("::1"));
+});

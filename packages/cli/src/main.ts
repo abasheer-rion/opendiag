@@ -207,12 +207,15 @@ function typedLine(): Promise<string> {
 async function sessionCmd(args: Args): Promise<void> {
   const kind = args.adapter.split(":")[0] ?? "";
   if (kind !== "enet" && kind !== "sim") throw new Error("session needs --adapter enet:HOST (sim works for practice)");
+  const host = args.adapter.split(":")[1] ?? "";
+  if (kind === "enet" && !host) throw new Error("session needs --adapter enet:HOST");
   const { t, target } = await makeTransport(args.adapter);
   const wantsClear = args.clearTargets.length > 0 || args.batteryVolts !== undefined || args.yesClear;
   try {
     const r = await runSession({
       transport: t,
       adapter: kind,
+      redact: [host],
       outDir: args.out ?? "",
       target: args.target ?? target,
       idleSeconds: args.idle,

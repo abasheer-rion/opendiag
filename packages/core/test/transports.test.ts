@@ -79,3 +79,25 @@ test("DoIP transport: routing activation then diagnostics", async () => {
     await srv.close();
   }
 });
+
+test("HSFZ: a car that answers 'response pending' for ever is given up on", async () => {
+  const { default: net } = await import("node:net");
+  const { encodeHsfz, HSFZ_CTRL, MAX_PENDING_FRAMES } = await import("../src/index.ts");
+  const server = net.createServer((sock) => {
+    sock.on("data", () => {
+      const f = encodeHsfz(HSFZ_CTRL.DIAG, Uint8Array.of(0x12, 0xf4, 0x7f, 0x22, 0x78));
+      for (let i = 0; i < MAX_PENDING_FRAMES + 50; i++) sock.write(f);
+    });
+    sock.on("error", () => {});
+  });
+  await new Promise<void>((r) => server.listen(0, "127.0.0.1", r));
+  const port = (server.address() as { port: number }).port;
+  const t = new HsfzTransport({ host: "127.0.0.1", port });
+  try {
+    await t.open();
+    await assert.rejects(() => t.request(0x12, Uint8Array.of(0x22, 0xf1, 0x90), 500), /response-pending/);
+  } finally {
+    await t.close();
+    server.close();
+  }
+});

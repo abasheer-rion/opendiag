@@ -63,7 +63,8 @@ export function traceTransport(
 
 const VIN_CHARS = /[A-HJ-NPR-Z0-9]/;
 const isVinChar = (b: number): boolean => VIN_CHARS.test(String.fromCharCode(b));
-const VIN_TEXT = /\b[A-HJ-NPR-Z0-9]{17}\b/g;
+const VIN_TEXT = /(?<![A-Za-z0-9])[A-HJ-NPR-Za-hj-npr-z0-9]{17}(?![A-Za-z0-9])/g;
+const IPV6 = /(?<![0-9a-z:])(?:[0-9a-f]{0,4}:){2,7}[0-9a-f]{1,4}(?![0-9a-z:])/gi;
 const IPV4 = /\b\d{1,3}(?:\.\d{1,3}){3}(?::\d+)?\b/g;
 const MAC = /\b[0-9a-f]{2}(?:[:-][0-9a-f]{2}){5}\b/gi;
 
@@ -78,11 +79,14 @@ export function vinFingerprint(vin: string, salt: string): string {
 }
 
 /** Replace 17-character VINs in text and drop IP and MAC addresses. */
-export function scrubText(s: string, salt: string): string {
-  return s
+export function scrubText(s: string, salt: string, redact: readonly string[] = []): string {
+  let t = s;
+  for (const word of redact) if (word) t = t.replace(new RegExp(word.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "gi"), "[host removed]");
+  return t
     .replace(MAC, "[mac removed]")
     .replace(IPV4, "[ip removed]")
-    .replace(VIN_TEXT, (v) => (/[0-9]/.test(v) && /[A-Z]/.test(v) ? hashVin(v, salt) : v));
+    .replace(IPV6, "[ip removed]")
+    .replace(VIN_TEXT, (v) => (/[0-9]/.test(v) && /[a-z]/i.test(v) ? hashVin(v.toUpperCase(), salt) : v));
 }
 
 /** Replace any 17-byte run of VIN characters inside a hex string with its salted pseudonym. */
@@ -113,7 +117,7 @@ function scrubHex(hex: string, salt: string): string {
  * MAC-looking tokens. Timestamps are already relative to the start, so no dates remain.
  * Lines that are not trace records are dropped.
  */
-export function anonymiseTrace(jsonl: string, salt: string): string {
+export function anonymiseTrace(jsonl: string, salt: string, redact: readonly string[] = []): string {
   const lines: string[] = [];
   for (const line of jsonl.split("\n")) {
     if (!line.trim()) continue;
@@ -125,7 +129,7 @@ export function anonymiseTrace(jsonl: string, salt: string): string {
     }
     const out: TraceRecord = { ...rec, req: scrubHex(rec.req, salt) };
     if (rec.res !== undefined) out.res = scrubHex(rec.res, salt);
-    if (rec.err !== undefined) out.err = scrubText(rec.err, salt);
+    if (rec.err !== undefined) out.err = scrubText(rec.err, salt, redact);
     lines.push(JSON.stringify(out));
   }
   return lines.length ? lines.join("\n") + "\n" : "";
