@@ -113,7 +113,7 @@ Goal: answer Q1, Q2, Q4 and gather voltage readings (Q8).
 
 Before the car:
 1. Create the private folder: `~/Projects/opendiag-captures-private/2026-11-24-capA/` with mode 700. It is outside the repo.
-2. Check that the repo is clean and on the `deep-research` branch or main; do not run `git pull` or change code during the session.
+2. Check that the repo is clean and on `main`; do not run `git pull` or change code during the session.
 3. Read the dongle's manual or label for its Wi-Fi name and default address. Write them in the notes, not in chat.
 
 In the car, in order:
@@ -121,9 +121,9 @@ In the car, in order:
 2. Connect the maintainer if you have one.
 3. Plug the WiFi ENET adapter into the OBD socket. Ignition on, engine off.
 4. Wait 30 seconds. Join the dongle's Wi-Fi from the laptop. Note the address the laptop gets and the dongle's address. Do not browse the internet; turn off background sync.
-5. In one terminal start the capture: `sudo tcpdump -i <wifi interface> -w capA.pcap -s 0 host <dongle address> or udp port 6811`. Leave it running.
+5. In one terminal start the capture on the whole interface: `sudo tcpdump -i <wifi interface> -w capA.pcap -s 0 'tcp port 6801 or udp port 6811 or udp port 13400 or udp port 67 or udp port 68'`. Leave it running.
 6. In another terminal run, one after the other, noting the wall-clock time with `time` before each: `vin`, `dtc`, `pids`, `scan --range 0x10-0x7f`, then for up to 5 modules that answered: `did --did 0xF190`, then `probe --range 0xF180-0xF19F`. Use `--adapter enet:<dongle address>`. Save each command's `--json` output to a file (`vin.json`, `dtc.json`, and so on).
-7. Repeat `vin` and `scan` once more, for a second timing sample.
+7. Repeat `vin` and `scan` once more, for a second timing sample. Then stay connected and idle for 5 minutes (nothing sent), then run `vin` once more. Keep the whole session under 25 minutes if no maintainer is connected.
 8. Stop the capture. Turn ignition off. Wait 30 seconds. Unplug the adapter.
 9. Note the voltage again and any new lamps or faults.
 10. Optional, only if you own a multimeter and the ENET cable (not the dongle): with the cable unplugged from the car, measure resistance between pin 8 and the signal ground and battery ground pins of the car-end connector, and record the numbers. This is a passive measurement on a cable at rest. Do not probe the car's own socket.
@@ -143,9 +143,9 @@ Goal: answer Q3 and extend Q4 with a second adapter type. The laptop CLI has no 
 
 ### 4.5 What to record (notes sheet, one per session)
 
-- Date, start and end times, car model, year, chassis; BM3 tune state (tuned or stock, map name).
+- Date, start and end times, car model, year, chassis; BM3 tune state (tuned or stock, map name). Head unit generation (iDrive version). Time of your last bootmod3 session (avoid BM3 for several hours before; if no VIN returns, do not disconnect the battery, retry another day).
 - Adapter, firmware shown, connection method, address (kept in the private notes only).
-- Battery voltage at start, midway and end; whether a maintainer was connected.
+- Battery voltage at start, midway and end; whether a maintainer was connected. Multimeter readings at the socket: ignition off, ignition on, with maintainer. Do not start the engine to take one. Stop if voltage falls 0.5 V or more from the start.
 - For each command: wall time in seconds, success or error text, number of modules that answered.
 - Anything unusual: warning lamps, cluster behaviour, slow replies, disconnects.
 - Which apps were closed, and a line confirming that no write, clear or code action was performed.
