@@ -15,3 +15,4 @@ export * from "./diff.ts";
 export * from "./demo.ts";
 export * from "./sim.ts";
 export * from "./sim-net.ts";
+export * from "./trace.ts";

@@ -10,6 +10,9 @@ import type { DoipFrame } from "./doip.ts";
 import { isResponsePending } from "./uds.ts";
 import type { ByteStream } from "./elm327.ts";
 
+/** A car that keeps saying "wait" for ever must not keep us waiting for ever. */
+export const MAX_PENDING_FRAMES = 100;
+
 function connect(host: string, port: number, timeoutMs: number): Promise<net.Socket> {
   return new Promise((resolve, reject) => {
     const s = net.connect({ host, port });
@@ -80,10 +83,11 @@ export class HsfzTransport implements DiagTransport {
     const tester = this.opts.tester ?? HSFZ_DEFAULT_TESTER;
     this.inbox.clear();
     this.socket.write(diagFrame(tester, target, data));
-    for (;;) {
+    for (let pending = 0; ; pending++) {
       const f = await this.inbox.next((x) => at(x.payload, 0) === target, timeoutMs);
       const { uds } = parseDiagPayload(f.payload);
       if (!isResponsePending(uds)) return uds;
+      if (pending >= MAX_PENDING_FRAMES) throw new TimeoutError(`gave up after ${MAX_PENDING_FRAMES} response-pending answers`);
     }
   }
 }
@@ -128,7 +132,7 @@ export class DoipTransport implements DiagTransport {
     if (!this.socket) throw new Error("transport not open");
     this.inbox.clear();
     this.socket.write(diagMessage(this.tester, target, data));
-    for (;;) {
+    for (let pending = 0; ; pending++) {
       const f = await this.inbox.next(
         (x) =>
           x.type === DOIP_TYPE.DIAG_NACK ||
@@ -138,6 +142,7 @@ export class DoipTransport implements DiagTransport {
       if (f.type === DOIP_TYPE.DIAG_NACK) throw new Error(`DoIP diagnostic NACK (code 0x${at(f.payload, 4).toString(16)})`);
       const { uds } = parseDiagMessage(f.payload);
       if (!isResponsePending(uds)) return uds;
+      if (pending >= MAX_PENDING_FRAMES) throw new TimeoutError(`gave up after ${MAX_PENDING_FRAMES} response-pending answers`);
     }
   }
 }
