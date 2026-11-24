@@ -1,0 +1,28 @@
+:root { --bg:#fff; --fg:#000; --dim:#6b6b6b; --line:#c8c8c8; --row:#f2f2f2; --accent:#0a60c8; --bad:#b00020; --ok:#1a7f37; color-scheme: light dark; }
+@media (prefers-color-scheme: dark) { :root { --bg:#000; --fg:#fff; --dim:#8e8e8e; --line:#2c2c2c; --row:#111; --accent:#4da3ff; --bad:#ff6b6b; --ok:#5ad17a; } }
+* { box-sizing: border-box; }
+html, body { margin:0; background:var(--bg); color:var(--fg); font:16px/1.3 -apple-system, "Helvetica Neue", Arial, sans-serif; }
+#root > main { max-width: 640px; margin: 0 auto; min-height: 100vh; border-left:1px solid var(--line); border-right:1px solid var(--line); }
+header { display:flex; align-items:center; height:48px; border-bottom:1px solid var(--line); padding:0 12px; position:sticky; top:0; background:var(--bg); }
+header .back { color:var(--accent); cursor:pointer; min-width:70px; background:none; border:0; font:inherit; padding:0; text-align:left; }
+header h1 { flex:1; text-align:center; font-size:inherit; font-weight:600; margin:0; }
+header .spacer { min-width:70px; }
+.banner { padding:6px 12px; font-size:13px; border-bottom:1px solid var(--line); color:var(--dim); }
+.banner b { color:var(--fg); }
+h2 { margin:0; padding:18px 12px 6px; font-size:13px; font-weight:400; color:var(--dim); text-transform:uppercase; letter-spacing:.04em; }
+.list { border-top:1px solid var(--line); }
+.row { display:flex; align-items:center; gap:8px; width:100%; min-height:44px; padding:8px 12px; border:0; border-bottom:1px solid var(--line); background:none; color:var(--fg); font:inherit; text-align:left; }
+button.row { cursor:pointer; }
+button.row:active { background:var(--row); }
+.row .l { flex:1; min-width:0; }
+.row .sub { color:var(--dim); font-size:13px; }
+.row .r { color:var(--dim); font-family: ui-monospace, Menlo, monospace; font-size:14px; }
+.row .chev::after { content:">"; color:var(--dim); margin-left:6px; }
+.row input[type=checkbox] { width:20px; height:20px; margin:0; accent-color:var(--accent); }
+label.row { cursor:pointer; }
+.bad { color:var(--bad); }
+.note { padding:12px; margin:0; color:var(--dim); font-size:14px; }
+pre { margin:0; padding:12px; font:13px/1.4 ui-monospace, Menlo, monospace; white-space:pre-wrap; border-bottom:1px solid var(--line); }
+button.act { display:block; width:100%; min-height:48px; background:none; border:0; border-bottom:1px solid var(--line); color:var(--accent); font:inherit; text-align:center; cursor:pointer; }
+button.act:disabled { color:var(--dim); cursor:not-allowed; }
+:focus-visible { outline:2px solid var(--accent); outline-offset:-2px; }
