@@ -28,6 +28,13 @@ pnpm cli inspect backup.json --pack my-pack.json                  # decode optio
 pnpm cli diff before.json after.json --suggest --ignore 62,63     # change ONE setting in the car's menu between backups
 ```
 
+Research capture session (reads only, plus an optional one-time clear that refuses unless every safety check passes). Steps for the owner are in [docs/research/sprint/session-runbook.md](docs/research/sprint/session-runbook.md):
+
+```bash
+pnpm cli session --adapter enet:HOST --out ~/private/capA --idle 300 --backup
+pnpm cli session --adapter enet:HOST --out ~/private/capA-clear --clear-target 0x12 --battery-volts 12.6 --yes-clear   # asks you to type CLEAR
+```
+
 `--pack demo` and `--adapter sim:ambient=2` let you try the whole flow on the simulator.
 
 ENET and DoIP framing follow public sources and still need confirming against a real capture. Please report results (never post VINs).
