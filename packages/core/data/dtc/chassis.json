@@ -1,0 +1,74 @@
+[
+ {
+  "code": "C0035",
+  "text": "Left front wheel speed sensor circuit problem",
+  "system": "chassis",
+  "source": "own-words",
+  "confidence": "low",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "C0040",
+  "text": "Right front wheel speed sensor circuit problem",
+  "system": "chassis",
+  "source": "own-words",
+  "confidence": "low",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "C0045",
+  "text": "Left rear wheel speed sensor circuit problem",
+  "system": "chassis",
+  "source": "own-words",
+  "confidence": "low",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "C0050",
+  "text": "Right rear wheel speed sensor circuit problem",
+  "system": "chassis",
+  "source": "own-words",
+  "confidence": "low",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "C0110",
+  "text": "Anti-lock brake pump motor circuit problem",
+  "system": "chassis",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "C0121",
+  "text": "Anti-lock brake valve relay circuit problem",
+  "system": "chassis",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "C0161",
+  "text": "Brake light switch circuit problem",
+  "system": "chassis",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "C0710",
+  "text": "Steering position signal problem",
+  "system": "chassis",
+  "source": "own-words",
+  "confidence": "low",
+  "reviewed": false,
+  "added": "2026-11-24"
+ }
+]

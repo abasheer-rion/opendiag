@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "pack_id": "fixture",
+  "version": "0.0.1",
+  "coding": [
+    {
+      "id": "cabin-light-delay",
+      "label": "Cabin light stays on after door closes",
+      "category": "lighting",
+      "module": "body-example",
+      "block": {
+        "did": 12288,
+        "length": 16
+      },
+      "field": {
+        "byte_offset": 2,
+        "bit_offset": 0,
+        "bit_length": 2
+      },
+      "values": [
+        {
+          "raw": 0,
+          "label": "Short"
+        },
+        {
+          "raw": 1,
+          "label": "Long"
+        }
+      ],
+      "default_raw": 0,
+      "risk_tier": "T0",
+      "provenance": {
+        "source_type": "owner_capture",
+        "capture_id": "cap-0001",
+        "tested_on": [
+          {
+            "date": "2026-10-01",
+            "result": "pass",
+            "chassis": "EXAMPLE",
+            "contributors": [
+              "gh:example"
+            ]
+          }
+        ]
+      },
+      "license": "CC0-1.0"
+    }
+  ]
+}

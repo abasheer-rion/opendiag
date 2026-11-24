@@ -1,0 +1,461 @@
+[
+ {
+  "code": "U0001",
+  "text": "High speed data bus communication problem",
+  "system": "network",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "U0002",
+  "text": "High speed data bus is not performing as expected",
+  "system": "network",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "U0003",
+  "text": "High speed data bus is open",
+  "system": "network",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "U0004",
+  "text": "High speed data bus reads low",
+  "system": "network",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "U0005",
+  "text": "High speed data bus reads high",
+  "system": "network",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "U0010",
+  "text": "Medium speed data bus communication problem",
+  "system": "network",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "U0073",
+  "text": "Data bus A has switched itself off",
+  "system": "network",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "U0074",
+  "text": "Data bus B has switched itself off",
+  "system": "network",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "U0100",
+  "text": "Lost communication with the engine computer",
+  "system": "network",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "U0101",
+  "text": "Lost communication with the transmission computer",
+  "system": "network",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "U0102",
+  "text": "Lost communication with the transfer case control module",
+  "system": "network",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "U0103",
+  "text": "Lost communication with the gear shift module",
+  "system": "network",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "U0104",
+  "text": "Lost communication with the cruise control module",
+  "system": "network",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "U0105",
+  "text": "Lost communication with the fuel injector control module",
+  "system": "network",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "U0106",
+  "text": "Lost communication with the glow plug control module",
+  "system": "network",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "U0107",
+  "text": "Lost communication with the throttle control module",
+  "system": "network",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "U0109",
+  "text": "Lost communication with the fuel pump control module",
+  "system": "network",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "U0110",
+  "text": "Lost communication with the drive motor control module",
+  "system": "network",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "U0111",
+  "text": "Lost communication with the hybrid battery control module",
+  "system": "network",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "U0121",
+  "text": "Lost communication with the anti-lock brake module",
+  "system": "network",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "U0122",
+  "text": "Lost communication with the vehicle stability control module",
+  "system": "network",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "U0123",
+  "text": "Lost communication with the yaw rate sensor module",
+  "system": "network",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "U0124",
+  "text": "Lost communication with the side acceleration sensor module",
+  "system": "network",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "U0125",
+  "text": "Lost communication with the multi-axis acceleration sensor module",
+  "system": "network",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "U0126",
+  "text": "Lost communication with the steering angle sensor module",
+  "system": "network",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "U0128",
+  "text": "Lost communication with the parking brake module",
+  "system": "network",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "U0129",
+  "text": "Lost communication with the brake system control module",
+  "system": "network",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "U0131",
+  "text": "Lost communication with the power steering module",
+  "system": "network",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "U0132",
+  "text": "Lost communication with the ride height control module",
+  "system": "network",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "U0140",
+  "text": "Lost communication with the body control module",
+  "system": "network",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "U0141",
+  "text": "Lost communication with body control module A",
+  "system": "network",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "U0142",
+  "text": "Lost communication with body control module B",
+  "system": "network",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "U0146",
+  "text": "Lost communication with gateway module A",
+  "system": "network",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "U0151",
+  "text": "Lost communication with the airbag control module",
+  "system": "network",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "U0155",
+  "text": "Lost communication with the instrument cluster",
+  "system": "network",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "U0156",
+  "text": "Lost communication with the information display module",
+  "system": "network",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "U0159",
+  "text": "Lost communication with the parking assist module",
+  "system": "network",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "U0164",
+  "text": "Lost communication with the climate control module",
+  "system": "network",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "U0167",
+  "text": "Lost communication with the immobiliser control module",
+  "system": "network",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "U0184",
+  "text": "Lost communication with the radio",
+  "system": "network",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "U0186",
+  "text": "Lost communication with the audio amplifier",
+  "system": "network",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "U0199",
+  "text": "Lost communication with door control module A",
+  "system": "network",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "U0200",
+  "text": "Lost communication with door control module B",
+  "system": "network",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "U0235",
+  "text": "Lost communication with the front distance sensor for cruise control",
+  "system": "network",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "U0300",
+  "text": "Control module software versions do not match each other",
+  "system": "network",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "U0301",
+  "text": "Software does not match the engine computer",
+  "system": "network",
+  "source": "own-words",
+  "confidence": "medium",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "U0401",
+  "text": "Engine computer sent data that this module cannot use",
+  "system": "network",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "U0402",
+  "text": "Transmission computer sent data that this module cannot use",
+  "system": "network",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "U0415",
+  "text": "Anti-lock brake module sent data that this module cannot use",
+  "system": "network",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "U0422",
+  "text": "Body control module sent data that this module cannot use",
+  "system": "network",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ },
+ {
+  "code": "U0423",
+  "text": "Instrument cluster sent data that this module cannot use",
+  "system": "network",
+  "source": "own-words",
+  "confidence": "high",
+  "reviewed": false,
+  "added": "2026-11-24"
+ }
+]

@@ -1,0 +1,61 @@
+- generic [ref=e1]:
+  - note [ref=e2]:
+    - strong [ref=e3]: MOCK.
+    - text: Look-and-feel prototype. Sample data only. No adapter, no real vehicle, nothing is written anywhere.
+    - 'button "Theme: auto/light/dark" [ref=e4] [cursor=pointer]'
+  - status [ref=e5]:
+    - generic [aria-hidden] [ref=e6]: ●
+    - generic [ref=e7]: Read only. Nothing here can change the car.
+  - generic [ref=e8]:
+    - navigation "Main" [ref=e9]:
+      - generic [ref=e10]:
+        - text: OpenDiag
+        - generic [ref=e11]: mock
+      - generic [ref=e12]:
+        - button "Connect" [ref=e13] [cursor=pointer]
+        - button "Vehicle" [ref=e18] [cursor=pointer]
+        - button "Faults" [ref=e24] [cursor=pointer]
+        - button "Live" [ref=e28] [cursor=pointer]
+        - button "Backup" [ref=e33] [cursor=pointer]
+      - group "Theme" [ref=e38]:
+        - button "Auto" [pressed] [ref=e39] [cursor=pointer]
+        - button "Light" [ref=e40] [cursor=pointer]
+        - button "Dark" [ref=e41] [cursor=pointer]
+    - main [ref=e42]:
+      - region "Connect" [ref=e43]:
+        - generic [ref=e44]:
+          - heading "Connect" [active] [level=1] [ref=e45]
+          - generic [ref=e46]: ○ Not connected
+        - generic [ref=e47]:
+          - generic [ref=e48]:
+            - heading "1. Pick your adapter" [level=2] [ref=e49]
+            - paragraph [ref=e50]: Sample adapters only. The app checks what each one can do before it lets you continue.
+            - radiogroup "Adapter" [ref=e51]:
+              - generic [ref=e52]:
+                - radio "OBDLink CX (Bluetooth LE) Read, snapshot and bench write" [checked] [ref=e53]
+                - generic [ref=e54] [cursor=pointer]: OBDLink CX (Bluetooth LE)Read, snapshot and bench write
+                - generic [ref=e55]: ✓ Supported
+              - generic [ref=e56]:
+                - radio "Wi-Fi ENET cable Needs the car awake and unlocked" [ref=e57]
+                - generic [ref=e58] [cursor=pointer]: Wi-Fi ENET cableNeeds the car awake and unlocked
+                - generic [ref=e59]: ✓ Supported
+              - generic [ref=e60]:
+                - radio "Generic ELM327 clone Read only. Too unreliable to write with" [ref=e61]
+                - generic [ref=e62] [cursor=pointer]: Generic ELM327 cloneRead only. Too unreliable to write with
+                - generic [ref=e63]: ⚠ Read only
+            - paragraph [ref=e64]:
+              - button "Connect to adapter" [ref=e65] [cursor=pointer]
+          - generic [ref=e66]:
+            - heading "2. Checks" [level=2] [ref=e67]
+            - list [ref=e68]:
+              - listitem [ref=e69]:
+                - generic [ref=e70]: Adapter linkWaiting
+                - generic [ref=e71]: ○ Waiting
+              - listitem [ref=e72]:
+                - generic [ref=e73]: Car foundWaiting
+                - generic [ref=e74]: ○ Waiting
+              - listitem [ref=e75]:
+                - generic [ref=e76]: Battery voltageWaiting
+                - generic [ref=e77]: ○ Waiting
+            - paragraph [ref=e78]:
+              - button "Open vehicle" [disabled] [ref=e79]
