@@ -35,6 +35,11 @@ export function ascii(b: Bytes): string {
   return String.fromCharCode(...b.filter((x) => x >= 0x20 && x < 0x7f));
 }
 
+/** ASCII text to bytes. Portable (no Node Buffer). */
+export function asciiBytes(s: string): number[] {
+  return Array.from(s, (c) => c.charCodeAt(0) & 0x7f);
+}
+
 export class TimeoutError extends Error {
   constructor(message: string) {
     super(message);

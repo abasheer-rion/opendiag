@@ -4,7 +4,7 @@ import { join } from "node:path";
 import { createInterface } from "node:readline";
 import {
   DEMO_PACK,
-  DiagClient,
+  ClearingClient,
   DoipTransport,
   Elm327Transport,
   HsfzTransport,
@@ -247,7 +247,7 @@ async function main(): Promise<void> {
   const t = READ_ONLY_CMDS.includes(args.cmd) ? readOnly(rawT) : rawT;
   const target = args.target ?? defaultTarget;
   await t.open();
-  const c = new DiagClient(t);
+  const c = new ClearingClient(t);
   try {
     switch (args.cmd) {
       case "did": {

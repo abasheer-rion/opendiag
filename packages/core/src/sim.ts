@@ -1,4 +1,4 @@
-import { at } from "./util.ts";
+import { asciiBytes, at } from "./util.ts";
 import type { Bytes } from "./util.ts";
 import type { DiagTransport } from "./transport.ts";
 import { TimeoutError } from "./util.ts";
@@ -54,7 +54,7 @@ export class SimEcu {
         return Uint8Array.of(0x44);
       case 0x09: {
         if (at(req, 1) !== 0x02 || !this.cfg.vin) return neg(0x31);
-        return Uint8Array.of(0x49, 0x02, 0x01, ...Buffer.from(this.cfg.vin, "ascii"));
+        return Uint8Array.of(0x49, 0x02, 0x01, ...asciiBytes(this.cfg.vin));
       }
       case 0x10:
         return Uint8Array.of(0x50, at(req, 1), 0x00, 0x32, 0x01, 0xf4);
@@ -72,7 +72,7 @@ export class SimEcu {
       case 0x22: {
         const did = (at(req, 1) << 8) | at(req, 2);
         if (did === 0xf190 && this.cfg.vin) {
-          return Uint8Array.of(0x62, 0xf1, 0x90, ...Buffer.from(this.cfg.vin, "ascii"));
+          return Uint8Array.of(0x62, 0xf1, 0x90, ...asciiBytes(this.cfg.vin));
         }
         const d = this.cfg.dids?.[did];
         return d ? Uint8Array.of(0x62, at(req, 1), at(req, 2), ...d) : neg(0x31);
@@ -111,7 +111,7 @@ export class SimVehicle {
 
 /** A demo car: engine ECU at 0x7E0 (OBD-II) and mirrored at 0x12 (BMW-style logical address). */
 export function demoVehicle(opts: { ambient?: number; welcome?: number } = {}): SimVehicle {
-  const ascii = (s: string) => [...Buffer.from(s, "ascii")];
+  const ascii = asciiBytes;
   const engine: SimEcuConfig = {
     dids: {
       0xf18c: ascii("SIM0000123"),

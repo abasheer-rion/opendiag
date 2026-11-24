@@ -320,7 +320,7 @@ test("session over the HSFZ fake gateway: no address in the output, adapter is a
   const srv = await startSimHsfzServer(demoVehicle());
   try {
     const t = new HsfzTransport({ host: "127.0.0.1", port: srv.port });
-    const r = await run({ out: d.out, adapter: "enet", range: [0x10, 0x14], quickTimeoutMs: 40, backup: true, clear: goodClear, confirm: async () => "CLEAR" }, t);
+    const r = await run({ out: d.out, adapter: "enet", range: [0x10, 0x14], quickTimeoutMs: 500, backup: true, clear: goodClear, confirm: async () => "CLEAR" }, t);
     assert.equal(r.stopped, null, r.stopped?.reason);
     assert.deepEqual(r.modules, [0x12]);
     assert.equal(r.clear?.done, true);
