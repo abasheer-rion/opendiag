@@ -11,9 +11,9 @@ export const SIMILARITY_LIMIT = 0.8;
  * Policy: this project does not help hide or switch off faults, lamps or emissions checks.
  * No data entry may talk about doing that.
  */
-const SUPPRESSION = /\b(suppress\w*|disabl\w*|switch(?:ing)? off|turn(?:ing)? off|deactivat\w*|defeat\w*|bypass\w*|delet\w*|hide|hiding|hidden|mask\w*|silenc\w*|remov\w* (?:the )?(?:code|fault|lamp|light)|ignor\w* (?:the )?(?:code|fault)|emulat\w*)\b/i;
+const SUPPRESSION = /\b(suppress\w*|disabl\w*|switch\w* off|turn\w* off|deactivat\w*|defeat\w*|bypass\w*|delet\w*|hid(?:e|es|ing|den)|mask\w*|silenc\w*|remov\w* (?:the )?(?:code|fault|lamp|light)|ignor\w* (?:the )?(?:code|fault)|emulat\w*)\b/i;
 
-export const mentionsSuppression = (text: string): boolean => SUPPRESSION.test(text);
+export const isAboutHidingFaults = (text: string): boolean => SUPPRESSION.test(text);
 
 const norm = (s: string) => s.toLowerCase().replace(/[^a-z0-9 ]+/g, " ").replace(/\s+/g, " ").trim();
 
@@ -62,7 +62,7 @@ export function lintEntries(entries: readonly DtcTextEntry[], denylist: readonly
       continue;
     }
     if (e.text.length > MAX_TEXT) problems.push(`${at}: text is ${e.text.length} characters, limit ${MAX_TEXT}`);
-    if (mentionsSuppression(e.text)) problems.push(`${at}: text is about hiding or switching off a fault, which this project does not do`);
+    if (isAboutHidingFaults(e.text)) problems.push(`${at}: text is about hiding or switching off a fault, which this project does not do`);
     for (const bad of denylist) {
       if (similarity(e.text, bad) >= SIMILARITY_LIMIT) problems.push(`${at}: text is too close to a denylisted line`);
     }

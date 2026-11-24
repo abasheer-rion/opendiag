@@ -19,6 +19,18 @@ pnpm cli dtc --adapter enet:169.254.1.1 --target 0x12   # BMW ENET cable
 pnpm cli scan --adapter enet:169.254.1.1 --range 0x10-0x7f
 ```
 
+Fault codes, exactly as the car says them (reads only):
+
+```bash
+pnpm cli dtc                      # per fault: code, hex bytes as received, status flags, meaning with source and confidence, module
+pnpm cli dtc --freeze             # freeze frame (OBD-II mode 02) or snapshot and extended data (UDS 0x19 04 / 06)
+pnpm cli dtc --readiness          # readiness monitors, information only
+pnpm cli dtc --explain P0301      # offline lookup, no car needed; also takes 0301 or 030100
+pnpm lint:dtc                     # checks the fault text data in packages/core/data/dtc
+```
+
+Fault meanings are written in our own words (`reviewed: false` until a person checks them). A code with no line of its own gets a basic description from its shape. Manufacturer-specific codes we do not know say so and show the raw code. This project does not build features that hide faults or switch off the warning lamp or any emissions check. The text linter and the policy tests reject them. Clearing stored codes stays behind the existing `clear` gates.
+
 Read-only coding tools (these refuse to send any write, by construction):
 
 ```bash
